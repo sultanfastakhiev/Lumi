@@ -1,19 +1,36 @@
 from uuid import UUID
 from fastapi import APIRouter, Depends, HTTPException, Response, UploadFile, File
 import jwt
+from gleb import Gleb
+from max3 import three
 from managers.users import authenticate_user, get_user_current
 from models import User, Patient
 import asyncpg
-from schemas import UserAllInfo, UserGet, UserAuth, PatientInfo, PatientsList, PatientInfoUpdate, Predict
+from schemas import UserAllInfo, UserGet, UserAuth, PatientInfo, PatientsList, PatientInfoUpdate, Predict, Diagnosis, \
+    PredictModel, UserEdit
 from passlib.hash import bcrypt
 from keras.models import load_model
 from keras_preprocessing import image
 import numpy as np
 from io import BytesIO
 from PIL import Image
+import pandas as pd
+import pickle
 
 
 model = load_model('modelrgb.h5')
+
+pkl_filename = 'model_75.pkl'
+with open(pkl_filename, 'rb') as file:
+    pickle_model = pickle.load(file)
+
+
+class_bol = [
+    'Здоров',
+    'Гипертензивная [гипертоническая] болезнь с преимущественным поражением сердца без (застойной) сердечной недостаточности',
+    'Нарушение сердечного ритма неуточненное'
+]
+
 
 JWT_SECRET = 'myjwtsecret'
 
@@ -45,6 +62,24 @@ async def register(user: UserAllInfo):
     except asyncpg.exceptions.UniqueViolationError:
         raise HTTPException(status_code=400, detail="User already exists")
     return Response(status_code=200, content="User created")
+
+
+@router.patch('/me')
+async def user_edit(new_user: UserEdit, user=Depends(get_user_current)):
+    if new_user.password_hash:
+        new_user.password_hash = bcrypt.hash(new_user.password_hash)
+    user = await User.objects.get(id=user.id)
+    try:
+        await user.update(**{k: v for k, v in new_user.dict().items() if v})
+    except asyncpg.exceptions.UniqueViolationError:
+        raise HTTPException(status_code=409, detail="Nickname is already in use")
+    return user
+
+
+@router.get('/me')
+async def get_me(user=Depends(get_user_current)):
+    user_get = await User.objects.get(id=user.id)
+    return user_get
 
 
 @router.get('/patients')
@@ -102,4 +137,26 @@ async def predict_api(file: UploadFile = File(...)):
         normal=round(prediction_list[1], 2),
         stone=round(prediction_list[2], 2),
         tumor=round(prediction_list[3], 2)
+    )
+
+
+@router.post('/test_an')
+async def predict_an(file_in: UploadFile = File(...)):
+    contents = await file_in.read()
+    buffer = BytesIO(contents)
+    df = pd.read_csv(buffer, sep=';', decimal=',', dtype={'PatientKey': 'Int32'},
+                     encoding='utf-8', parse_dates=['BirthDate', 'LaboratoryResultsDate', 'MinLaboratoryResultsDate'])
+    data, pathologies = Gleb(df)
+    prediction = pickle_model.predict_proba(data)
+    prediction_list = prediction.tolist()
+    prediction_list = prediction_list[0]
+    new_names, new_predict = three(class_bol, prediction_list)
+    return PredictModel(
+        predict=[
+            Diagnosis(
+                title=new_names[i],
+                value=round(d * 100, 2),
+                pathologies=pathologies
+            ) for i, d in enumerate(new_predict[0:3])
+        ]
     )

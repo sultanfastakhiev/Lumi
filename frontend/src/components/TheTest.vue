@@ -5,10 +5,10 @@
       <input class="stin1" ref="file" @change="onFileSel()" type="file">
     </label>
     <div class="results">
-        <p>Киста: {{this.cyst}}</p>
-        <p>Здоров: {{this.normal}}</p>
-        <p>Камень: {{this.stone}}</p>
-        <p>Опухоль: {{this.tumor}}</p>
+        <p>{{this.cyst}}</p>
+        <p>{{this.normal}}</p>
+        <p>{{this.stone}}</p>
+        <p>{{this.tumor}}</p>
     </div>
 </template>
 

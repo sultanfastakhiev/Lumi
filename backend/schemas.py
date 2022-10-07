@@ -1,8 +1,8 @@
 from uuid import UUID
 from pydantic import BaseModel
 import orjson
-from typing import Optional
-import datetime
+from typing import Optional, List
+from decimal import Decimal
 
 
 class BaseSchema(BaseModel):
@@ -11,6 +11,7 @@ class BaseSchema(BaseModel):
         min_anystr_length = 1
         json_loads = orjson.loads
         json_dumps = orjson.dumps
+
 
 class UserAllInfo(BaseSchema):
     last_name: str
@@ -63,3 +64,22 @@ class Predict(BaseSchema):
     normal: float
     stone: float
     tumor: float
+
+
+class Diagnosis(BaseSchema):
+    title: str
+    value: Decimal
+    pathologies: List[str]
+
+
+class PredictModel(BaseSchema):
+    predict: List[Diagnosis]
+
+
+class UserEdit(BaseSchema):
+    last_name: Optional[str]
+    name: Optional[str]
+    patronymic: Optional[str]
+    birthday: Optional[str]
+    username: Optional[str]
+    password_hash: Optional[str]
