@@ -83,3 +83,12 @@ class UserEdit(BaseSchema):
     birthday: Optional[str]
     username: Optional[str]
     password_hash: Optional[str]
+
+
+class PredictRod(BaseSchema):
+    title: str
+    value: Decimal
+
+
+class PredictMel(BaseSchema):
+    Predict: List[PredictRod]

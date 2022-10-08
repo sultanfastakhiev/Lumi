@@ -7,7 +7,7 @@ from managers.users import authenticate_user, get_user_current
 from models import User, Patient
 import asyncpg
 from schemas import UserAllInfo, UserGet, UserAuth, PatientInfo, PatientsList, PatientInfoUpdate, Predict, Diagnosis, \
-    PredictModel, UserEdit
+    PredictModel, UserEdit, PredictMel, PredictRod
 from passlib.hash import bcrypt
 from keras.models import load_model
 from keras_preprocessing import image
@@ -19,6 +19,8 @@ import pickle
 
 
 model = load_model('modelrgb.h5')
+melanoma = load_model('melanoma_model')
+
 
 pkl_filename = 'model_75.pkl'
 with open(pkl_filename, 'rb') as file:
@@ -160,3 +162,22 @@ async def predict_an(file_in: UploadFile = File(...)):
             ) for i, d in enumerate(new_predict[0:3])
         ]
     )
+
+
+@router.post('/melanoma')
+async def mel_test(file_mel: UploadFile = File(...)):
+    file_read = await file_mel.read()
+    img = read_imagefile(file_read)
+    img = img.resize((224, 224))
+    img_tensor = image.img_to_array(img)
+    img_tensor = np.expand_dims(img_tensor, axis=0)
+    img_tensor /= 255.
+    prediction = melanoma.predict(img_tensor)
+    pp = prediction.tolist()
+    return PredictMel(Predict=[PredictRod(
+        title="nevus",
+        value=round(pp[0][0] * 100, 2)
+    ), PredictRod(
+        title="melanoma",
+        value=round(pp[0][1] * 100, 2)
+    )])
