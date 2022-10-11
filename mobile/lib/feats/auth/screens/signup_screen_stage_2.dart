@@ -1,12 +1,18 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile/components/button/primary.dart';
 import 'package:mobile/components/inputs/date_input.dart';
 import 'package:mobile/components/inputs/default_input.dart';
 import 'package:mobile/components/layouts/empty.dart';
 import 'package:mobile/components/typography/page_subtitle.dart';
 import 'package:mobile/components/typography/page_title.dart';
+import 'package:mobile/feats/auth/bloc/user_cubit/user_cubit.dart';
 import 'package:mobile/feats/auth/widgets/link.dart';
+import 'package:mobile/router/router.gr.dart';
+import 'package:mobile/utils/utils.dart';
 
 class SecondStageSignupScreen extends StatefulWidget {
   final String email, password;
@@ -28,9 +34,24 @@ class _SecondStageSignupScreenState extends State<SecondStageSignupScreen> with 
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  void handleSubmit() {
+  Future<void> handleSubmit() async {
     if (_formKey.currentState?.validate() != true) return;
     _formKey.currentState?.save();
+    setState(() => loading = true);
+    final failure = await context.read<UserCubit>().signup(
+          email: widget.email,
+          password: widget.password,
+          name: name,
+          lastName: lastName,
+          patronymic: patronymic,
+          dateOfBirth: dateOfBirth!,
+        );
+    setState(() => loading = false);
+    if (failure != null) {
+      showError(context, failure.message);
+    } else {
+      AutoRouter.of(context).pushAndPopUntil(const MainScreenRoute(), predicate: (_) => false);
+    }
   }
 
   @override

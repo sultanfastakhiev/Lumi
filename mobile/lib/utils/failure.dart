@@ -11,3 +11,11 @@ class InvalidCredentials extends Failure {
 class CantAccessOurServices extends Failure {
   const CantAccessOurServices() : super("Наши сервисы сейчас не доступны");
 }
+
+class FailedToCreateUser extends Failure {
+  const FailedToCreateUser() : super("Не удалось зарегистрировать вам аккаунт");
+}
+
+class EmailAlreadyTaken extends Failure {
+  const EmailAlreadyTaken() : super("Этот email уже используется");
+}
