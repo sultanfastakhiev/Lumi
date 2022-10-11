@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import re
 import os
-
+# ggg
 # df = pd.read_csv('drive/My Drive/P.csv', sep=';', decimal=',', dtype={'PatientKey': 'Int32'}, encoding='utf-8',
 #                  parse_dates=['BirthDate', 'LaboratoryResultsDate', 'MinLaboratoryResultsDate'])
 
