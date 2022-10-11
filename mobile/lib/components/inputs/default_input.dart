@@ -9,6 +9,9 @@ class Input extends StatelessWidget {
   final TextInputAction? textInputAction;
   final String? Function(String?)? validator;
   final void Function(String?)? onSaved;
+  final bool expandInput;
+  final bool? enabled;
+  final TextEditingController? controller;
 
   const Input({
     Key? key,
@@ -18,12 +21,15 @@ class Input extends StatelessWidget {
     this.textInputAction,
     this.validator,
     this.onSaved,
+    this.expandInput = true,
+    this.enabled,
+    this.controller,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 70,
+      height: expandInput ? null : 70,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -33,6 +39,8 @@ class Input extends StatelessWidget {
           ),
           const SizedBox(height: 6),
           TextFormField(
+            controller: controller,
+            enabled: enabled,
             validator: validator,
             onSaved: onSaved,
             keyboardType: keyboardType,

@@ -6,6 +6,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mobile/components/loading/loading_screen.dart';
 import 'package:mobile/feats/auth/bloc/user_cubit/user_cubit.dart';
+import 'package:mobile/feats/auth/screens/login_screen.dart';
+import 'package:mobile/feats/main/screens/main_screen.dart';
+import 'package:mobile/locator.dart';
 import 'package:mobile/router/router.gr.dart';
 import 'package:mobile/services/hive_service.dart';
 
@@ -26,10 +29,14 @@ class _InitScreenState extends State<InitScreen> {
       Hive.openBox(HiveBoxes.auth),
     ]);
 
-    userCubit.getMe();
+
+
+    await userCubit.getMe();
+    // print("here");
 
     // debug
     // locator<HiveService>().putAuthToken("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNhZWY1MjJiLTdlZWYtNDlhMC1iNDE3LWZlYjg1MDk3OWQ2ZiIsInVzZXJuYW1lIjoiem90b3Z5IiwicGFzc3dvcmRfaGFzaCI6IiQyYiQxMiRvSnc2ZnkvaTR6dnFUdC5rTGNUamQuZkcuUVFFcmg2YjFmUG9Ba1ZlbUxoNlkzZXo5N3BKSyJ9.0V8sVZHtr9WDpFrqisw2PDP4BpShnqbyCin6ECXFiFM");
+    // locator<HiveService>().deleteAuthToken();
     // userCubit.emit(AuthorizedState(
     //     user: User(
     //       username: "zotovy",
@@ -41,14 +48,14 @@ class _InitScreenState extends State<InitScreen> {
     //     ),
     //     token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNhZWY1MjJiLTdlZWYtNDlhMC1iNDE3LWZlYjg1MDk3OWQ2ZiIsInVzZXJuYW1lIjoiem90b3Z5IiwicGFzc3dvcmRfaGFzaCI6IiQyYiQxMiRvSnc2ZnkvaTR6dnFUdC5rTGNUamQuZkcuUVFFcmg2YjFmUG9Ba1ZlbUxoNlkzZXo5N3BKSyJ9.0V8sVZHtr9WDpFrqisw2PDP4BpShnqbyCin6ECXFiFM"
     // ));
-    // userCubit.emit(NotAuthorizedState());
+    //  context.read<UserCubit>().emit(NotAuthorizedState());
 
-    final userState = context.read<UserCubit>().state;
-    if (userState is AuthorizedState) {
-      AutoRouter.of(context).pushAndPopUntil(const MainScreenRoute(), predicate: (_) => false);
-    } else {
-      AutoRouter.of(context).pushAndPopUntil(const LoginScreenRoute(), predicate: (_) => false);
-    }
+    // final userState = context.read<UserCubit>().state;
+    // if (userState is AuthorizedState) {
+    //   AutoRouter.of(context).pushAndPopUntil(const MainScreenRoute(), predicate: (_) => false);
+    // } else {
+    //   AutoRouter.of(context).pushAndPopUntil(const LoginScreenRoute(), predicate: (_) => false);
+    // }
   }
 
   late Future future;
@@ -64,7 +71,13 @@ class _InitScreenState extends State<InitScreen> {
     return FutureBuilder(
       future: future,
       builder: (context, snapshot) {
-        return const LoadingScreen();
+        if (snapshot.connectionState != ConnectionState.done) return const LoadingScreen();
+        final userState = context.read<UserCubit>().state;
+        if (userState is AuthorizedState) {
+          return const MainScreen();
+        } else {
+          return const LoginScreen();
+        }
       },
     );
   }

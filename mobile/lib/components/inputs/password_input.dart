@@ -9,6 +9,8 @@ class PasswordInput extends StatefulWidget {
   final TextInputAction? textInputAction;
   final String? Function(String?)? validator;
   final void Function(String?)? onSaved;
+  final void Function(String?)? onChanged;
+  final bool expandInput;
 
   const PasswordInput({
     Key? key,
@@ -17,6 +19,8 @@ class PasswordInput extends StatefulWidget {
     this.textInputAction,
     this.validator,
     this.onSaved,
+    this.onChanged,
+    this.expandInput = true,
   }) : super(key: key);
 
   @override
@@ -29,7 +33,7 @@ class _PasswordInputState extends State<PasswordInput> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 74,
+      height: widget.expandInput ? null : 74,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -41,6 +45,7 @@ class _PasswordInputState extends State<PasswordInput> {
           TextFormField(
             validator: widget.validator,
             onSaved: widget.onSaved,
+            onChanged: widget.onChanged,
             style: TextStyles.textMdNormal.apply(color: graySwatch.shade900),
             decoration: InputDecoration(
               contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),

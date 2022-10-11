@@ -59,6 +59,7 @@ class UserCubit extends HydratedCubit<UserState> with BlocLoggy {
   @override
   Map<String, dynamic>? toJson(UserState state) {
     if (state is AuthorizedState) return state.toJson();
+    if (state is NotAuthorizedState) return state.toJson();
     return null;
   }
 }

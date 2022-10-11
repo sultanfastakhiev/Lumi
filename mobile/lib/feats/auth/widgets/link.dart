@@ -7,13 +7,13 @@ import 'package:mobile/utils/theme/theme.dart';
 class AuthLink extends StatelessWidget {
   final String text;
   final String linkText;
-  final PageRouteInfo route;
+  final void Function() onTap;
 
   const AuthLink({
     Key? key,
     required this.text,
     required this.linkText,
-    required this.route,
+    required this.onTap,
   }) : super(key: key);
 
   @override
@@ -25,7 +25,7 @@ class AuthLink extends StatelessWidget {
           "$text ",
           style: TextStyles.textSmNormal.apply(color: graySwatch.shade500),
         ),
-        LinkButton(text: linkText, onTap: () => AutoRouter.of(context).push(route)),
+        LinkButton(text: linkText, onTap: onTap),
       ],
     );
   }

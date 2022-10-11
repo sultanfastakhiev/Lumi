@@ -1,44 +1,33 @@
-// ignore_for_file: use_build_context_synchronously
-
 import 'package:auto_route/auto_route.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile/components/button/primary.dart';
 import 'package:mobile/components/inputs/default_input.dart';
 import 'package:mobile/components/inputs/password_input.dart';
 import 'package:mobile/components/layouts/empty.dart';
 import 'package:mobile/components/typography/page_subtitle.dart';
 import 'package:mobile/components/typography/page_title.dart';
-import 'package:mobile/feats/auth/bloc/user_cubit/user_cubit.dart';
-import 'package:mobile/feats/auth/screens/signup_screen_stage_1.dart';
 import 'package:mobile/feats/auth/widgets/link.dart';
 import 'package:mobile/router/router.gr.dart';
-import 'package:mobile/utils/utils.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+
+class FirstStageSignupScreen extends StatefulWidget {
+  const FirstStageSignupScreen({Key? key}) : super(key: key);
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<FirstStageSignupScreen> createState() => _FirstStageSignupScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _FirstStageSignupScreenState extends State<FirstStageSignupScreen> with SingleTickerProviderStateMixin {
   bool loading = false;
   String email = "", password = "";
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  Future<void> handleSubmit() async {
-    if (_formKey.currentState?.validate() == true) {
-      _formKey.currentState?.save();
-      setState(() => loading = true);
-      final failure = await context.read<UserCubit>().login(email, password);
-      setState(() => loading = false);
-      if (failure != null) {
-        return showError(context, failure.message);
-      }
-      AutoRouter.of(context).pushAndPopUntil(const MainScreenRoute(), predicate: (_) => false);
-    }
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  
+  void onNext() {
+    if (_formKey.currentState?.validate() != true) return;
+    _formKey.currentState?.save();
+    AutoRouter.of(context).push(SecondStageSignupScreenRoute(email: email, password: password));
   }
 
   @override
@@ -53,12 +42,12 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 // Header
                 const PageTitle(
-                  "Вход в аккаунт",
+                  "Регистрация",
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 8),
                 const PageSubtitle(
-                  "С возвращением! Введите свои данные.",
+                  "Рады познакомиться.\nУкажите свой email и пароль",
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 32),
@@ -71,32 +60,37 @@ class _LoginScreenState extends State<LoginScreen> {
                   hint: "Введите ваш email",
                   validator: (s) => s != null
                       ? EmailValidator.validate(s)
-                          ? null
-                          : ""
-                      : "",
-                  onSaved: (s) => email = s ?? '',
-                  expandInput: false,
+                      ? null
+                      : "Неверный email"
+                      : "Это поле обязательно",
+                  onSaved: (v) => email = v ?? '',
                 ),
                 const SizedBox(height: 20),
                 PasswordInput(
                   label: "Пароль",
                   textInputAction: TextInputAction.done,
                   hint: "Введите ваш пароль",
-                  validator: (s) => s != "" && s != null ? null : "",
-                  onSaved: (s) => password = s ?? '',
-                  expandInput: false,
+                  validator: (s) => s != "" && s != null ? null : "Это поле обязательно",
+                  onChanged: (v) => password = v ?? '',
+                ),
+                const SizedBox(height: 20),
+                PasswordInput(
+                  label: "Подтвердите пароль",
+                  textInputAction: TextInputAction.done,
+                  hint: "Подтвердите ваш пароль",
+                  validator: (s) => s == password ? null : "Пароли не совпадают",
+                  onChanged: (v) => password = v ?? '',
                 ),
                 const SizedBox(height: 24),
                 PrimaryButton(
-                  text: "Войти",
-                  onTap: handleSubmit,
-                  loading: loading,
+                  text: "Далее",
+                  onTap: onNext,
                 ),
                 const SizedBox(height: 16),
                 AuthLink(
-                  text: "Еще нет аккаунта?",
-                  linkText: "Зарегистрировать",
-                  onTap: () => AutoRouter.of(context).push(const FirstStageSignupScreenRoute()),
+                  text: "Уже есть аккаунт?",
+                  linkText: "Войти",
+                  onTap: () => AutoRouter.of(context).pop(),
                 ),
               ],
             ),

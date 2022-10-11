@@ -36,6 +36,11 @@ class LoadingUserState extends UserState {
 }
 
 class NotAuthorizedState extends UserState {
+
+  Map<String, dynamic> toJson() => {
+    "type": "not-authorized",
+  };
+
   @override
   List<Object> get props => [];
 }
