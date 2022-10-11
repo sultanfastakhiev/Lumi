@@ -32,9 +32,12 @@ dependencies:
     path: ^1.8.2
     path_provider: ^2.0.11
     intl: ^0.17.0
+    email_validator: ^2.1.16
 
     # UI
     curved_progress_bar: ^1.0.2
+    flutter_feather_icons: ^2.0.0+1
+
 
 dev_dependencies:
     flutter_test:

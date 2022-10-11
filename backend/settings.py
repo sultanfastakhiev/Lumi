@@ -10,8 +10,8 @@ class Settings(BaseSettings):
     postgres_db: str = "db"
     postgres_user: str = "meta_db_user"
     postgres_password: str = "meta_db_password"
-    postgres_host: str = "localhost"
-    postgres_port: int = 5432
+    postgres_host: str = "db"
+    postgres_port: int = 5434
 
 
 @lru_cache()
