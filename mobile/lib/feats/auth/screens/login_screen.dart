@@ -1,13 +1,19 @@
+// ignore_for_file: use_build_context_synchronously
+
+import 'package:auto_route/auto_route.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile/components/button/primary.dart';
 import 'package:mobile/components/inputs/default_input.dart';
 import 'package:mobile/components/inputs/password_input.dart';
 import 'package:mobile/components/layouts/empty.dart';
 import 'package:mobile/components/typography/page_subtitle.dart';
 import 'package:mobile/components/typography/page_title.dart';
+import 'package:mobile/feats/auth/bloc/user_cubit/user_cubit.dart';
 import 'package:mobile/feats/auth/widgets/link.dart';
 import 'package:mobile/router/router.gr.dart';
+import 'package:mobile/utils/utils.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -17,13 +23,20 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  bool loading = false;
   String email = "", password = "";
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  void handleSubmit() {
+  Future<void> handleSubmit() async {
     if (_formKey.currentState?.validate() == true) {
       _formKey.currentState?.save();
-      print("$email $password");
+      setState(() => loading = true);
+      final failure = await context.read<UserCubit>().login(email, password);
+      setState(() => loading = false);
+      if (failure != null) {
+        return showError(context, failure.message);
+      }
+      AutoRouter.of(context).pushAndPopUntil(const MainScreenRoute(), predicate: (_) => false);
     }
   }
 
@@ -74,6 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 PrimaryButton(
                   text: "Войти",
                   onTap: handleSubmit,
+                  loading: loading,
                 ),
                 const SizedBox(height: 16),
                 const AuthLink(

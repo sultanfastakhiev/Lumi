@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -39,14 +41,13 @@ class _InitScreenState extends State<InitScreen> {
     //     ),
     //     token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNhZWY1MjJiLTdlZWYtNDlhMC1iNDE3LWZlYjg1MDk3OWQ2ZiIsInVzZXJuYW1lIjoiem90b3Z5IiwicGFzc3dvcmRfaGFzaCI6IiQyYiQxMiRvSnc2ZnkvaTR6dnFUdC5rTGNUamQuZkcuUVFFcmg2YjFmUG9Ba1ZlbUxoNlkzZXo5N3BKSyJ9.0V8sVZHtr9WDpFrqisw2PDP4BpShnqbyCin6ECXFiFM"
     // ));
-    userCubit.emit(NotAuthorizedState());
+    // userCubit.emit(NotAuthorizedState());
 
     final userState = context.read<UserCubit>().state;
     if (userState is AuthorizedState) {
-      AutoRouter.of(context).push(const MainScreenRoute());
+      AutoRouter.of(context).pushAndPopUntil(const MainScreenRoute(), predicate: (_) => false);
     } else {
-      print('push');
-      AutoRouter.of(context).push(const LoginScreenRoute());
+      AutoRouter.of(context).pushAndPopUntil(const LoginScreenRoute(), predicate: (_) => false);
     }
   }
 
