@@ -1,5 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile/feats/entities/patient/patient.dart';
+import 'package:mobile/feats/main/screens/user_detail_screen.dart';
+import 'package:mobile/router/router.gr.dart';
 import 'package:mobile/utils/formatters.dart';
 import 'package:mobile/utils/theme/text_styles.dart';
 import 'package:mobile/utils/theme/theme.dart';
@@ -14,34 +17,37 @@ class PatientCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        border: Border.all(color: graySwatch.shade200),
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(
-            patient.fullName,
-            style: TextStyles.textMdMedium.apply(color: graySwatch.shade900),
-          ),
-          const SizedBox(height: 10),
-          const _Label("Год рождения"),
-          _Value(DateFormatters.formatBirthdayWithAge(patient.birthday)),
-          if (patient.consultations != null) ...[
+    return GestureDetector(
+      onTap: () => AutoRouter.of(context).push(UserDetailScreenRoute(id: patient.id)),
+      child: Container(
+        padding: const EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          border: Border.all(color: graySwatch.shade200),
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              patient.fullName,
+              style: TextStyles.textMdMedium.apply(color: graySwatch.shade900),
+            ),
             const SizedBox(height: 10),
-            const _Label("Консультации"),
-            _Value(patient.consultations!),
+            const _Label("Год рождения"),
+            _Value(DateFormatters.formatBirthdayWithAge(patient.birthday)),
+            if (patient.consultations != null) ...[
+              const SizedBox(height: 10),
+              const _Label("Консультации"),
+              _Value(patient.consultations!),
+            ],
+            if (patient.diagnosis != null) ...[
+              const SizedBox(height: 10),
+              const _Label("Диагнозы"),
+              _Value(patient.diagnosis!),
+            ]
           ],
-          if (patient.diagnosis != null) ...[
-            const SizedBox(height: 10),
-            const _Label("Диагнозы"),
-            _Value(patient.diagnosis!),
-          ]
-        ],
+        ),
       ),
     );
   }

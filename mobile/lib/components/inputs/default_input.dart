@@ -13,6 +13,8 @@ class Input extends StatelessWidget {
   final bool? enabled;
   final TextEditingController? controller;
   final String? initialValue;
+  final int? minLines;
+  final int? maxLines;
 
   const Input({
     Key? key,
@@ -26,6 +28,8 @@ class Input extends StatelessWidget {
     this.enabled,
     this.controller,
     this.initialValue,
+    this.minLines,
+    this.maxLines,
   }) : super(key: key);
 
   @override
@@ -49,6 +53,8 @@ class Input extends StatelessWidget {
             keyboardType: keyboardType,
             textInputAction: textInputAction,
             style: TextStyles.textMdNormal.apply(color: graySwatch.shade900),
+            minLines: minLines,
+            maxLines: maxLines,
             decoration: InputDecoration(
               isDense: true,
               contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),

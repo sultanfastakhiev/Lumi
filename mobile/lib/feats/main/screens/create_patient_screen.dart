@@ -55,7 +55,6 @@ class _CreatePatientScreenState extends State<CreatePatientScreen> {
         child: ListView(
           children: [
             const Header("Создать пациента"),
-            const SizedBox(height: 8),
             const PageSubtitle("Создайте нового пациента, чтобы вести\nисторию консультаций и ставить диагнозы"),
             const SizedBox(height: 24),
 
