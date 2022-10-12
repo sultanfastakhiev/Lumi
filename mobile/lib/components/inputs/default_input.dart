@@ -12,6 +12,7 @@ class Input extends StatelessWidget {
   final bool expandInput;
   final bool? enabled;
   final TextEditingController? controller;
+  final String? initialValue;
 
   const Input({
     Key? key,
@@ -24,6 +25,7 @@ class Input extends StatelessWidget {
     this.expandInput = true,
     this.enabled,
     this.controller,
+    this.initialValue,
   }) : super(key: key);
 
   @override
@@ -39,6 +41,7 @@ class Input extends StatelessWidget {
           ),
           const SizedBox(height: 6),
           TextFormField(
+            initialValue: initialValue,
             controller: controller,
             enabled: enabled,
             validator: validator,
@@ -51,6 +54,20 @@ class Input extends StatelessWidget {
               contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
               hintText: hint,
               errorStyle: const TextStyle(height: 0),
+              errorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8),
+                borderSide: const BorderSide(
+                  color: Color(0xFFFDA29B),
+                  width: 1,
+                ),
+              ),
+              focusedErrorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8),
+                borderSide: const BorderSide(
+                  color: Color(0xFFF97066),
+                  width: 1,
+                ),
+              ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8),
                 borderSide: BorderSide(
