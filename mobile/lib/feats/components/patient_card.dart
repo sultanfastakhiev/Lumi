@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile/feats/entities/patient/patient.dart';
-import 'package:mobile/feats/main/screens/user_detail_screen.dart';
+import 'package:mobile/feats/main/screens/patient_detail_screen.dart';
 import 'package:mobile/router/router.gr.dart';
 import 'package:mobile/utils/formatters.dart';
 import 'package:mobile/utils/theme/text_styles.dart';
@@ -18,7 +18,7 @@ class PatientCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => AutoRouter.of(context).push(UserDetailScreenRoute(id: patient.id)),
+      onTap: () => AutoRouter.of(context).push(PatientDetailScreenRoute(id: patient.id)),
       child: Container(
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(

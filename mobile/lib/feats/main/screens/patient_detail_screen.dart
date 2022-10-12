@@ -5,16 +5,16 @@ import 'package:mobile/components/inputs/date_input.dart';
 import 'package:mobile/components/inputs/default_input.dart';
 import 'package:mobile/components/layouts/empty.dart';
 
-class UserDetailScreen extends StatefulWidget {
+class PatientDetailScreen extends StatefulWidget {
   final String id;
 
-  const UserDetailScreen({Key? key, required this.id}) : super(key: key);
+  const PatientDetailScreen({Key? key, required this.id}) : super(key: key);
 
   @override
-  State<UserDetailScreen> createState() => _UserDetailScreenState();
+  State<PatientDetailScreen> createState() => _PatientDetailScreenState();
 }
 
-class _UserDetailScreenState extends State<UserDetailScreen> {
+class _PatientDetailScreenState extends State<PatientDetailScreen> {
   bool loading = false;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 

@@ -20,7 +20,7 @@ import '../feats/auth/screens/signup_screen_stage_2.dart' as _i4;
 import '../feats/init/screen/init_screen.dart' as _i1;
 import '../feats/main/screens/create_patient_screen.dart' as _i6;
 import '../feats/main/screens/main_screen.dart' as _i5;
-import '../feats/main/screens/user_detail_screen.dart' as _i7;
+import '../feats/main/screens/patient_detail_screen.dart' as _i7;
 
 class AppRouter extends _i8.RootStackRouter {
   AppRouter([_i9.GlobalKey<_i9.NavigatorState>? navigatorKey])
@@ -69,11 +69,11 @@ class AppRouter extends _i8.RootStackRouter {
         child: const _i6.CreatePatientScreen(),
       );
     },
-    UserDetailScreenRoute.name: (routeData) {
-      final args = routeData.argsAs<UserDetailScreenRouteArgs>();
+    PatientDetailScreenRoute.name: (routeData) {
+      final args = routeData.argsAs<PatientDetailScreenRouteArgs>();
       return _i8.CupertinoPageX<dynamic>(
         routeData: routeData,
-        child: _i7.UserDetailScreen(
+        child: _i7.PatientDetailScreen(
           key: args.key,
           id: args.id,
         ),
@@ -108,8 +108,8 @@ class AppRouter extends _i8.RootStackRouter {
           path: '/create-patient-screen',
         ),
         _i8.RouteConfig(
-          UserDetailScreenRoute.name,
-          path: '/user-detail-screen',
+          PatientDetailScreenRoute.name,
+          path: '/patient-detail-screen',
         ),
       ];
 }
@@ -215,26 +215,26 @@ class CreatePatientScreenRoute extends _i8.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i7.UserDetailScreen]
-class UserDetailScreenRoute
-    extends _i8.PageRouteInfo<UserDetailScreenRouteArgs> {
-  UserDetailScreenRoute({
+/// [_i7.PatientDetailScreen]
+class PatientDetailScreenRoute
+    extends _i8.PageRouteInfo<PatientDetailScreenRouteArgs> {
+  PatientDetailScreenRoute({
     _i9.Key? key,
     required String id,
   }) : super(
-          UserDetailScreenRoute.name,
-          path: '/user-detail-screen',
-          args: UserDetailScreenRouteArgs(
+          PatientDetailScreenRoute.name,
+          path: '/patient-detail-screen',
+          args: PatientDetailScreenRouteArgs(
             key: key,
             id: id,
           ),
         );
 
-  static const String name = 'UserDetailScreenRoute';
+  static const String name = 'PatientDetailScreenRoute';
 }
 
-class UserDetailScreenRouteArgs {
-  const UserDetailScreenRouteArgs({
+class PatientDetailScreenRouteArgs {
+  const PatientDetailScreenRouteArgs({
     this.key,
     required this.id,
   });
@@ -245,6 +245,6 @@ class UserDetailScreenRouteArgs {
 
   @override
   String toString() {
-    return 'UserDetailScreenRouteArgs{key: $key, id: $id}';
+    return 'PatientDetailScreenRouteArgs{key: $key, id: $id}';
   }
 }
