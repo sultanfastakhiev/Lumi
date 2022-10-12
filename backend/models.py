@@ -41,3 +41,4 @@ class Patient(ormar.Model):
     diagnosis: Optional[str] = ormar.String(max_length=1000, nullable=True)
     operations: Optional[str] = ormar.String(max_length=1000, nullable=True)
     doctor: UUID = ormar.UUID()
+    created_at: datetime.datetime = ormar.DateTime(default=datetime.datetime.utcnow)

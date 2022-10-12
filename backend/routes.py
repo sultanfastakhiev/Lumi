@@ -21,7 +21,7 @@ import pickle
 
 model = load_model('modelrgb.h5')
 melanoma = load_model('melanoma_model')
-brain = load_model('brain_modell')
+# brain = load_model('brain_modell')
 
 
 pkl_filename = 'model_75.pkl'
@@ -97,7 +97,7 @@ async def get_me(user=Depends(get_user_current)):
 
 @router.get('/patients')
 async def get_patients(user=Depends(get_user_current)):
-    result = await Patient.objects.all(doctor=user.id)
+    result = await Patient.objects.filter(doctor=user.id).order_by(Patient.created_at.desc()).all()
     return PatientsList(
         result=result
     )
@@ -194,26 +194,26 @@ async def mel_test(file_mel: UploadFile = File(...)):
     )])
 
 
-@router.post('/brain')
-async def mel_test(file_mel: UploadFile = File(...)):
-    file_read = await file_mel.read()
-    img = read_imagefile(file_read)
-    img = img.resize((256, 256))
-    img_tensor = image.img_to_array(img)
-    img_tensor = np.expand_dims(img_tensor, axis=0)
-    img_tensor /= 255.
-    prediction = brain.predict(img_tensor)
-    pp = prediction.tolist()
-    return PredictMel(Predict=[PredictRod(
-        title="glioma",
-        value=round(pp[0][0] * 100, 2)
-    ), PredictRod(
-        title="meningioma",
-        value=round(pp[0][1] * 100, 2)
-    ), PredictRod(
-        title="no tumor",
-        value=round(pp[0][2] * 100, 2)
-    ), PredictRod(
-        title="p tumor",
-        value=round(pp[0][3] * 100, 2)
-    )])
+# @router.post('/brain')
+# async def mel_test(file_mel: UploadFile = File(...)):
+#     file_read = await file_mel.read()
+#     img = read_imagefile(file_read)
+#     img = img.resize((256, 256))
+#     img_tensor = image.img_to_array(img)
+#     img_tensor = np.expand_dims(img_tensor, axis=0)
+#     img_tensor /= 255.
+#     prediction = brain.predict(img_tensor)
+#     pp = prediction.tolist()
+#     return PredictMel(Predict=[PredictRod(
+#         title="glioma",
+#         value=round(pp[0][0] * 100, 2)
+#     ), PredictRod(
+#         title="meningioma",
+#         value=round(pp[0][1] * 100, 2)
+#     ), PredictRod(
+#         title="no tumor",
+#         value=round(pp[0][2] * 100, 2)
+#     ), PredictRod(
+#         title="p tumor",
+#         value=round(pp[0][3] * 100, 2)
+#     )])
