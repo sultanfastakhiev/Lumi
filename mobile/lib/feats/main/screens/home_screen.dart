@@ -1,9 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'package:mobile/components/error/error_view.dart';
+import 'package:mobile/components/loading/main_loading_view.dart';
 import 'package:mobile/components/typography/page_title.dart';
 import 'package:mobile/feats/components/patient_card.dart';
-import 'package:mobile/feats/entities/patient/patient.dart';
+import 'package:mobile/feats/main/bloc/patients_list_cubit/patients_list_cubit.dart';
 import 'package:mobile/feats/main/screens/home_empty_state_screen.dart';
 import 'package:mobile/router/router.gr.dart';
 
@@ -12,37 +15,35 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const HomeEmptyState();
-
-    return Padding(
-      padding: const EdgeInsets.only(top: 12.0),
-      child: ListView.builder(
-          itemCount: 100,
-          itemBuilder: (context, index) {
-            if (index == 0) {
-              return const Padding(
-                padding: EdgeInsets.only(bottom: 2),
-                child: _Title(),
-              );
-            }
-            return Padding(
-              padding: const EdgeInsets.only(top: 14),
-              child: PatientCard(
-                patient: Patient.fromJson({
-                  "id": "68078a4d-b5af-4c28-ac38-f1837524103d",
-                  "last_name": "ivanov",
-                  "name": "ivan",
-                  "patronymic": "ivanovich",
-                  "birthday": "21.11.2000",
-                  "consultations": "_",
-                  "diagnosis": "_",
-                  "operations": "_",
-                  "doctor": "3aef522b-7eef-49a0-b417-feb850979d6f"
-                }),
-              ),
-            );
-          }),
-    );
+    return BlocBuilder<PatientsListCubit, PatientsListState>(builder: (context, state) {
+      if (state is IdlePatientsListState) {
+        if (state.isEmpty) return const HomeEmptyState();
+        return Padding(
+          padding: const EdgeInsets.only(top: 12.0),
+          child: Scrollbar(
+            child: ListView.builder(
+              itemCount: state.patients.length + 1,
+              itemBuilder: (context, index) {
+                if (index == 0) {
+                  return const Padding(
+                    padding: EdgeInsets.only(bottom: 2),
+                    child: _Title(),
+                  );
+                }
+                return Padding(
+                  padding: const EdgeInsets.only(top: 14),
+                  child: PatientCard(patient: state.patients[index - 1]),
+                );
+              },
+            ),
+          ),
+        );
+      }
+      if (state is ErrorPatientsListState) {
+        return ErrorView(state.failure.message);
+      }
+      return const MainLoadingView();
+    });
   }
 }
 

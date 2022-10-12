@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:loggy/loggy.dart';
 import 'package:mobile/feats/auth/bloc/user_cubit/user_cubit.dart';
+import 'package:mobile/feats/main/bloc/patients_list_cubit/patients_list_cubit.dart';
 import 'package:mobile/global_variables.dart';
 import 'package:mobile/locator.dart';
 import 'package:mobile/router/router.gr.dart';
@@ -22,10 +23,10 @@ void main() async {
   final storage = await HydratedStorage.build(storageDirectory: await getTemporaryDirectory());
 
   HydratedBlocOverrides.runZoned(
-        () async {
+    () async {
       if (kReleaseMode) {
         await SentryFlutter.init(
-              (options) {
+          (options) {
             options.dsn = SENTRY_DNS;
           },
           // Init your App.
@@ -46,8 +47,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => UserCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => UserCubit()),
+        BlocProvider(create: (context) => PatientsListCubit()),
+      ],
       child: MaterialApp.router(
         title: 'Lumi',
         debugShowCheckedModeBanner: false,

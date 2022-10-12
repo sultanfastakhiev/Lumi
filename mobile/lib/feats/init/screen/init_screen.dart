@@ -7,6 +7,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mobile/components/loading/loading_screen.dart';
 import 'package:mobile/feats/auth/bloc/user_cubit/user_cubit.dart';
 import 'package:mobile/feats/auth/screens/login_screen.dart';
+import 'package:mobile/feats/main/bloc/patients_list_cubit/patients_list_cubit.dart';
 import 'package:mobile/feats/main/screens/main_screen.dart';
 import 'package:mobile/locator.dart';
 import 'package:mobile/router/router.gr.dart';
@@ -21,7 +22,6 @@ class InitScreen extends StatefulWidget {
 
 class _InitScreenState extends State<InitScreen> {
   Future load() async {
-    final userCubit = context.read<UserCubit>();
     await Hive.initFlutter();
 
     // open boxes
@@ -29,10 +29,11 @@ class _InitScreenState extends State<InitScreen> {
       Hive.openBox(HiveBoxes.auth),
     ]);
 
+    await context.read<UserCubit>().getMe();
 
-
-    await userCubit.getMe();
-    // print("here");
+    if (context.read<UserCubit>().state is AuthorizedState) {
+      await context.read<PatientsListCubit>().load();
+    }
 
     // debug
     // locator<HiveService>().putAuthToken("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNhZWY1MjJiLTdlZWYtNDlhMC1iNDE3LWZlYjg1MDk3OWQ2ZiIsInVzZXJuYW1lIjoiem90b3Z5IiwicGFzc3dvcmRfaGFzaCI6IiQyYiQxMiRvSnc2ZnkvaTR6dnFUdC5rTGNUamQuZkcuUVFFcmg2YjFmUG9Ba1ZlbUxoNlkzZXo5N3BKSyJ9.0V8sVZHtr9WDpFrqisw2PDP4BpShnqbyCin6ECXFiFM");
@@ -49,13 +50,6 @@ class _InitScreenState extends State<InitScreen> {
     //     token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjNhZWY1MjJiLTdlZWYtNDlhMC1iNDE3LWZlYjg1MDk3OWQ2ZiIsInVzZXJuYW1lIjoiem90b3Z5IiwicGFzc3dvcmRfaGFzaCI6IiQyYiQxMiRvSnc2ZnkvaTR6dnFUdC5rTGNUamQuZkcuUVFFcmg2YjFmUG9Ba1ZlbUxoNlkzZXo5N3BKSyJ9.0V8sVZHtr9WDpFrqisw2PDP4BpShnqbyCin6ECXFiFM"
     // ));
     //  context.read<UserCubit>().emit(NotAuthorizedState());
-
-    // final userState = context.read<UserCubit>().state;
-    // if (userState is AuthorizedState) {
-    //   AutoRouter.of(context).pushAndPopUntil(const MainScreenRoute(), predicate: (_) => false);
-    // } else {
-    //   AutoRouter.of(context).pushAndPopUntil(const LoginScreenRoute(), predicate: (_) => false);
-    // }
   }
 
   late Future future;

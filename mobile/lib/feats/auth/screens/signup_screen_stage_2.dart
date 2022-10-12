@@ -11,6 +11,7 @@ import 'package:mobile/components/typography/page_subtitle.dart';
 import 'package:mobile/components/typography/page_title.dart';
 import 'package:mobile/feats/auth/bloc/user_cubit/user_cubit.dart';
 import 'package:mobile/feats/auth/widgets/link.dart';
+import 'package:mobile/feats/main/bloc/patients_list_cubit/patients_list_cubit.dart';
 import 'package:mobile/router/router.gr.dart';
 import 'package:mobile/utils/utils.dart';
 
@@ -50,6 +51,7 @@ class _SecondStageSignupScreenState extends State<SecondStageSignupScreen> with 
     if (failure != null) {
       showError(context, failure.message);
     } else {
+      context.read<PatientsListCubit>().load();
       AutoRouter.of(context).pushAndPopUntil(const MainScreenRoute(), predicate: (_) => false);
     }
   }
@@ -118,6 +120,7 @@ class _SecondStageSignupScreenState extends State<SecondStageSignupScreen> with 
                 PrimaryButton(
                   text: "Зарегистрироваться",
                   onTap: handleSubmit,
+                  fullWidth: true,
                 ),
                 const SizedBox(height: 16),
                 AuthLink(

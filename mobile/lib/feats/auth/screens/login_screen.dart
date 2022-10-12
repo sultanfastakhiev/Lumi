@@ -13,6 +13,7 @@ import 'package:mobile/components/typography/page_title.dart';
 import 'package:mobile/feats/auth/bloc/user_cubit/user_cubit.dart';
 import 'package:mobile/feats/auth/screens/signup_screen_stage_1.dart';
 import 'package:mobile/feats/auth/widgets/link.dart';
+import 'package:mobile/feats/main/bloc/patients_list_cubit/patients_list_cubit.dart';
 import 'package:mobile/router/router.gr.dart';
 import 'package:mobile/utils/utils.dart';
 
@@ -37,6 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
       if (failure != null) {
         return showError(context, failure.message);
       }
+      context.read<PatientsListCubit>().load();
       AutoRouter.of(context).pushAndPopUntil(const MainScreenRoute(), predicate: (_) => false);
     }
   }
@@ -91,6 +93,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   text: "Войти",
                   onTap: handleSubmit,
                   loading: loading,
+                  fullWidth: true,
                 ),
                 const SizedBox(height: 16),
                 AuthLink(

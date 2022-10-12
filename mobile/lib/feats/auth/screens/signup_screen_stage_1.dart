@@ -85,6 +85,7 @@ class _FirstStageSignupScreenState extends State<FirstStageSignupScreen> with Si
                 PrimaryButton(
                   text: "Далее",
                   onTap: onNext,
+                  fullWidth: true,
                 ),
                 const SizedBox(height: 16),
                 AuthLink(

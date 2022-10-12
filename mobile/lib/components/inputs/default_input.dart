@@ -51,7 +51,7 @@ class Input extends StatelessWidget {
               contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
               hintText: hint,
               errorStyle: const TextStyle(height: 0),
-              border: OutlineInputBorder(
+              enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8),
                 borderSide: BorderSide(
                   color: graySwatch.shade300,
