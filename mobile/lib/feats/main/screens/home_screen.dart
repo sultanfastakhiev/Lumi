@@ -4,6 +4,7 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:mobile/components/typography/page_title.dart';
 import 'package:mobile/feats/components/patient_card.dart';
 import 'package:mobile/feats/entities/patient/patient.dart';
+import 'package:mobile/feats/main/screens/home_empty_state_screen.dart';
 import 'package:mobile/router/router.gr.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -11,6 +12,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return const HomeEmptyState();
+
     return Padding(
       padding: const EdgeInsets.only(top: 12.0),
       child: ListView.builder(
