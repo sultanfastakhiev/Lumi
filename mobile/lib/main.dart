@@ -1,7 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:loggy/loggy.dart';
 import 'package:mobile/feats/auth/bloc/user_cubit/user_cubit.dart';
 import 'package:mobile/feats/main/bloc/patients_list_cubit/patients_list_cubit.dart';
@@ -21,6 +23,8 @@ void main() async {
   logger = Loggy("Global");
 
   final storage = await HydratedStorage.build(storageDirectory: await getTemporaryDirectory());
+
+  Intl.defaultLocale = "ru-RU";
 
   HydratedBlocOverrides.runZoned(
     () async {
@@ -54,6 +58,16 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp.router(
         title: 'Lumi',
+        localizationsDelegates: const [
+          GlobalMaterialLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+        ],
+        supportedLocales: const [
+          Locale('ru', 'RU'),
+          Locale('en', 'US'),
+        ],
+        locale: const Locale('ru', 'RU'),
         debugShowCheckedModeBanner: false,
         theme: lightTheme,
         routerDelegate: AutoRouterDelegate(

@@ -21,9 +21,9 @@ mixin _$Patient {
   String get lastName => throw _privateConstructorUsedError;
   String get patronymic => throw _privateConstructorUsedError;
   DateTime get birthday => throw _privateConstructorUsedError;
-  String get consultations => throw _privateConstructorUsedError;
-  String get diagnosis => throw _privateConstructorUsedError;
-  String get operations => throw _privateConstructorUsedError;
+  String? get consultations => throw _privateConstructorUsedError;
+  String? get diagnosis => throw _privateConstructorUsedError;
+  String? get operations => throw _privateConstructorUsedError;
   String get doctorId => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -40,9 +40,9 @@ abstract class $PatientCopyWith<$Res> {
       String lastName,
       String patronymic,
       DateTime birthday,
-      String consultations,
-      String diagnosis,
-      String operations,
+      String? consultations,
+      String? diagnosis,
+      String? operations,
       String doctorId});
 }
 
@@ -90,15 +90,15 @@ class _$PatientCopyWithImpl<$Res> implements $PatientCopyWith<$Res> {
       consultations: consultations == freezed
           ? _value.consultations
           : consultations // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       diagnosis: diagnosis == freezed
           ? _value.diagnosis
           : diagnosis // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       operations: operations == freezed
           ? _value.operations
           : operations // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       doctorId: doctorId == freezed
           ? _value.doctorId
           : doctorId // ignore: cast_nullable_to_non_nullable
@@ -119,9 +119,9 @@ abstract class _$$_PatientCopyWith<$Res> implements $PatientCopyWith<$Res> {
       String lastName,
       String patronymic,
       DateTime birthday,
-      String consultations,
-      String diagnosis,
-      String operations,
+      String? consultations,
+      String? diagnosis,
+      String? operations,
       String doctorId});
 }
 
@@ -170,15 +170,15 @@ class __$$_PatientCopyWithImpl<$Res> extends _$PatientCopyWithImpl<$Res>
       consultations: consultations == freezed
           ? _value.consultations
           : consultations // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       diagnosis: diagnosis == freezed
           ? _value.diagnosis
           : diagnosis // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       operations: operations == freezed
           ? _value.operations
           : operations // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       doctorId: doctorId == freezed
           ? _value.doctorId
           : doctorId // ignore: cast_nullable_to_non_nullable
@@ -213,11 +213,11 @@ class _$_Patient extends _Patient {
   @override
   final DateTime birthday;
   @override
-  final String consultations;
+  final String? consultations;
   @override
-  final String diagnosis;
+  final String? diagnosis;
   @override
-  final String operations;
+  final String? operations;
   @override
   final String doctorId;
 
@@ -271,9 +271,9 @@ abstract class _Patient extends Patient {
       required final String lastName,
       required final String patronymic,
       required final DateTime birthday,
-      required final String consultations,
-      required final String diagnosis,
-      required final String operations,
+      required final String? consultations,
+      required final String? diagnosis,
+      required final String? operations,
       required final String doctorId}) = _$_Patient;
   const _Patient._() : super._();
 
@@ -288,11 +288,11 @@ abstract class _Patient extends Patient {
   @override
   DateTime get birthday;
   @override
-  String get consultations;
+  String? get consultations;
   @override
-  String get diagnosis;
+  String? get diagnosis;
   @override
-  String get operations;
+  String? get operations;
   @override
   String get doctorId;
   @override

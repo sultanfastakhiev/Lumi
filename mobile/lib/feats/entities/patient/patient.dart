@@ -13,9 +13,9 @@ abstract class Patient with _$Patient {
     required String lastName,
     required String patronymic,
     required DateTime birthday,
-    required String consultations,
-    required String diagnosis,
-    required String operations,
+    required String? consultations,
+    required String? diagnosis,
+    required String? operations,
     required String doctorId,
   }) = _Patient;
 
@@ -46,9 +46,9 @@ abstract class Patient with _$Patient {
       lastName: json["last_name"],
       patronymic: json["patronymic"],
       birthday: DateFormatters.parseBirthday(json["birthday"])!,
-      consultations: json["consultations"],
-      operations: json["operations"],
-      diagnosis: json["diagnosis"],
+      consultations: json["consultations"] == "" ? null : json["consultations"],
+      operations: json["operations"] == "" ? null : json["operations"],
+      diagnosis: json["diagnosis"] == "" ? null : json["diagnosis"],
       doctorId: json["doctor"],
     );
   }

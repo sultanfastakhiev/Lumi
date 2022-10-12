@@ -31,15 +31,15 @@ class PatientCard extends StatelessWidget {
           const SizedBox(height: 10),
           const _Label("Год рождения"),
           _Value(DateFormatters.formatBirthdayWithAge(patient.birthday)),
-          if (patient.consultations.trim() != "") ...[
+          if (patient.consultations != null) ...[
             const SizedBox(height: 10),
             const _Label("Консультации"),
-            _Value(patient.consultations),
+            _Value(patient.consultations!),
           ],
-          if (patient.diagnosis.trim() != "") ...[
+          if (patient.diagnosis != null) ...[
             const SizedBox(height: 10),
             const _Label("Диагнозы"),
-            _Value(patient.diagnosis),
+            _Value(patient.diagnosis!),
           ]
         ],
       ),
