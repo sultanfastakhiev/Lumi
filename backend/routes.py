@@ -7,7 +7,7 @@ from managers.users import authenticate_user, get_user_current
 from models import User, Patient
 import asyncpg
 from schemas import UserAllInfo, UserGet, UserAuth, PatientInfo, PatientsList, PatientInfoUpdate, Predict, Diagnosis, \
-    PredictModel, UserEdit, PredictMel, PredictRod
+    PredictModel, UserEdit, PredictMel, PredictRod, CheckEmail, CheckAnswer
 from passlib.hash import bcrypt
 from keras.models import load_model
 from keras_preprocessing import image
@@ -15,6 +15,7 @@ import numpy as np
 from io import BytesIO
 from PIL import Image
 import pandas as pd
+import ormar
 import pickle
 
 
@@ -64,6 +65,15 @@ async def register(user: UserAllInfo):
     except asyncpg.exceptions.UniqueViolationError:
         raise HTTPException(status_code=400, detail="User already exists")
     return Response(status_code=200, content="User created")
+
+
+@router.post('/check_email')
+async def check_email(email: CheckEmail):
+    try:
+        await User.objects.get(username=email.email)
+        return CheckAnswer(answer=False)
+    except ormar.exceptions.NoMatch:
+        return CheckAnswer(answer=True)
 
 
 @router.patch('/me')
