@@ -95,7 +95,7 @@ class PredictMel(BaseSchema):
 
 
 class CheckEmail(BaseSchema):
-    email: str
+    username: str
 
 
 class CheckAnswer(BaseSchema):

@@ -68,10 +68,10 @@ async def register(user: UserAllInfo):
     return Response(status_code=200, content="User created")
 
 
-@router.post('/check_email')
-async def check_email(email: CheckEmail):
+@router.post('/check_username')
+async def check_username(username: CheckEmail):
     try:
-        await User.objects.get(username=email.email)
+        await User.objects.get(username=username.username)
         return CheckAnswer(answer=False)
     except ormar.exceptions.NoMatch:
         return CheckAnswer(answer=True)
