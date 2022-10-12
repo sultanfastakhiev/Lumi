@@ -92,3 +92,11 @@ class PredictRod(BaseSchema):
 
 class PredictMel(BaseSchema):
     Predict: List[PredictRod]
+
+
+class CheckEmail(BaseSchema):
+    email: str
+
+
+class CheckAnswer(BaseSchema):
+    answer: bool
