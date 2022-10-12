@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/components/bottom_nav_bar.dart';
 import 'package:mobile/components/layouts/empty.dart';
+import 'package:mobile/feats/main/screens/home_screen.dart';
 
 enum MainPage {
   home,
@@ -26,7 +27,7 @@ class _MainScreenState extends State<MainScreen> {
         onTap: (newPage) => setState(() => page = newPage),
       ),
       child: [
-        const Text("home"),
+        const HomeScreen(),
         const Text("decoding"),
         const Text("account"),
       ][page.index],

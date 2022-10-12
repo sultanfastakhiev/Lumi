@@ -19,9 +19,11 @@ class EmptyLayout extends StatelessWidget {
       child: Scaffold(
         bottomNavigationBar: bottomNavBar,
         backgroundColor: Theme.of(context).backgroundColor,
-        body: Padding(
-          padding: padding,
-          child: child,
+        body: SafeArea(
+          child: Padding(
+            padding: padding,
+            child: child,
+          ),
         ),
       ),
     );
