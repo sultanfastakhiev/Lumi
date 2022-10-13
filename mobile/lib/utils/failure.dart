@@ -20,6 +20,10 @@ class FailedToCreatePatient extends Failure {
   const FailedToCreatePatient() : super("Не удалось создать пациента. Мы уже работаем над этим :)");
 }
 
+class FailedToUpdatePatient extends Failure {
+  const FailedToUpdatePatient() : super("Не удалось обновить пациента. Мы уже работаем над этим :)");
+}
+
 class EmailAlreadyTaken extends Failure {
   const EmailAlreadyTaken() : super("Этот email уже используется");
 }

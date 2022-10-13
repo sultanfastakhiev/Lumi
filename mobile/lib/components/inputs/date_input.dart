@@ -10,6 +10,7 @@ class DateInput extends StatefulWidget {
   final String? Function(DateTime?)? validator;
   final void Function(DateTime?)? onSaved;
   final bool expandInput;
+  final DateTime? initialValue;
 
   const DateInput({
     Key? key,
@@ -20,6 +21,7 @@ class DateInput extends StatefulWidget {
     this.validator,
     this.onSaved,
     this.expandInput = true,
+    this.initialValue,
   }) : super(key: key);
 
   @override
@@ -33,6 +35,9 @@ class _DateInputState extends State<DateInput> {
   void initState() {
     super.initState();
     controller = TextEditingController();
+    if (widget.initialValue != null) {
+      controller.text = DateFormatters.formatToBirthday(widget.initialValue!);
+    }
   }
 
   @override

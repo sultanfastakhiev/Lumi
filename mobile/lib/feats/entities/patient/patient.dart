@@ -27,17 +27,20 @@ abstract class Patient with _$Patient {
     return fullName;
   }
 
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "name": name,
-        "last_name": lastName,
-        "patronymic": patronymic,
-        "birthday": DateFormatters.formatToBirthday(birthday),
-        "consultations": consultations,
-        "diagnosis": diagnosis,
-        "operations": operations,
-        "doctor": doctorId,
-      };
+  Map<String, dynamic> toJson() {
+    Map<String, dynamic> data = {
+      "id": id,
+      "name": name,
+      "last_name": lastName,
+      "patronymic": patronymic,
+      "birthday": DateFormatters.formatToBirthday(birthday),
+      "doctor": doctorId,
+    };
+    if (consultations != null) data["consultations"] = consultations;
+    if (diagnosis != null) data["diagnosis"] = diagnosis;
+    if (operations != null) data["operations"] = operations;
+    return data;
+  }
 
   factory Patient.fromJson(Map<String, dynamic> json) {
     return Patient(
