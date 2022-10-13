@@ -97,7 +97,7 @@ async def get_me(user=Depends(get_user_current)):
 
 @router.get('/patients')
 async def get_patients(user=Depends(get_user_current)):
-    result = await Patient.objects.filter(doctor=user.id).order_by(Patient.created_at.desc()).all()
+    result = await Patient.objects.filter(doctor=user.id).order_by(Patient.created_at.asc()).all()
     return PatientsList(
         result=result
     )
@@ -125,8 +125,10 @@ async def create_patient(patient: PatientInfo, user=Depends(get_user_current)):
 
 
 @router.delete('/patients/{patient_id}')
-async def delete_patient(patient_id: UUID):
-    await Patient.objects.delete(id=patient_id)
+async def delete_patient(patient_id: UUID, user=Depends(get_user_current)):
+    patient = await Patient.objects.get(id=patient_id)
+    if patient.doctor == user.id:
+        await patient.delete()
     return Response(status_code=200, content="User deleted")
 
 
