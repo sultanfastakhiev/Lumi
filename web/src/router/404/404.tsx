@@ -15,9 +15,9 @@ export const Page404: React.FC = () => {
     const size = isMobile ? "xl" : "2xl"
 
     return <div className={ styles.page404 }>
-        <div className={ styles.subhead }>404 error</div>
-        <h1>We can’t find that page</h1>
-        <div className={ styles.support }>Sorry, the page you are looking for doesn't exist or has been moved.</div>
+        <div className={ styles.subhead }>404</div>
+        <h1>Мы не можем найи эту страницу</h1>
+        <div className={ styles.support }>Такой страницы не существует</div>
         <div className={ styles.buttons }>
             <Button
                 fullWidth={ isMobile }
@@ -25,13 +25,13 @@ export const Page404: React.FC = () => {
                 variant="secondary-gray"
                 trailingIcon={ ArrowLeft }
                 onClick={ handleBackClick }>
-                Go back
+                Вернуться назад
             </Button>
             <Button 
                 fullWidth={ isMobile }
                 size={ size } 
                 onClick={ handleHomeClick }>
-                Take me home
+                Перейти на главную
             </Button>
         </div>
     </div>
