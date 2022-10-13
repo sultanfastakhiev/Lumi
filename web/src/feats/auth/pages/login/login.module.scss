@@ -55,6 +55,7 @@
                 margin-top: 24px;
                 color: var(--untitled-gray--700);
                 @include untitled-text-display-md-semibold();
+                text-align: center;
 
                 @include lt-lg {
                     @include untitled-text-display-sm-medium();

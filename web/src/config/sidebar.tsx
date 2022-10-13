@@ -1,5 +1,5 @@
 import { SidebarConfig } from "@core/types/layout";
-import { Dribbble, User, Users } from "react-feather";
+import { FileText, Layers, Users } from "react-feather";
 import React from "react";
 import { v4 } from "uuid";
 
@@ -7,23 +7,36 @@ export const sidebarConfig: SidebarConfig = {
     items: [
         {
             type: "page",
-            icon: <User/>,
-            text: "Account settings",
-            url: "/apps/auth/account",
-            key: v4(),
-        },
-        {
-            type: "page",
             icon: <Users/>,
-            text: "User list",
-            url: "/apps/users/list",
+            text: "Пациенты",
+            url: "/apps/patients",
             key: v4(),
         },
         {
             type: "page",
-            icon: <Dribbble/>,
-            text: "Components",
-            url: "/apps/components",
+            icon: <FileText/>,
+            text: "Диагностика",
+            key: v4(),
+            children: [
+                {
+                    text: "Рак кожи",
+                    url: "/apps/diagnosis/skin-cancer",
+                },
+                {
+                    text: "Рак мозга",
+                    url: "/apps/diagnosis/brain-cancer",
+                },
+                {
+                    text: "Заболевания почек",
+                    url: "/apps/diagnosis/kidney-disease",
+                },
+            ]
+        },
+        {
+            type: "page",
+            icon: <Layers/>,
+            text: "Анализы",
+            url: "/apps/diagnostics/analysis",
             key: v4(),
         },
     ],

@@ -11,7 +11,7 @@ import {
 } from "@core/types/layout";
 import { useSidebar, useSidebarItem } from "@core/hooks/use-sidebar";
 import { Logo } from "@core/components/logo/logo";
-import { ChevronDown, LogOut, Settings } from "react-feather";
+import { ChevronDown, LogOut } from "react-feather";
 import { Avatar, Badge } from "react-untitled-ui";
 import { Link } from "react-router-dom";
 import { fullName } from "@feats/auth/entities";
@@ -41,20 +41,20 @@ export const Sidebar: React.FC<SidebarConfig> = React.memo((props) => {
             </div>
             <div className={ styles.footer }>
                 <div className={ styles.navigation }>
-                    <SidebarItem
-                        icon={ <Settings/> }
-                        type="page"
-                        text="Settings"
-                        url="/apps/users/settings"
-                        key="settings-nav-item"
-                        itemKey="settings-nav-item"/>
-                    <SidebarDivider/>
+                    {/*<SidebarItem*/}
+                    {/*    icon={ <Settings/> }*/}
+                    {/*    type="page"*/}
+                    {/*    text=""*/}
+                    {/*    url="/apps/users/settings"*/}
+                    {/*    key="settings-nav-item"*/}
+                    {/*    itemKey="settings-nav-item"/>*/}
+                    {/*<SidebarDivider/>*/}
                     <div className={ styles.user }>
-                        <Avatar onClick={ toggle } className={ styles.avatar } src={ user?.profileImage ?? undefined }/>
+                        <Avatar onClick={ toggle } className={ styles.avatar }/>
                         <div className={ styles.disposable }>
                             <div className={ styles.userDetails }>
                                 <h5 className={ styles.userName }>{ fullName(user) }</h5>
-                                <span className={ styles.userEmail }>{ user?.email ?? "" }</span>
+                                <span className={ styles.userEmail }>@{ user?.username ?? "" }</span>
                             </div>
                             <div className={ styles.logoutButton }>
                                 <LogOut onClick={ handleLogout }/>

@@ -1,4 +1,4 @@
-import { Tokens, User } from "@feats/auth/entities";
+import { User } from "@feats/auth/entities";
 
 export default class LocalStorage {
     private static readonly keys = {
@@ -7,7 +7,7 @@ export default class LocalStorage {
 
         // Auth
         user: "user",
-        tokens: "tokens",
+        token: "token",
     }
 
     static get isSidebarOpened(): boolean {
@@ -27,12 +27,15 @@ export default class LocalStorage {
         localStorage.setItem(LocalStorage.keys.user, user ? JSON.stringify(user) : "");
     }
 
-    static get tokens(): Tokens | undefined {
-        const raw = localStorage.getItem(LocalStorage.keys.tokens)
-        return raw && JSON.parse(raw)
+    static get token(): string | undefined {
+        return localStorage.getItem(LocalStorage.keys.token) ?? undefined
     }
 
-    static set tokens(tokens: Tokens | undefined) {
-        localStorage.setItem(LocalStorage.keys.tokens, tokens ? JSON.stringify(tokens) : "");
+    static set token(token: string | undefined) {
+        if (token) {
+            localStorage.setItem(LocalStorage.keys.token, token ?? "");
+        } else {
+            localStorage.removeItem(LocalStorage.keys.token);
+        }
     }
 }

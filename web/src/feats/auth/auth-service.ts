@@ -1,42 +1,26 @@
 import { LoginArgs } from "@feats/auth/redux/auth/auth-actions";
 import { LoginStatus } from "@feats/auth/redux/auth/auth-state";
-import { wait } from "@core/utils/wait";
 import LocalStorage from "@core/services/local-storage";
-
+import { fetchMe } from "@api/fetch-me";
+import { authorize } from "@api/authorize";
 
 export default class AuthService {
-    
     static async login(arg: LoginArgs): Promise<LoginStatus> {
-        await wait(1500)
-        if (arg.username === "admin@gmail.com" && arg.password === "12345") {
-            return {
-                user: {
-                    id: "1",
-                    email: "admin@gmail.com",
-                    firstName: "Roman",
-                    lastName: "Shchurov",
-                    bio: "Hi! I'm example account",
-                    username: "163onmyneck",
-                    permissions: ["dashboard"],
-                    role: "admin",
-                    lastActiveAt: new Date(),
-                    createdAt: new Date(),
-                },
-                tokens: {
-                    access: "123.123.123",
-                    refresh: "123.456.789"
-                }
-            }
+        const token = await authorize(arg.username, arg.password);
+        if (token) {
+            LocalStorage.token = token;
+            const user = (await fetchMe())!
+            return {user, token}
         }
-        return "invalid-email"
+        return "invalid-credentials"
     }
-    
+
     static isSignedIn(): boolean {
-        return !!LocalStorage.user && !!LocalStorage.tokens
+        return !!LocalStorage.user && !!LocalStorage.token
     }
-    
+
     static logout() {
         LocalStorage.user = undefined
-        LocalStorage.tokens = undefined
+        LocalStorage.token = undefined
     }
 }

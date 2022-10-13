@@ -23,7 +23,7 @@ export const LoginPage: React.FC = () => {
                     <FormInput
                         label="Username"
                         name="username"
-                        placeholder="Введите свой usernane"
+                        placeholder="Введите свой username"
                         fullWidth/>
                     <FormPasswordInput
                         label="Пароль"

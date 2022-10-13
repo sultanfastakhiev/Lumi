@@ -1,6 +1,6 @@
 import { LoginPage } from "@feats/auth/pages/login/login";
-import { AccountPage } from "@feats/auth/pages/account/account";
 import { Route } from "@router/router";
+import { SignupPage } from "@feats/auth/pages/signup/signup";
 
 export const authRoutes: Route[] = [
     {
@@ -8,8 +8,7 @@ export const authRoutes: Route[] = [
         page: <LoginPage/>
     },
     {
-        path: "/apps/auth/account",
-        page: <AccountPage/>,
-        authentication: true,
+        path: "/signup",
+        page: <SignupPage/>,
     }
 ]

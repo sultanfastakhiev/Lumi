@@ -1,22 +1,22 @@
-import { formatDate } from "@core/utils/fomatters/date-formatter";
-
-export type Permission = "dashboard" | "test"
-
 export type User = {
     id: string;
-    email: string,
-    permissions: Permission[],
-    role: string,
-    firstName?: string,
-    lastName?: string,
-    username?: string,
-    profileImage?: string,
-    bio?: string,
-    country?: string,
-    timezone?: string,
-    createdAt: Date,
-    lastActiveAt: Date,
+    name: string;
+    lastName: string;
+    patronymic: string;
+    birthday: Date;
+    username: string;
 }
+
+export function parseUser(data: any): User {
+    return {
+        id: data.id,
+        name: data.name,
+        lastName: data.last_name,
+        patronymic: data.patronymic,
+        username: data.username,
+        birthday: new Date(data.birthday),
+    }
+} 
 
 export type Tokens = {
     access: string,
@@ -26,19 +26,7 @@ export type Tokens = {
 export function fullName(user: User | undefined | null) {
     if (!user) return ""
     let fullName = ""
-    if (user.firstName) fullName += user.firstName + " "
+    if (user.name) fullName += user.name + " "
     if (user.lastName) fullName += user.lastName
     return fullName
-}
-
-export function formatCreatedAt(user: User | undefined | null): string {
-    if (!user) return ""
-    if (!user.createdAt) return ""
-    return formatDate(user.createdAt);
-}
-
-export function formatLastActiveAt(user: User | undefined | null): string {
-    if (!user) return ""
-    if (!user.lastActiveAt) return ""
-    return formatDate(user.lastActiveAt);
 }

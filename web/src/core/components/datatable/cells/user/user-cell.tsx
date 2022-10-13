@@ -7,10 +7,10 @@ export type UserCellProps = User
 
 export const UserCell: React.FC<UserCellProps> = (user) => {
     return <div className={ styles.userCell }>
-        <Avatar src={ user.profileImage } className={styles.avatar} size="sm"/>
+        <Avatar className={styles.avatar} size="sm"/>
         <div className={ styles.userInfo }>
             <span className={ styles.name }>{ fullName(user) }</span>
-            <span className={ styles.email }>{ user.email }</span>
+            <span className={ styles.email }>{ user.username }</span>
         </div>
     </div>
 }

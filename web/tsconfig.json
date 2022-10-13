@@ -53,6 +53,9 @@
       ],
       "@router/*": [
         "router/*"
+      ],
+      "@api/*": [
+        "api/*"
       ]
     },
     "incremental": true

@@ -26,7 +26,7 @@ export const login = createAsyncThunk(
 
         // Save user & tokens
         LocalStorage.user = data.user
-        LocalStorage.tokens = data.tokens
+        LocalStorage.token = data.token
 
         return {
             type: "authorized",

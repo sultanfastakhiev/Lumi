@@ -1,4 +1,4 @@
-import { Tokens, User } from "@feats/auth/entities";
+import { User } from "@feats/auth/entities";
 
 export type AuthState = AuthorizedAuthState | NotAuthorizedUserState  | InvalidAuthState
 
@@ -21,10 +21,10 @@ export function isNotAuthorizedAuthState(t: any): t is NotAuthorizedUserState {
 
 export type LoginStatus = {
     user: User,
-    tokens: Tokens,
+    token: string,
 } | ErrorLoginStatus
 
-export type ErrorLoginStatus = "invalid-email" | "server-error"
+export type ErrorLoginStatus = "invalid-credentials" | "server-error"
 
 export type InvalidAuthState = {
     type: "invalid",
