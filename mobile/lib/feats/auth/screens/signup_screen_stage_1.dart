@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile/components/button/primary.dart';
 import 'package:mobile/components/inputs/default_input.dart';
@@ -7,9 +6,11 @@ import 'package:mobile/components/inputs/password_input.dart';
 import 'package:mobile/components/layouts/empty.dart';
 import 'package:mobile/components/typography/page_subtitle.dart';
 import 'package:mobile/components/typography/page_title.dart';
+import 'package:mobile/feats/auth/api/check_username_uniqueness_endpoint.dart';
 import 'package:mobile/feats/auth/widgets/link.dart';
+import 'package:mobile/locator.dart';
 import 'package:mobile/router/router.gr.dart';
-
+import 'package:mobile/utils/utils.dart';
 
 class FirstStageSignupScreen extends StatefulWidget {
   const FirstStageSignupScreen({Key? key}) : super(key: key);
@@ -20,14 +21,26 @@ class FirstStageSignupScreen extends StatefulWidget {
 
 class _FirstStageSignupScreenState extends State<FirstStageSignupScreen> with SingleTickerProviderStateMixin {
   bool loading = false;
-  String email = "", password = "";
+  String username = "", password = "";
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  
-  void onNext() {
+
+  void onNext() async {
     if (_formKey.currentState?.validate() != true) return;
+    setState(() => loading = true);
     _formKey.currentState?.save();
-    AutoRouter.of(context).push(SecondStageSignupScreenRoute(email: email, password: password));
+    final either = await locator<CheckUsernameUniqueness>()(username);
+    await either.fold(
+      (failure) async => showError(context, failure.message),
+      (unique) {
+        if (unique) {
+          AutoRouter.of(context).push(SecondStageSignupScreenRoute(username: username, password: password));
+        } else {
+          showError(context, "Username $username уже занят");
+        }
+      },
+    );
+    setState(() => loading = false);
   }
 
   @override
@@ -47,23 +60,18 @@ class _FirstStageSignupScreenState extends State<FirstStageSignupScreen> with Si
                 ),
                 const SizedBox(height: 8),
                 const PageSubtitle(
-                  "Рады познакомиться.\nУкажите свой email и пароль",
+                  "Рады познакомиться.\nУкажите свой username и пароль",
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 32),
 
                 // Form
                 Input(
-                  label: "Email",
+                  label: "Username",
                   textInputAction: TextInputAction.next,
-                  keyboardType: TextInputType.emailAddress,
-                  hint: "Введите ваш email",
-                  validator: (s) => s != null
-                      ? EmailValidator.validate(s)
-                      ? null
-                      : "Неверный email"
-                      : "Это поле обязательно",
-                  onSaved: (v) => email = v ?? '',
+                  hint: "Введите ваш username",
+                  validator: (s) => s!.isNotEmpty ? null : "Это поле обязательно",
+                  onSaved: (v) => username = v ?? '',
                 ),
                 const SizedBox(height: 20),
                 PasswordInput(
@@ -86,6 +94,7 @@ class _FirstStageSignupScreenState extends State<FirstStageSignupScreen> with Si
                   text: "Далее",
                   onTap: onNext,
                   fullWidth: true,
+                  loading: loading,
                 ),
                 const SizedBox(height: 16),
                 AuthLink(

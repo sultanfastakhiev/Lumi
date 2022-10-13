@@ -1,7 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:auto_route/auto_route.dart';
-import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile/components/button/primary.dart';
@@ -11,7 +10,6 @@ import 'package:mobile/components/layouts/empty.dart';
 import 'package:mobile/components/typography/page_subtitle.dart';
 import 'package:mobile/components/typography/page_title.dart';
 import 'package:mobile/feats/auth/bloc/user_cubit/user_cubit.dart';
-import 'package:mobile/feats/auth/screens/signup_screen_stage_1.dart';
 import 'package:mobile/feats/auth/widgets/link.dart';
 import 'package:mobile/feats/main/bloc/patients_list_cubit/patients_list_cubit.dart';
 import 'package:mobile/router/router.gr.dart';
@@ -26,19 +24,19 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool loading = false;
-  String email = "", password = "";
+  String username = "", password = "";
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   Future<void> handleSubmit() async {
     if (_formKey.currentState?.validate() == true) {
       _formKey.currentState?.save();
       setState(() => loading = true);
-      final failure = await context.read<UserCubit>().login(email, password);
+      final failure = await context.read<UserCubit>().login(username, password);
       setState(() => loading = false);
       if (failure != null) {
         return showError(context, failure.message);
       }
-      context.read<PatientsListCubit>().load();
+      await context.read<PatientsListCubit>().load();
       AutoRouter.of(context).pushAndPopUntil(const MainScreenRoute(), predicate: (_) => false);
     }
   }
@@ -67,16 +65,12 @@ class _LoginScreenState extends State<LoginScreen> {
 
                 // Form
                 Input(
-                  label: "Email",
+                  label: "Username",
                   textInputAction: TextInputAction.next,
-                  keyboardType: TextInputType.emailAddress,
-                  hint: "Введите ваш email",
-                  validator: (s) => s != null
-                      ? EmailValidator.validate(s)
-                          ? null
-                          : ""
-                      : "",
-                  onSaved: (s) => email = s ?? '',
+                  keyboardType: TextInputType.text,
+                  hint: "Введите ваш username",
+                  validator: (s) => s != null ? null : "",
+                  onSaved: (s) => username = s ?? '',
                   expandInput: false,
                 ),
                 const SizedBox(height: 20),

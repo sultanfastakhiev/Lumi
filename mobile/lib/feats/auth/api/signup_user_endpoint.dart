@@ -14,7 +14,7 @@ class SignupUserEndpoint with ApiLoggy {
   }
 
   Future<Either<Failure, User>> call({
-    required String email,
+    required String username,
     required String password,
     required String name,
     required String lastName,
@@ -27,7 +27,7 @@ class SignupUserEndpoint with ApiLoggy {
         "name": name,
         "patronymic": patronymic,
         "birthday": DateFormatters.formatToBirthday(dateOfBirth),
-        "username": email,
+        "username": username,
         "password_hash": password,
       }).catchError((err) => err.response);
 
@@ -38,7 +38,7 @@ class SignupUserEndpoint with ApiLoggy {
           id: "",
           name: name,
           birthday: dateOfBirth,
-          username: email,
+          username: username,
         );
         return Right(user);
       }

@@ -52,7 +52,7 @@ class AppRouter extends _i8.RootStackRouter {
         routeData: routeData,
         child: _i4.SecondStageSignupScreen(
           key: args.key,
-          email: args.email,
+          username: args.username,
           password: args.password,
         ),
       );
@@ -156,14 +156,14 @@ class SecondStageSignupScreenRoute
     extends _i8.PageRouteInfo<SecondStageSignupScreenRouteArgs> {
   SecondStageSignupScreenRoute({
     _i9.Key? key,
-    required String email,
+    required String username,
     required String password,
   }) : super(
           SecondStageSignupScreenRoute.name,
           path: '/second-stage-signup-screen',
           args: SecondStageSignupScreenRouteArgs(
             key: key,
-            email: email,
+            username: username,
             password: password,
           ),
         );
@@ -174,19 +174,19 @@ class SecondStageSignupScreenRoute
 class SecondStageSignupScreenRouteArgs {
   const SecondStageSignupScreenRouteArgs({
     this.key,
-    required this.email,
+    required this.username,
     required this.password,
   });
 
   final _i9.Key? key;
 
-  final String email;
+  final String username;
 
   final String password;
 
   @override
   String toString() {
-    return 'SecondStageSignupScreenRouteArgs{key: $key, email: $email, password: $password}';
+    return 'SecondStageSignupScreenRouteArgs{key: $key, username: $username, password: $password}';
   }
 }
 

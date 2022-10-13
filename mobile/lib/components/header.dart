@@ -28,14 +28,14 @@ class Header extends StatelessWidget {
                 padding: const EdgeInsets.only(right: 8),
                 child: Icon(
                   FeatherIcons.arrowLeft,
-                  size: 20,
+                  size: 24,
                   color: Theme.of(context).primaryColor,
                 ),
               ),
             ),
             Text(
               text,
-              style: TextStyles.textMdMedium.apply(color: graySwatch.shade800),
+              style: TextStyles.textLgMedium.apply(color: graySwatch.shade800),
             )
           ],
         ),

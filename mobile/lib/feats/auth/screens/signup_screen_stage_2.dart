@@ -16,11 +16,11 @@ import 'package:mobile/router/router.gr.dart';
 import 'package:mobile/utils/utils.dart';
 
 class SecondStageSignupScreen extends StatefulWidget {
-  final String email, password;
+  final String username, password;
 
   const SecondStageSignupScreen({
     Key? key,
-    required this.email,
+    required this.username,
     required this.password,
   }) : super(key: key);
 
@@ -40,7 +40,7 @@ class _SecondStageSignupScreenState extends State<SecondStageSignupScreen> with 
     _formKey.currentState?.save();
     setState(() => loading = true);
     final failure = await context.read<UserCubit>().signup(
-          email: widget.email,
+          username: widget.username,
           password: widget.password,
           name: name,
           lastName: lastName,
@@ -51,7 +51,7 @@ class _SecondStageSignupScreenState extends State<SecondStageSignupScreen> with 
     if (failure != null) {
       showError(context, failure.message);
     } else {
-      context.read<PatientsListCubit>().load();
+      await context.read<PatientsListCubit>().load();
       AutoRouter.of(context).pushAndPopUntil(const MainScreenRoute(), predicate: (_) => false);
     }
   }

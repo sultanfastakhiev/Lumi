@@ -41,8 +41,8 @@ class UserCubit extends HydratedCubit<UserState> with BlocLoggy {
     );
   }
 
-  Future<Failure?> login(String email, String password) async {
-    final either = await _loginUserEndpoint(email, password);
+  Future<Failure?> login(String username, String password) async {
+    final either = await _loginUserEndpoint(username, password);
     return either.fold(
       (failure) => failure,
       (token) {
@@ -54,7 +54,7 @@ class UserCubit extends HydratedCubit<UserState> with BlocLoggy {
   }
 
   Future<Failure?> signup({
-    required String email,
+    required String username,
     required String password,
     required String name,
     required String lastName,
@@ -62,7 +62,7 @@ class UserCubit extends HydratedCubit<UserState> with BlocLoggy {
     required DateTime dateOfBirth,
   }) async {
     final either = await _signupUserEndpoint(
-      email: email,
+      username: username,
       password: password,
       name: name,
       lastName: lastName,
@@ -72,7 +72,7 @@ class UserCubit extends HydratedCubit<UserState> with BlocLoggy {
     return either.fold(
       (failure) => failure,
       (_) async {
-        final loginEither = await _loginUserEndpoint(email, password);
+        final loginEither = await _loginUserEndpoint(username, password);
         return loginEither.fold(
           (failure) => failure,
           (token) async {
