@@ -5,19 +5,15 @@
     width: 100vw;
     height: 100vh;
     display: flex;
+    
 
-    .left, .right {
-        width: 50vw;
-        height: 100vh;
-    }
-
-    .left {
+    .content {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
-        max-width: 660px;
-        margin-left: auto;
+        max-width: 360px;
+        margin: 0 auto;
         padding: 30px 20px;
+        align-items: center;
 
         @include lt-lg {
             width: 100%;
@@ -34,8 +30,8 @@
         form.loginForm {
             display: inline-flex;
             flex-direction: column;
+            align-items: center;
             gap: 12px;
-            max-width: 335px;
 
             @include lt-lg {
                 max-width: 500px;
@@ -56,6 +52,7 @@
             }
 
             h1.formTitle {
+                margin-top: 24px;
                 color: var(--untitled-gray--700);
                 @include untitled-text-display-md-semibold();
 
@@ -67,57 +64,29 @@
             span.formSubtitle {
                 color: var(--untitled-gray--400);
                 @include untitled-text-text-md-normal();
+                margin-bottom: 8px;
                 
                 @include lt-lg {
                     text-align: center;
                 }
             }
-
-            .checkbox {
-                @include lt-lg {
-                    width: 100%;
-                }
-
-                input[type=checkbox] {
-                    margin-top: 0;
-
-                    &:after {
-                        height: 22px;
-                    }
-                }
-            }
-
-
+            
             button[type=submit] {
                 margin-top: 12px;
             }
-        }
 
-        span.copyright {
-            color: var(--untitled-gray--400);
-            font-size: 14px;
-            font-weight: 500;
-
-            @include lt-lg {
-                display: none;
+            span.actions {
+                color: var(--untitled-gray--500);
+                @include untitled-text-text-sm-normal();
+                
+                a {
+                    color: var(--untitled-primary--600);
+                    
+                    &:hover {
+                        color: var(--untitled-primary--700);
+                    }
+                }
             }
-        }
-    }
-
-    .right {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: var(--untitled-blue-gray--100);
-
-        @include lt-lg {
-            display: none;
-        }
-
-        img {
-            width: 60%;
-            max-width: 450px;
-            margin: 16% 30px 30px;
         }
     }
 }

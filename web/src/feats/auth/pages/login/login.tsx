@@ -5,48 +5,37 @@ import { useLogin } from "@feats/auth/pages/login/use-login";
 import { Form, Formik } from "formik";
 import { FormPasswordInput } from "@core/components/inputs/form/form-password-input";
 import { Logo } from "@core/components/logo/logo";
-import { appConfig } from "@config/app";
-import { Checkbox } from "react-untitled-ui";
 import { SubmitButton } from "@core/components/buttons/form/submit-button";
+import { Link } from "react-router-dom";
 
 export const LoginPage: React.FC = () => {
-    const {formik, rememberMe, handleRememberMeChange} = useLogin()
+    const {formik} = useLogin()
 
     return <div className={ styles.page }>
-        <div className={ styles.left }>
-            <Logo text/>
+        <div className={ styles.content }>
+            <Logo/>
             <Formik { ...formik }>
                 <Form className={ styles.loginForm }>
-                    <img src="/white-logo.png" alt="" className={styles.logo}/>
-                    <h1 className={ styles.formTitle }>Sign in</h1>
+                    <h1 className={ styles.formTitle }>Вход в аккаунт</h1>
                     <span className={ styles.formSubtitle }>
-                        Welcome back! Please enter your details
+                        С возвращением! Введите свои данные.
                     </span>
                     <FormInput
-                        label="Email"
-                        name="email"
-                        placeholder="Enter your email"
+                        label="Username"
+                        name="username"
+                        placeholder="Введите свой usernane"
                         fullWidth/>
                     <FormPasswordInput
-                        label="Password"
+                        label="Пароль"
                         name="password"
-                        placeholder="Enter your password"
+                        placeholder="••••••••"
                         fullWidth/>
-                    <Checkbox
-                        className={ styles.checkbox }
-                        label="Remember me"
-                        id="remember-me"
-                        value={ rememberMe }
-                        onChange={ handleRememberMeChange }/>
-                    <SubmitButton fullWidth>Login</SubmitButton>
+                    <SubmitButton fullWidth>Войти</SubmitButton>
+                    <span className={styles.actions}>
+                        Нет аккаунта? <Link to="/signup">Создать</Link>
+                    </span>
                 </Form>
             </Formik>
-            <span className={ styles.copyright }>
-                { appConfig.copyright }
-            </span>
-        </div>
-        <div className={ styles.right }>
-            <img src="/big-logo.png" alt=""/>
         </div>
     </div>
 }

@@ -1,0 +1,21 @@
+:root {
+    --untitled-primary--25: #F5FAFF !important;
+    --untitled-primary--50: #EFF8FF !important;
+    --untitled-primary--100: #D1E9FF !important;
+    --untitled-primary--200: #B2DDFF !important;
+    --untitled-primary--300: #84CAFF !important;
+    --untitled-primary--400: #53B1FD !important;
+    --untitled-primary--500: #2E90FA !important;
+    --untitled-primary--600: #1570EF !important;
+    --untitled-primary--700: #175CD3 !important;
+    --untitled-primary--800: #1849A9 !important;
+    --untitled-primary--900: #194185 !important;
+
+    .untitled-textfield__input:focus {
+        box-shadow: 0 1px 2px rgb(16 24 40 / 5%), 0 0 0 4px #ebf1ff !important;
+    }
+
+    .untitled-button:focus {
+        box-shadow: 0 1px 2px rgb(16 24 40 / 5%), 0 0 0 4px #ebf1ff !important;
+    }
+}

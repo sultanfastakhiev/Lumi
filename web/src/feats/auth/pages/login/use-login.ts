@@ -20,7 +20,7 @@ export function useLogin() {
         handleRememberMeChange: setRememberMe,
         formik: createFormik({
             initialValues: {
-                email: "",
+                username: "",
                 password: ""
             },
             onSubmit: async (values) => {
@@ -29,16 +29,16 @@ export function useLogin() {
                 const authType = selectAuthType(store.getState())
 
                 if (authType === "invalid") {
-                    showError("Invalid email or password")
+                    showError("Неверный username или пароль")
                 } else if (authType === "not-authorized") {
-                    showError("Invalid state")
+                    showError("Пользователь не авторизован")
                 } else {
                     navigate(getHomeRoute(), {replace: true})
                 }
             },
             validationSchema: yup.object({
-                email: yup.string().email("Invalid email").required("Required"),
-                password: yup.string().required("Required"),
+                username: yup.string().required("Это поле обязательно"),
+                password: yup.string().required("Это поле обязательно"),
             })
         }),
     }

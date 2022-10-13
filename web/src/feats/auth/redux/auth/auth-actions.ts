@@ -7,7 +7,7 @@ import { RootState } from "@redux/store";
 import { wait } from "@core/utils/wait";
 
 export type LoginArgs = {
-    email: string,
+    username: string,
     password: string,
 }
 

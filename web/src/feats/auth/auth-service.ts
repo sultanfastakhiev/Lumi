@@ -8,7 +8,7 @@ export default class AuthService {
     
     static async login(arg: LoginArgs): Promise<LoginStatus> {
         await wait(1500)
-        if (arg.email === "admin@gmail.com" && arg.password === "12345") {
+        if (arg.username === "admin@gmail.com" && arg.password === "12345") {
             return {
                 user: {
                     id: "1",
