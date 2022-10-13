@@ -15,7 +15,7 @@ export const Page404: React.FC = () => {
     const size = isMobile ? "xl" : "2xl"
 
     return <div className={ styles.page404 }>
-        <div className={ styles.subhead }>404</div>
+        <div className={ styles.subhead }>404 ошибка</div>
         <h1>Мы не можем найи эту страницу</h1>
         <div className={ styles.support }>Такой страницы не существует</div>
         <div className={ styles.buttons }>

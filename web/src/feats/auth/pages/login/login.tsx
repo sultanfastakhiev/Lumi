@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./login.module.scss"
+import styles from "../auth.module.scss"
 import { FormInput } from "@core/components/inputs/form/form-input";
 import { useLogin } from "@feats/auth/pages/login/use-login";
 import { Form, Formik } from "formik";

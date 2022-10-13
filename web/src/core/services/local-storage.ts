@@ -8,6 +8,7 @@ export default class LocalStorage {
         // Auth
         user: "user",
         token: "token",
+        usernameAndPassword: "usernameAndPassword",
     }
 
     static get isSidebarOpened(): boolean {
