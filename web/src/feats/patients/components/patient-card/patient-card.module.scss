@@ -1,0 +1,39 @@
+@import "react-untitled-ui/src/styles/mixins";
+
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid var(--untitled-gray--200);
+    cursor: pointer;
+    transition: 0.2s;
+
+    &:hover {
+        box-shadow: 0 12px 24px -12px rgba(16, 24, 40, .16);
+        transform: translate(0, -2px);
+    }
+
+    .name {
+        color: var(--untitled-gray--900);
+        @include untitled-text-text-md-medium;
+    }
+
+    .row {
+        display: inline-flex;
+        flex-direction: column;
+        gap: 3px;
+
+        .label {
+            @include untitled-text-text-xs-normal;
+            color: var(--untitled-gray--400);
+        }
+
+        .value {
+            @include untitled-text-text-sm-normal;
+            color: var(--untitled-gray--600);
+            text-overflow: ellipsis;
+        }
+    }
+}

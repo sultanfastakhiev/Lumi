@@ -1,0 +1,12 @@
+@import "react-untitled-ui/src/styles/mixins";
+
+.title {
+    @include untitled-text-display-sm-medium;
+    color: var(--untitled-gray--900);
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

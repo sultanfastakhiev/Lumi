@@ -1,0 +1,11 @@
+.page {
+    height: 100%;
+    
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 48px;
+        row-gap: 36px;
+        margin-top: 36px;
+    }   
+}
