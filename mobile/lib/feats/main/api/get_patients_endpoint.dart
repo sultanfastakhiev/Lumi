@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:mobile/feats/entities/patient/patient.dart';
+import 'package:mobile/feats/main/entities/patient/patient.dart';
 import 'package:mobile/locator.dart';
 import 'package:mobile/utils/failure.dart';
 import 'package:mobile/utils/loggy.dart';

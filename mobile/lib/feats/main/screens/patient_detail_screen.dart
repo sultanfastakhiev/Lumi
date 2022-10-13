@@ -9,7 +9,7 @@ import 'package:mobile/components/inputs/date_input.dart';
 import 'package:mobile/components/inputs/default_input.dart';
 import 'package:mobile/components/layouts/empty.dart';
 import 'package:mobile/feats/auth/bloc/user_cubit/user_cubit.dart';
-import 'package:mobile/feats/entities/patient/patient.dart';
+import 'package:mobile/feats/main/entities/patient/patient.dart';
 import 'package:mobile/feats/main/api/update_patient_endpoint.dart';
 import 'package:mobile/feats/main/bloc/patients_list_cubit/patients_list_cubit.dart';
 import 'package:mobile/locator.dart';

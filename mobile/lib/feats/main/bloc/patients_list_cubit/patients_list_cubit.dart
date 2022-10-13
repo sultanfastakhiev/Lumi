@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mobile/feats/entities/patient/patient.dart';
+import 'package:mobile/feats/main/entities/patient/patient.dart';
 import 'package:mobile/feats/main/api/get_patients_endpoint.dart';
 import 'package:mobile/locator.dart';
 import 'package:mobile/utils/failure.dart';
