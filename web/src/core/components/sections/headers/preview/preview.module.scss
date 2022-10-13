@@ -1,0 +1,27 @@
+@import "react-untitled-ui/src/styles/global.scss";
+
+header.preview {
+    margin-bottom: 48px;
+    
+    h2 {
+        @include untitled-text-text-md-semibold;
+        color: var(--untitled-primary--700);
+        margin-bottom: 8px;
+    }
+
+    h1 {
+        @include untitled-text-display-lg-semibold;
+        color: var(--untitled-gray--900);
+        margin-bottom: 24px;
+        
+        @include lt-md {
+            @include untitled-text-display-md-semibold;
+        }
+    }
+
+    p {
+        @include untitled-text-text-lg-normal;
+        color: var(--untitled-gray--600);
+        max-width: 800px;
+    }
+}

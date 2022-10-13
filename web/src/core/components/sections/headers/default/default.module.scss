@@ -1,0 +1,46 @@
+@import "react-untitled-ui/src/styles/global.scss";
+
+header.default {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+
+    @include lt-md {
+        flex-direction: column;
+    }
+
+    .title {
+        h1 {
+            @include untitled-text-display-sm-semibold;
+            color: var(--untitled-gray--900);
+            margin-bottom: 4px;
+        }
+
+        p {
+            @include untitled-text-text-md-normal;
+            color: var(--untitled-gray--600);
+        }
+    }
+
+    .buttons {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        flex-shrink: 0;
+        
+        @include lt-lg {
+            flex-direction: column;
+        }
+        
+        @include lt-md {
+            width: 100%;
+            flex-direction: row;
+        }
+
+        @include lt-sm {
+            width: 100%;
+            flex-direction: column;
+            align-items: start;
+        }
+    }
+}

@@ -1,0 +1,59 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', -apple-system, Roboto, sans-serif !important;
+    transition-property: none !important;
+    overflow-x: clip;
+    overflow-y: auto;
+
+    &.chakra-ui-light {
+        // Colors
+        --surface: #EEF2F5;
+        --background: white;
+        --contrast: #175FFB;
+        --contrastHover: #1452d9;
+        --primary: #0B0E31;
+        --secondary: #39465E;
+        --hint: #798A9D;
+        --light-contrast: #D6E4FF;
+        --disabled: #EEF2F6;
+        --border: #D5DBE2;
+        --placeholder: #CCD5DE;
+        --chakra-colors-chakra-body-bg: #F9FBFC;
+
+        // Border
+        --surface-border: 1.5px solid var(--chakra-colors-chakra-border-color);
+    }
+
+    &.chakra-ui-dark {
+        // Colors
+        --surface: #2a2c3a;
+        --background: #1D1D28;
+        --contrast: #0080ff;
+        --contrastHover: #1452d9;
+        --primary: #eceff9;
+        --secondary: #A2A4AD;
+        --hint: #B0B0BA;
+        --light-contrast: #D6E4FF;
+        --disabled: #EEF2F6;
+        --border: #D5DBE2;
+        --placeholder: #CCD5DE;
+        --chakra-colors-chakra-body-bg: #F9FBFC;
+
+        // Border
+        --surface-border: 1.5px solid var(--surface);
+    }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}

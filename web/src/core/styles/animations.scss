@@ -1,0 +1,15 @@
+@keyframes baseFadeAnimations {
+    from {
+        opacity: 0;
+        transform: translateX(50%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+}
+
+@mixin animateBaseFade {
+    animation-fill-mode: both;
+    animation: 2s baseFadeAnimation ease;
+}

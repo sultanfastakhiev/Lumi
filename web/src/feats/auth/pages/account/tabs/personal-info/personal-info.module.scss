@@ -1,0 +1,13 @@
+@import "react-untitled-ui/src/styles/global";
+@import "src/core/styles/globals";
+
+.personalInfo {
+    .avatarField {
+        flex-direction: column;
+        margin-top: 14px;
+        
+        .avatar {
+            min-width: 64px;
+        }
+    }
+}

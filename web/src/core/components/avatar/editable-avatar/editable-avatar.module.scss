@@ -1,0 +1,40 @@
+.editableAvatar {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+    .buttonGroup {
+        width: 75px;
+        position: relative;
+        cursor: pointer;
+        margin-left: 25px;
+
+        &:hover button {
+            background: var(--chakra-colors-gray-200);
+        }
+    
+
+        &:active button {
+            background: var(--chakra-colors-gray-300);
+        }
+
+        input[type="file"] {
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            height: 100%;
+            width: 75px;
+            cursor: pointer;
+        }
+    }
+
+}
+
+.cropContainer {
+    min-height: 400px;
+    position: relative;
+
+    [data-testid="container"] {
+        border-radius: 5px;
+    }
+}

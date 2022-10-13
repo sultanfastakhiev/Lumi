@@ -1,0 +1,51 @@
+@import "react-untitled-ui/src/styles/global";
+
+.datatable-component {
+    max-width: 100vw;
+
+    .untitled-checkbox .untitled-checkbox__base::after {
+        height: 13px;
+    }
+
+    .rdt_Table {
+        border: 1px solid var(--untitled-gray--100);
+        border-radius: 8px;
+
+        div {
+            background: none;
+            color: var(--untitled-gray--700);
+        }
+    }
+
+    .rdt_TableHeadRow {
+        min-height: 42px;
+        border-radius: 7px 7px 0 0;
+        background-color: var(--untitled-blue-gray--50);
+        border-bottom-color: var(--untitled-gray--100);
+        color: var(--untitled-gray--600);
+    }
+
+    .rdt_TableCell {
+        color: var(--untitled-gray--500);
+    }
+}
+
+.datatable-pagination {
+    border-top: 1px solid var(--untitled-gray--200);
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .prev, .next {
+        min-width: 87px;
+    }
+
+    .numbers-list {
+        display: flex;
+        justify-content: center;
+        gap: 1px;
+        color: var(--untitled-gray--600);
+        @include untitled-text-text-sm-medium;
+    }
+}

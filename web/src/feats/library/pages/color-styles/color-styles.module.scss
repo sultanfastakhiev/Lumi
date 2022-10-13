@@ -1,0 +1,31 @@
+@import "react-untitled-ui/src/styles/global";
+
+.card {
+    width: 160px;
+    box-shadow: 0 4px 6px -2px #10182808, 0 12px 16px -4px #10182814;
+    border-radius: 8px;
+    overflow: hidden;
+
+    .swatch {
+        height: 80px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @include untitled-text-text-lg-medium;
+    }
+    
+    .info {
+        padding: 12px;
+        
+        .text {
+            @include untitled-text-text-lg-medium;
+            color: var(--untitled-gray--900);
+        }
+        
+        .support {
+            @include untitled-text-text-md-normal;
+            color: var(--untitled-gray--600);
+        }
+    }
+}

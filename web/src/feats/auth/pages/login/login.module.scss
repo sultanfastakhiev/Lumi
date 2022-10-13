@@ -1,0 +1,123 @@
+@import "src/core/styles/breakpoints";
+@import "react-untitled-ui/src/styles/global";
+
+.page {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+
+    .left, .right {
+        width: 50vw;
+        height: 100vh;
+    }
+
+    .left {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        max-width: 660px;
+        margin-left: auto;
+        padding: 30px 20px;
+
+        @include lt-lg {
+            width: 100%;
+            margin-left: 0;
+            align-items: center;
+            padding: 60px 20px;
+            max-width: 100vw;
+
+            & > div {
+                display: none;
+            }
+        }
+
+        form.loginForm {
+            display: inline-flex;
+            flex-direction: column;
+            gap: 12px;
+            max-width: 335px;
+
+            @include lt-lg {
+                max-width: 500px;
+                align-items: center;
+
+                [role=grid-container] {
+                    width: 100%;
+                }
+            }
+
+            .logo {
+                display: none;
+                width: 106px;
+
+                @include lt-lg {
+                    display: block;
+                }
+            }
+
+            h1.formTitle {
+                color: var(--untitled-gray--700);
+                @include untitled-text-display-md-semibold();
+
+                @include lt-lg {
+                    @include untitled-text-display-sm-medium();
+                }
+            }
+
+            span.formSubtitle {
+                color: var(--untitled-gray--400);
+                @include untitled-text-text-md-normal();
+                
+                @include lt-lg {
+                    text-align: center;
+                }
+            }
+
+            .checkbox {
+                @include lt-lg {
+                    width: 100%;
+                }
+
+                input[type=checkbox] {
+                    margin-top: 0;
+
+                    &:after {
+                        height: 22px;
+                    }
+                }
+            }
+
+
+            button[type=submit] {
+                margin-top: 12px;
+            }
+        }
+
+        span.copyright {
+            color: var(--untitled-gray--400);
+            font-size: 14px;
+            font-weight: 500;
+
+            @include lt-lg {
+                display: none;
+            }
+        }
+    }
+
+    .right {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--untitled-blue-gray--100);
+
+        @include lt-lg {
+            display: none;
+        }
+
+        img {
+            width: 60%;
+            max-width: 450px;
+            margin: 16% 30px 30px;
+        }
+    }
+}

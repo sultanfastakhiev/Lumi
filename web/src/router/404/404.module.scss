@@ -1,0 +1,55 @@
+@import "src/core/styles/animations";
+@import "react-untitled-ui/src/styles/global";
+
+.page404 {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+
+    @include lt-sm {
+        padding: 0 16px;
+    }
+    
+    .subhead {
+        color: var(--untitled-primary--700);
+        @include untitled-text-text-sm-semibold;
+        margin-bottom: 12px;
+
+        @include lt-sm {
+            @include untitled-text-text-md-semibold;
+        }
+    }
+    
+    h1 {
+        color: var(--untitled-gray--900);
+        @include untitled-text-display-xl-bold;
+        margin-bottom: 16px;
+
+        @include lt-sm {
+            @include untitled-text-display-md-semibold;
+        }
+    }
+    
+    .support {
+        color: var(--untitled-gray--600);
+        @include untitled-text-text-xl-normal   ;
+        margin-bottom: 32px;
+        
+        @include lt-sm {
+            @include untitled-text-text-lg-normal;
+        }
+    }
+    
+    .buttons {
+        display: inline-flex;
+        gap: 12px;
+
+        @include lt-sm {
+            flex-direction: column;
+        }
+    }
+}

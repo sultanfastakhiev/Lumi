@@ -1,0 +1,67 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": false,
+    "noEmit": true,
+    "jsx": "preserve",
+    "experimentalDecorators": true,
+    "baseUrl": "src",
+    "paths": {
+      "@core/*": [
+        "./core/*"
+      ],
+      "@redux/*": [
+        "./redux/*"
+      ],
+      "@utils/*": [
+        "utils/*"
+      ],
+      "@components/*": [
+        "components/*"
+      ],
+      "@helpers/*": [
+        "helpers/*"
+      ],
+      "@services/*": [
+        "services/*"
+      ],
+      "@layouts/*": [
+        "layouts/*"
+      ],
+      "@styles/*": [
+        "styles/*"
+      ],
+      "@feats/*": [
+        "feats/*"
+      ],
+      "@config/*": [
+        "config/*"
+      ],
+      "@router/*": [
+        "router/*"
+      ]
+    },
+    "incremental": true
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

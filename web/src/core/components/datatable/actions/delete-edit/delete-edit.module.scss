@@ -1,0 +1,17 @@
+.deleteEdit {
+    display: flex;
+    gap: 8px;
+
+    svg {
+        width: 29px;
+        height: 20px;
+        color: var(--untitled-gray--400);
+        cursor: pointer;
+        margin: 5px;
+        transition: 0.15s;
+
+        &:hover {
+            color: var(--untitled-gray--500);
+        }
+    }
+}
