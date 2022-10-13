@@ -8,9 +8,11 @@ import { Plus } from "react-feather";
 import { usePatientsList } from "@feats/patients/pages/patients-list/use-patients-list";
 import { LoadingView } from "@core/components/loading/loading-view/loading-view";
 import { PatientCard } from "@feats/patients/components/patient-card/patient-card";
+import { useNavigate } from "react-router-dom";
 
 export const PatientsListPage: React.FC = () => {
     const {data, isLoading} = usePatientsList();
+    const navigate = useNavigate()
 
     return <Layout className={ styles.page }>
         {
@@ -18,7 +20,10 @@ export const PatientsListPage: React.FC = () => {
                 ? <LoadingView/>
                 : <ContentWrapper>
                     <Title
-                        suffix={ <Button trailingIcon={ Plus } variant="secondary-gray">Создать пациента</Button> }>
+                        suffix={ <Button 
+                            onClick={() => navigate("/apps/patients/create")}
+                            trailingIcon={ Plus }
+                            variant="secondary-gray">Создать пациента</Button> }>
                         Мои пациенты
                     </Title>
                     <div className={ styles.grid }>

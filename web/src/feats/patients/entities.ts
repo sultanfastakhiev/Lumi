@@ -13,6 +13,7 @@ export type Patient = {
 
 export function parsePatient(json: any) {
     const birthday = json.birthday.split(".")
+    
     return {
         id: json.id,
         lastName: json.last_name,
