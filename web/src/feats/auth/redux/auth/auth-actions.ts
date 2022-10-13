@@ -1,5 +1,5 @@
 import AuthService from "@feats/auth/auth-service";
-import { AuthState, ErrorLoginStatus, isAuthorizedAuthState } from "@feats/auth/redux/auth/auth-state";
+import { AuthState, ErrorAuthStatus, isAuthorizedAuthState } from "@feats/auth/redux/auth/auth-state";
 import LocalStorage from "@core/services/local-storage";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { User } from "@feats/auth/entities";
@@ -20,7 +20,33 @@ export const login = createAsyncThunk(
         if (typeof data === "string") {
             return {
                 type: "invalid",
-                error: data as ErrorLoginStatus,
+                error: data as ErrorAuthStatus,
+            }
+        }
+
+        // Save user & tokens
+        LocalStorage.user = data.user
+        LocalStorage.token = data.token
+
+        return {
+            type: "authorized",
+            user: data.user,
+        }
+    }
+)
+
+export type SignupArgs = Omit<User, "id" | "birthday"> & { password: string, birthday: string, }
+
+export const createUser = createAsyncThunk(
+    "auth/createUser",
+    async (args: SignupArgs): Promise<AuthState> => {
+        const data = await AuthService.signup(args)
+
+        // handle error
+        if (typeof data === "string") {
+            return {
+                type: "invalid",
+                error: data as ErrorAuthStatus,
             }
         }
 

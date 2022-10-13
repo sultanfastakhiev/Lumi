@@ -7,17 +7,13 @@ import { store } from "@redux/store";
 import { useNavigate } from "react-router-dom";
 import { useErrorToast } from "@core/utils/ui/use-toast";
 import { getHomeRoute } from "router/routes";
-import { useState } from "react";
 
 export function useLogin() {
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
     const showError = useErrorToast()
-    const [rememberMe, setRememberMe] = useState(false)
 
     return {
-        rememberMe,
-        handleRememberMeChange: setRememberMe,
         formik: createFormik({
             initialValues: {
                 username: "",

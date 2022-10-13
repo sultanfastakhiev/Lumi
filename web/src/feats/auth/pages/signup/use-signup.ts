@@ -1,8 +1,19 @@
 import { createFormik } from "@core/utils/ui/create-formik";
 import * as yup from "yup";
 import { checkUsernameUniqueness } from "@api/check-username-uniqueness";
+import { createUser } from "@feats/auth/redux/auth/auth-actions";
+import { selectAuthType } from "@feats/auth/redux/auth/auth-selectors";
+import { store } from "@redux/store";
+import { getHomeRoute } from "@router/routes";
+import { useAppDispatch } from "@redux/hooks";
+import { useErrorToast } from "@core/utils/ui/use-toast";
+import { useNavigate } from "react-router-dom";
 
 export function useSignup() {
+    const dispatch = useAppDispatch()
+    const showError = useErrorToast()
+    const navigate = useNavigate()
+    
     return {
         formik: createFormik({
             initialValues: {
@@ -19,6 +30,18 @@ export function useSignup() {
                 if (!unique) {
                     setFieldError("username", "Этот username уже используется другим юзером")
                     return;
+                }
+
+                dispatch(createUser(values));
+
+                const authType = selectAuthType(store.getState())
+
+                if (authType === "invalid") {
+                    showError("Неверный username или пароль")
+                } else if (authType === "not-authorized") {
+                    showError("Пользователь не авторизован")
+                } else {
+                    navigate(getHomeRoute(), {replace: true})
                 }
                 
             },

@@ -19,14 +19,14 @@ export function isNotAuthorizedAuthState(t: any): t is NotAuthorizedUserState {
     return t.type && t.type === "not-authorized"
 }
 
-export type LoginStatus = {
+export type AuthenticationStatus = {
     user: User,
     token: string,
-} | ErrorLoginStatus
+} | ErrorAuthStatus
 
-export type ErrorLoginStatus = "invalid-credentials" | "server-error"
+export type ErrorAuthStatus = "invalid-credentials" | "server-error"
 
 export type InvalidAuthState = {
     type: "invalid",
-    error: ErrorLoginStatus,
+    error: ErrorAuthStatus,
 }
