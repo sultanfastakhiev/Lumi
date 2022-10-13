@@ -1,11 +1,18 @@
+@import "src/core/styles/breakpoints";
+
 .page {
     height: 100%;
     
     .grid {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr 1fr;
         column-gap: 48px;
         row-gap: 36px;
         margin-top: 36px;
+        grid-auto-columns: 1fr;
+
+        @include lt-sm {
+            grid-template-columns: 1fr;
+        }
     }   
 }

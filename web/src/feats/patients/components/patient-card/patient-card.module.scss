@@ -9,6 +9,8 @@
     border: 1px solid var(--untitled-gray--200);
     cursor: pointer;
     transition: 0.2s;
+    width: 100%;
+    min-width: 100%;
 
     &:hover {
         box-shadow: 0 12px 24px -12px rgba(16, 24, 40, .16);
@@ -24,6 +26,7 @@
         display: inline-flex;
         flex-direction: column;
         gap: 3px;
+        width: 100%;
 
         .label {
             @include untitled-text-text-xs-normal;
@@ -34,6 +37,8 @@
             @include untitled-text-text-sm-normal;
             color: var(--untitled-gray--600);
             text-overflow: ellipsis;
+            overflow: hidden;
+            width: 100%;
         }
     }
 }
