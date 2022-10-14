@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Prediction } from "@feats/diagnosis/entities";
+import { predictSkinCancer } from "@api/predict-skin-cancer";
 
 export function useSkinCancer() {
     const [file, setFile] = useState<File | null>(null)
@@ -18,17 +19,10 @@ export function useSkinCancer() {
                 }
             }
         },
-        handleButtonClick: () => {
+        handleButtonClick: async () => {
             setLoading(true)
-            setTimeout(() => {
-                setLoading(false);
-                setPredictions([
-                    {label: "Глиома", probability: 0.9},
-                    {label: "Менингиома", probability: 0.1},
-                    {label: "Здоров", probability: 0.1},
-                    {label: "Гипофизная опухоль", probability: 0.1},
-                ]);
-            }, 2000)
+            setPredictions(await predictSkinCancer(file!))
+            setLoading(false);
         },
         clearFile: () => setFile(null),
     }
