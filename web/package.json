@@ -33,7 +33,7 @@
     "react-responsive": "^9.0.0-beta.10",
     "react-router-dom": "6",
     "react-scripts": "5.0.1",
-    "react-untitled-ui": "^0.0.50",
+    "react-untitled-ui": "^0.0.53",
     "sass": "^1.53.0",
     "styled-components": "^5.3.5",
     "typescript": "^4.4.2",

@@ -3,6 +3,7 @@ import { authRoutes } from "@feats/auth/routes";
 import AuthService from "@feats/auth/auth-service";
 import { Route } from "./router";
 import { patientsRoutes } from "@feats/patients/routes";
+import { diagnosisRoutes } from "@feats/diagnosis/routes";
 
 export const routes: Route[] = [
     {
@@ -11,6 +12,7 @@ export const routes: Route[] = [
     },
     ...authRoutes,
     ...patientsRoutes,
+    ...diagnosisRoutes,
 ]
 
 export function getHomeRoute(): string {

@@ -1,0 +1,17 @@
+@import "react-untitled-ui/src/styles/mixins";
+
+.noResults {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    
+    .title {
+        color: var(--untitled-gray--800);
+        @include untitled-text-text-lg-medium;
+    }
+    
+    .text {
+        color: var(--untitled-gray--500);
+        @include untitled-text-text-sm-normal;
+    }
+}
