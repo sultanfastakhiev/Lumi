@@ -3,6 +3,7 @@ from pydantic import BaseModel
 import orjson
 from typing import Optional, List
 from decimal import Decimal
+from typing import Any
 
 
 class BaseSchema(BaseModel):
@@ -49,13 +50,13 @@ class PatientsList(BaseSchema):
 
 
 class PatientInfoUpdate(BaseSchema):
-    last_name: Optional[str]
-    name: Optional[str]
-    patronymic: Optional[str]
-    birthday: Optional[str]
-    consultations: Optional[str]
-    diagnosis: Optional[str]
-    operations: Optional[str]
+    last_name: str
+    name: str
+    patronymic: str
+    birthday: str
+    consultations: Optional[str] = None
+    diagnosis: Optional[str] = None
+    operations: Optional[str] = None
     doctor: Optional[UUID]
 
 

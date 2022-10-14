@@ -23,9 +23,9 @@ def upgrade() -> None:
     sa.Column('name', sa.String(length=50), nullable=False),
     sa.Column('patronymic', sa.String(length=50), nullable=True),
     sa.Column('birthday', sa.String(length=1000), nullable=True),
-    sa.Column('consultations', sa.String(length=1000), nullable=True),
-    sa.Column('diagnosis', sa.String(length=1000), nullable=True),
-    sa.Column('operations', sa.String(length=1000), nullable=True),
+    sa.Column('consultations', sa.String(length=10000), nullable=True),
+    sa.Column('diagnosis', sa.String(length=10000), nullable=True),
+    sa.Column('operations', sa.String(length=10000), nullable=True),
     sa.Column('doctor', sa.CHAR(32), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )

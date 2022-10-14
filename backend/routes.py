@@ -21,7 +21,7 @@ import pickle
 
 model = load_model('modelrgb.h5')
 melanoma = load_model('melanoma_model')
-brain = load_model('brain_modell')
+# brain = load_model('brain_modell')
 
 
 pkl_filename = 'model_75.pkl'
@@ -112,7 +112,14 @@ async def get_patient(patient_id: UUID):
 @router.patch('/patients/{patient_id}')
 async def update_patient_info(patient_id: UUID, update_patient: PatientInfoUpdate):
     patient = await Patient.objects.get(id=patient_id)
-    await patient.update(**{k: v for k, v in update_patient.dict().items() if v})
+    patient.last_name = update_patient.last_name
+    patient.name = update_patient.name
+    patient.patronymic = update_patient.patronymic
+    patient.birthday = update_patient.birthday
+    patient.consultations = update_patient.consultations
+    patient.diagnosis = update_patient.diagnosis
+    patient.operations = update_patient.operations
+    await patient.update()
     return patient
 
 
@@ -142,7 +149,8 @@ async def predict_api(file: UploadFile = File(...)):
     file_read = await file.read()
     img = read_imagefile(file_read)
     img = img.resize((200, 200))
-    img_tensor = image.img_to_array(img)
+    img_rgb = Image.new("RGB", img.size, (255, 255, 255))
+    img_tensor = image.img_to_array(img_rgb)
     img_tensor = np.expand_dims(img_tensor, axis=0)
     img_tensor /= 255.
     prediction = model.predict(img_tensor)
@@ -182,7 +190,8 @@ async def mel_test(file_mel: UploadFile = File(...)):
     file_read = await file_mel.read()
     img = read_imagefile(file_read)
     img = img.resize((224, 224))
-    img_tensor = image.img_to_array(img)
+    img_rgb = Image.new("RGB", img.size, (255, 255, 255))
+    img_tensor = image.img_to_array(img_rgb)
     img_tensor = np.expand_dims(img_tensor, axis=0)
     img_tensor /= 255.
     prediction = melanoma.predict(img_tensor)
@@ -196,26 +205,27 @@ async def mel_test(file_mel: UploadFile = File(...)):
     )])
 
 
-@router.post('/brain')
-async def mel_test(file_mel: UploadFile = File(...)):
-    file_read = await file_mel.read()
-    img = read_imagefile(file_read)
-    img = img.resize((256, 256))
-    img_tensor = image.img_to_array(img)
-    img_tensor = np.expand_dims(img_tensor, axis=0)
-    img_tensor /= 255.
-    prediction = brain.predict(img_tensor)
-    pp = prediction.tolist()
-    return PredictMel(Predict=[PredictRod(
-        title="glioma",
-        value=round(pp[0][0] * 100, 2)
-    ), PredictRod(
-        title="meningioma",
-        value=round(pp[0][1] * 100, 2)
-    ), PredictRod(
-        title="no tumor",
-        value=round(pp[0][2] * 100, 2)
-    ), PredictRod(
-        title="p tumor",
-        value=round(pp[0][3] * 100, 2)
-    )])
+# @router.post('/brain')
+# async def mel_test(file_mel: UploadFile = File(...)):
+#     file_read = await file_mel.read()
+#     img = read_imagefile(file_read)
+#     img = img.resize((256, 256))
+#     img_rgb = Image.new("RGB", img.size, (255, 255, 255))
+#     img_tensor = image.img_to_array(img_rgb)
+#     img_tensor = np.expand_dims(img_tensor, axis=0)
+#     img_tensor /= 255.
+#     prediction = brain.predict(img_tensor)
+#     pp = prediction.tolist()
+#     return PredictMel(Predict=[PredictRod(
+#         title="glioma",
+#         value=round(pp[0][0] * 100, 2)
+#     ), PredictRod(
+#         title="meningioma",
+#         value=round(pp[0][1] * 100, 2)
+#     ), PredictRod(
+#         title="no tumor",
+#         value=round(pp[0][2] * 100, 2)
+#     ), PredictRod(
+#         title="p tumor",
+#         value=round(pp[0][3] * 100, 2)
+#     )])
