@@ -3,9 +3,10 @@
     align-items: center;
     
     .text {
-        margin-left: 9.83px;
-        min-width: 101px;
-        height: 17px;
-        color: var(--untitled-gray-900);
+        margin-left: 15px;
+        font-size: 20px;
+        font-weight: 600;
+        color: var(--untitled-gray--900);
+        white-space: nowrap;
     }
 }

@@ -26,7 +26,7 @@ export const Sidebar: React.FC<SidebarConfig> = React.memo((props) => {
                     <Logo/>
                     <div className={ styles.disposable }>
                         <h5 className={ styles.company }>
-                            Untitled CMS
+                            Lumi
                         </h5>
                     </div>
                 </div>

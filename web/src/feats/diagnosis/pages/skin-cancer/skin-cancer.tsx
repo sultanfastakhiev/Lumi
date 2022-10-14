@@ -46,7 +46,7 @@ export const SkinCancer: React.FC<SkinCancerProps> = () => {
                     <PredictionResults
                         predictions={ predictions }
                         notFoundText={ !file
-                            ? "Сначало вам необходимо загрузить фотографию"
+                            ? "Сначала вам необходимо загрузить фотографию"
                             : "Нажмите на кнопку Диагностировать, чтобы получить результаты"
                         }/>
                 </RightDiagnosisLayout>

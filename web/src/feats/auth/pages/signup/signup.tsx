@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "../auth.module.scss";
-import { Logo } from "@core/components/logo/logo";
 import { Form, Formik } from "formik";
 import { FormInput } from "@core/components/inputs/form/form-input";
 import { FormPasswordInput } from "@core/components/inputs/form/form-password-input";
@@ -14,7 +13,6 @@ export const SignupPage: React.FC = () => {
     
     return <div className={ styles.page }>
         <div className={ styles.content }>
-            <Logo/>
             <Formik { ...formik }>
                 <Form className={ styles.loginForm }>
                     <h1 className={ styles.formTitle }>Регистрация</h1>

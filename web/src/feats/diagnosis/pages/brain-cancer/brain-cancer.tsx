@@ -48,7 +48,7 @@ export const BrainCancer: React.FC<BrainCancerProps> = () => {
                     <PredictionResults
                         predictions={ predictions }
                         notFoundText={ !file
-                            ? "Сначало вам необходимо загрузить МРТ"
+                            ? "Сначала вам необходимо загрузить МРТ"
                             : "Нажмите на кнопку Диагностировать, чтобы получить результаты"
                         }/>
                 </RightDiagnosisLayout>

@@ -4,7 +4,6 @@ import { FormInput } from "@core/components/inputs/form/form-input";
 import { useLogin } from "@feats/auth/pages/login/use-login";
 import { Form, Formik } from "formik";
 import { FormPasswordInput } from "@core/components/inputs/form/form-password-input";
-import { Logo } from "@core/components/logo/logo";
 import { SubmitButton } from "@core/components/buttons/form/submit-button";
 import { Link } from "react-router-dom";
 
@@ -13,7 +12,6 @@ export const LoginPage: React.FC = () => {
 
     return <div className={ styles.page }>
         <div className={ styles.content }>
-            <Logo/>
             <Formik { ...formik }>
                 <Form className={ styles.loginForm }>
                     <h1 className={ styles.formTitle }>Вход в аккаунт</h1>

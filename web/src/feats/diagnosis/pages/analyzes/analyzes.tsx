@@ -45,7 +45,7 @@ export const Analyzes: React.FC<AnalyzesProps> = () => {
                     <PredictionResults
                         predictions={ predictions }
                         notFoundText={ !file
-                            ? "Сначало вам необходимо загрузить анализы"
+                            ? "Сначала вам необходимо загрузить анализы"
                             : "Нажмите на кнопку Расшифровать, чтобы получить результаты"
                         }/>
                 </RightDiagnosisLayout>

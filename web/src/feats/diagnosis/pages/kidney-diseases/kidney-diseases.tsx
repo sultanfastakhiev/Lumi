@@ -48,7 +48,7 @@ export const KidneyDiseases: React.FC<KidneyDiseasesProps> = () => {
                     <PredictionResults
                         predictions={ predictions }
                         notFoundText={ !file
-                            ? "Сначало вам необходимо загрузить КТ"
+                            ? "Сначала вам необходимо загрузить КТ"
                             : "Нажмите на кнопку Диагностировать, чтобы получить результаты"
                         }/>
                 </RightDiagnosisLayout>
