@@ -28,7 +28,7 @@ export const sidebarConfig: SidebarConfig = {
                 },
                 {
                     text: "Заболевания почек",
-                    url: "/apps/diagnosis/kidney-disease",
+                    url: "/apps/diagnosis/kidney-diseases",
                 },
             ]
         },

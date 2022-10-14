@@ -11,7 +11,7 @@ import {
 import { PickedImage } from "@core/components/picked-image/picked-image";
 import { Button, Divider, FileUpload } from "react-untitled-ui";
 import { PredictionResults } from "@feats/diagnosis/components/prediction-results/prediction-results";
-import { useBrainCancer } from "@feats/diagnosis/pages/brain-cancer/pages/use-brain-cancer";
+import { useBrainCancer } from "@feats/diagnosis/pages/brain-cancer/use-brain-cancer";
 
 export type BrainCancerProps = {
     
