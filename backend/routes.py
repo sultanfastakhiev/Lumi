@@ -112,7 +112,14 @@ async def get_patient(patient_id: UUID):
 @router.patch('/patients/{patient_id}')
 async def update_patient_info(patient_id: UUID, update_patient: PatientInfoUpdate):
     patient = await Patient.objects.get(id=patient_id)
-    await patient.update(**{k: v for k, v in update_patient.dict().items() if v})
+    patient.last_name = update_patient.last_name
+    patient.name = update_patient.name
+    patient.patronymic = update_patient.patronymic
+    patient.birthday = update_patient.birthday
+    patient.consultations = update_patient.consultations
+    patient.diagnosis = update_patient.diagnosis
+    patient.operations = update_patient.operations
+    await patient.update()
     return patient
 
 
