@@ -36,7 +36,7 @@ export const sidebarConfig: SidebarConfig = {
             type: "page",
             icon: <Layers/>,
             text: "Анализы",
-            url: "/apps/diagnostics/analysis",
+            url: "/apps/diagnosis/analyzes",
             key: v4(),
         },
     ],
