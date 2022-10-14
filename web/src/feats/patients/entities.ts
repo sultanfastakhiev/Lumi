@@ -11,6 +11,14 @@ export type Patient = {
     createdAt?: Date;
 }
 
+export function fullName(patient: Patient) {
+    let name = "";
+    if (patient.lastName) name = patient.lastName;
+    if (patient.name) name += " " + patient.name;
+    if (patient.patronymic) name += " " + patient.patronymic;
+    return name;
+}
+
 export function parsePatient(json: any) {
     const birthday = json.birthday.split(".")
     

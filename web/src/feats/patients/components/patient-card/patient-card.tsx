@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./patient-card.module.scss";
-import { Patient } from "@feats/patients/entities";
+import { fullName, Patient } from "@feats/patients/entities";
 import { formatBirthdayWithAge } from "@core/utils/fomatters/date-formatter";
 import { useNavigate } from "react-router-dom";
 
@@ -12,7 +12,7 @@ export const PatientCard: React.FC<PatientCardProps> = ({patient}) => {
     const navigate = useNavigate()
     
     return <div className={ styles.card } onClick={() => navigate(`/apps/patients/${patient.id}`)}>
-        <div className={ styles.name }>{ patient.name }</div>
+        <div className={ styles.name }>{ fullName(patient) }</div>
         <div className={styles.row}>
             <div className={styles.label}>Дата рождения</div>
             <div className={styles.value}>{ formatBirthdayWithAge(patient.birthday) }</div>
