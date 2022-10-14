@@ -8,20 +8,22 @@ import {
     LeftDiagnosisLayout,
     RightDiagnosisLayout
 } from "@feats/diagnosis/components/diagnosis-layout/diagnosis-layout";
-import { PredictionResults } from "@feats/diagnosis/components/prediction-results/prediction-results";
-import { Button, Divider, FileUpload } from "react-untitled-ui";
-import { useSkinCancer } from "@feats/diagnosis/pages/skin-cancer/use-skin-cancer";
 import { PickedImage } from "@core/components/picked-image/picked-image";
+import { Button, Divider, FileUpload } from "react-untitled-ui";
+import { PredictionResults } from "@feats/diagnosis/components/prediction-results/prediction-results";
+import { useBrainCancer } from "@feats/diagnosis/pages/brain-cancer/pages/use-brain-cancer";
 
-export type SkinCancerProps = {}
+export type BrainCancerProps = {
+    
+}
 
-export const SkinCancer: React.FC<SkinCancerProps> = () => {
-    const {file, onPick, loading, handleButtonClick, predictions, clearFile} = useSkinCancer()
-
+export const BrainCancer: React.FC<BrainCancerProps> = () => {
+    const { file, clearFile, onPick, loading, handleButtonClick, predictions } = useBrainCancer()
+    
     return <Layout>
         <ContentWrapper>
-            <Title>Диагностика рака кожи</Title>
-            <Subtitle>Автоматическая диагностика рака кожи по фотографии опухоли</Subtitle>
+            <Title>Диагностика рака мозга</Title>
+            <Subtitle>Автоматическая диагностика рака по МРТ головного мозга</Subtitle>
             <DiagnosisLayout>
                 <LeftDiagnosisLayout>
                     {
@@ -30,7 +32,7 @@ export const SkinCancer: React.FC<SkinCancerProps> = () => {
                             : <FileUpload
                                 onDrop={ onPick }
                                 buttonText="Нажмите"
-                                text="чтобы загрузить фотографию"
+                                text="чтобы загрузить МРТ"
                                 subText="Изображение в JPEG или JPG"/>
                     }
                     <Button
@@ -46,7 +48,7 @@ export const SkinCancer: React.FC<SkinCancerProps> = () => {
                     <PredictionResults
                         predictions={ predictions }
                         notFoundText={ !file
-                            ? "Сначало вам необходимо загрузить фотографию"
+                            ? "Сначало вам необходимо загрузить МРТ"
                             : "Нажмите на кнопку Диагностировать, чтобы получить результаты"
                         }/>
                 </RightDiagnosisLayout>
