@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import styles from "./sidebar.module.scss";
 import {
     ContainerNavPage,
@@ -18,9 +18,19 @@ import { fullName } from "@feats/auth/entities";
 
 export const Sidebar: React.FC<SidebarConfig> = React.memo((props) => {
     const {isSidebarOpened: open, toggleSidebar: toggle, user, handleLogout} = useSidebar()
+    const containerRef = useRef<HTMLDivElement>(null)
+
+    useEffect(() => {
+        const handleResize = () => {
+            containerRef.current!.style.height = `${ window.innerHeight }px`
+        }
+        handleResize();
+        window.addEventListener("resize", handleResize)
+        return () => window.removeEventListener("resize", handleResize)
+    }, [])
 
     return <div className={ styles.sidebar } data-open={ open }>
-        <div className={ styles.container } data-open={ open }>
+        <div className={ styles.container } data-open={ open } ref={ containerRef }>
             <div className={ styles.nav } data-open={ open }>
                 <div className={ styles.header }>
                     <Logo/>
@@ -41,14 +51,14 @@ export const Sidebar: React.FC<SidebarConfig> = React.memo((props) => {
             </div>
             <div className={ styles.footer }>
                 <div className={ styles.navigation }>
-                    {/*<SidebarItem*/}
-                    {/*    icon={ <Settings/> }*/}
-                    {/*    type="page"*/}
-                    {/*    text=""*/}
-                    {/*    url="/apps/users/settings"*/}
-                    {/*    key="settings-nav-item"*/}
-                    {/*    itemKey="settings-nav-item"/>*/}
-                    {/*<SidebarDivider/>*/}
+                    {/*<SidebarItem*/ }
+                    {/*    icon={ <Settings/> }*/ }
+                    {/*    type="page"*/ }
+                    {/*    text=""*/ }
+                    {/*    url="/apps/users/settings"*/ }
+                    {/*    key="settings-nav-item"*/ }
+                    {/*    itemKey="settings-nav-item"/>*/ }
+                    {/*<SidebarDivider/>*/ }
                     <div className={ styles.user }>
                         <Avatar onClick={ toggle } className={ styles.avatar }/>
                         <div className={ styles.disposable } data-type="user">
@@ -80,9 +90,9 @@ export const SidebarItem: React.FC<(NavPage | ContainerNavPage) & { itemKey: str
         activeChildren,
         handleItemClick,
     } = useSidebarItem(props as ContainerNavPage, props.itemKey)
-    
+
     const Container = isNavPage(props) ? Link : "div"
-    
+
     return <div className={ styles.navItemContainer }>
         <Container
             { ...getToggleProps() }
