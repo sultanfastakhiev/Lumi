@@ -34,9 +34,9 @@ export function usePatientDetail(id: string) {
                     name: data.name,
                     patronymic: data.patronymic,
                     birthday: data.birthday.toISOString().substring(0, 10),
-                    consultations: data.consultations,
-                    diagnosis: data.diagnosis,
-                    operations: data.operations,
+                    consultations: data.consultations ?? "",
+                    diagnosis: data.diagnosis ?? "",
+                    operations: data.operations ?? "",
                 },
                 onSubmit: async (values) => {
                     await mutate({
