@@ -26,22 +26,22 @@ export const CreatePatient: React.FC<CreatePatientProps> = () => {
                         <FormInput
                             label="Фамилия"
                             name="lastName"
-                            placeholder="Введите свою фамилию"
+                            placeholder="Введите фамилию пациента"
                             fullWidth/>
                         <FormInput
                             label="Имя"
                             name="name"
-                            placeholder="Введите своё имя"
+                            placeholder="Введите имя пациента"
                             fullWidth/>
                         <FormInput
                             label="Отчество"
                             name="patronymic"
-                            placeholder="Введите своё отчество"
+                            placeholder="Введите отчество пациента"
                             fullWidth/>
                         <FormInput
                             label="Дата рождения"
                             name="birthday"
-                            placeholder="Введите свою дату рождения"
+                            placeholder="Введите дату рождения пациента"
                             type="date"
                             fullWidth/>
                     </div>

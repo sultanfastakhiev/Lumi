@@ -25,7 +25,7 @@ export const Analyzes: React.FC<AnalyzesProps> = () => {
         </Helmet>
         <ContentWrapper>
             <Title>Расшифровка анализов</Title>
-            <Subtitle>Автоматическая выявление сердечно-сосудистых заболеваний по анализам</Subtitle>
+            <Subtitle>Автоматическое выявление сердечно-сосудистых заболеваний по анализам крови</Subtitle>
             <DiagnosisLayout>
                 <LeftDiagnosisLayout>
                     <FileUpload

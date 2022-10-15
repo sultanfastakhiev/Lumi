@@ -26,8 +26,8 @@ export const BrainCancer: React.FC<BrainCancerProps> = () => {
             <title>Диагностика рака мозга | Lumi</title>
         </Helmet>
         <ContentWrapper>
-            <Title>Диагностика рака мозга</Title>
-            <Subtitle>Автоматическая диагностика рака по МРТ головного мозга</Subtitle>
+            <Title>Диагностика опухолей мозга</Title>
+            <Subtitle>Автоматическая диагностика злокачественных опухолей по МРТ головного мозга</Subtitle>
             <DiagnosisLayout>
                 <LeftDiagnosisLayout>
                     {
