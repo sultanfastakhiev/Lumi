@@ -23,7 +23,7 @@ export const sidebarConfig: SidebarConfig = {
                     url: "/apps/diagnosis/skin-cancer",
                 },
                 {
-                    text: "Рак мозга",
+                    text: "Опухоли мозга",
                     url: "/apps/diagnosis/brain-cancer",
                 },
                 {
