@@ -6,11 +6,15 @@ import { Form, Formik } from "formik";
 import { FormPasswordInput } from "@core/components/inputs/form/form-password-input";
 import { SubmitButton } from "@core/components/buttons/form/submit-button";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 export const LoginPage: React.FC = () => {
     const {formik} = useLogin()
 
     return <div className={ styles.page }>
+        <Helmet>
+            <title>Вход | Lumi</title>
+        </Helmet>
         <div className={ styles.content }>
             <Formik { ...formik }>
                 <Form className={ styles.loginForm }>

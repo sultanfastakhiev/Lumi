@@ -9,12 +9,16 @@ import { usePatientsList } from "@feats/patients/pages/patients-list/use-patient
 import { LoadingView } from "@core/components/loading/loading-view/loading-view";
 import { PatientCard } from "@feats/patients/components/patient-card/patient-card";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 export const PatientsListPage: React.FC = () => {
     const {data, isLoading} = usePatientsList();
     const navigate = useNavigate()
 
     return <Layout className={ styles.page }>
+        <Helmet>
+            <title>Мои пациенты | Lumi</title>
+        </Helmet>
         {
             isLoading
                 ? <LoadingView/>

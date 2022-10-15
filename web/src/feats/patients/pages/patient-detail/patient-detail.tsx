@@ -12,6 +12,7 @@ import { useParams } from "react-router";
 import { useNavigate } from "react-router-dom";
 import { LoadingView } from "@core/components/loading/loading-view/loading-view";
 import { FormTextArea } from "@core/components/inputs/form/form-textarea";
+import { Helmet } from "react-helmet";
 
 export type PatientDetailProps = {}
 
@@ -28,6 +29,9 @@ export const PatientDetail: React.FC<PatientDetailProps> = () => {
     const {formik} = usePatientDetail(id)
 
     return <Layout className={ styles.page }>
+        <Helmet>
+            <title>Редактирование пациента | Lumi</title>
+        </Helmet>
         {
             formik
                 ? <Formik { ...formik }>

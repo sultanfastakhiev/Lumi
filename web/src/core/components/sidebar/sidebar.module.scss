@@ -206,9 +206,14 @@ $sizedBarOpenWidth: 280px;
                 .userDetails {
                     color: var(--untitled-gray--600);
                     font-size: 14px;
+                    width: 100%;
+                    max-width: 150px;
 
                     .userName {
                         font-weight: 500;
+                        overflow: hidden;
+                        white-space: nowrap;    
+                        text-overflow: ellipsis;
                     }
                 }
 
@@ -246,6 +251,10 @@ $sizedBarOpenWidth: 280px;
             align-items: center;
             min-width: 182px;
             pointer-events: none;
+            
+            &[data-type=user] {
+                max-width: 150px;
+            }
         }
         
         @include lt-md {

@@ -12,6 +12,7 @@ import { PickedImage } from "@core/components/picked-image/picked-image";
 import { Button, Divider, FileUpload } from "react-untitled-ui";
 import { PredictionResults } from "@feats/diagnosis/components/prediction-results/prediction-results";
 import { useBrainCancer } from "@feats/diagnosis/pages/brain-cancer/use-brain-cancer";
+import { Helmet } from "react-helmet";
 
 export type BrainCancerProps = {
     
@@ -21,6 +22,9 @@ export const BrainCancer: React.FC<BrainCancerProps> = () => {
     const { file, clearFile, onPick, loading, handleButtonClick, predictions } = useBrainCancer()
     
     return <Layout>
+        <Helmet>
+            <title>Диагностика рака мозга | Lumi</title>
+        </Helmet>
         <ContentWrapper>
             <Title>Диагностика рака мозга</Title>
             <Subtitle>Автоматическая диагностика рака по МРТ головного мозга</Subtitle>

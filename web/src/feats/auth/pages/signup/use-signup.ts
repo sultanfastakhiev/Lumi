@@ -32,7 +32,7 @@ export function useSignup() {
                     return;
                 }
 
-                dispatch(createUser(values));
+                await dispatch(createUser(values));
 
                 const authType = selectAuthType(store.getState())
 

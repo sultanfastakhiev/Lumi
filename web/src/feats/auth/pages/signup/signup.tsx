@@ -6,12 +6,16 @@ import { FormPasswordInput } from "@core/components/inputs/form/form-password-in
 import { SubmitButton } from "@core/components/buttons/form/submit-button";
 import { Link } from "react-router-dom";
 import { useSignup } from "@feats/auth/pages/signup/use-signup";
+import { Helmet } from "react-helmet";
 
 
 export const SignupPage: React.FC = () => {
     const { formik } = useSignup()
     
     return <div className={ styles.page }>
+        <Helmet>
+            <title>Регистрация | Lumi</title>
+        </Helmet>
         <div className={ styles.content }>
             <Formik { ...formik }>
                 <Form className={ styles.loginForm }>

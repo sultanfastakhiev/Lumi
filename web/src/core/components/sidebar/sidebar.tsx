@@ -51,7 +51,7 @@ export const Sidebar: React.FC<SidebarConfig> = React.memo((props) => {
                     {/*<SidebarDivider/>*/}
                     <div className={ styles.user }>
                         <Avatar onClick={ toggle } className={ styles.avatar }/>
-                        <div className={ styles.disposable }>
+                        <div className={ styles.disposable } data-type="user">
                             <div className={ styles.userDetails }>
                                 <h5 className={ styles.userName }>{ fullName(user) }</h5>
                                 <span className={ styles.userEmail }>@{ user?.username ?? "" }</span>
