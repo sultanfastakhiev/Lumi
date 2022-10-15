@@ -94,6 +94,7 @@ $sizedBarOpenWidth: 280px;
                     transition: 0.15s;
                     cursor: pointer;
                     position: relative;
+                    outline: none;
 
                     svg {
                         width: 24px;
@@ -119,7 +120,7 @@ $sizedBarOpenWidth: 280px;
                     .arrow {
                         display: flex;
                         justify-content: end;
-                        width: 100%;
+                        margin-left: auto;
 
                         svg {
                             width: 22px;
@@ -218,11 +219,11 @@ $sizedBarOpenWidth: 280px;
                 }
 
                 .logoutButton {
-                    width: 100%;
                     height: 100%;
                     display: flex;
                     justify-content: end;
                     align-items: start;
+                    margin-left: auto;
                     
                     svg {
                         width: 20px;

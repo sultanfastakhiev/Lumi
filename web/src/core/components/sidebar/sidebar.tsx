@@ -82,10 +82,12 @@ export const SidebarItem: React.FC<(NavPage | ContainerNavPage) & { itemKey: str
     } = useSidebarItem(props as ContainerNavPage, props.itemKey)
     
     const Container = isNavPage(props) ? Link : "div"
-
+    
     return <div className={ styles.navItemContainer }>
         <Container
             { ...getToggleProps() }
+            // @ts-ignore
+            type="link"
             to={ isNavPage(props) ? props.url : "#" }
             className={ styles.navItem }
             data-open={ open }
