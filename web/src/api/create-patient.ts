@@ -10,7 +10,10 @@ export async function createPatient(patient: PatientInput): Promise<boolean> {
         "/patients/create_patient",
         {
             ...patient,
-            birthday: patient.birthday.replaceAll("-", "."),
+            birthday: patient.birthday
+                .split("-")
+                .reverse()
+                .join("."),
             last_name: patient.lastName,
         },
     );
