@@ -149,8 +149,8 @@ async def predict_api(file: UploadFile = File(...)):
     file_read = await file.read()
     img = read_imagefile(file_read)
     img = img.resize((200, 200))
-    img_rgb = Image.new("RGB", img.size, (255, 255, 255))
-    img_tensor = image.img_to_array(img_rgb)
+    # img_rgb = Image.new("RGB", img.size, (255, 255, 255))
+    img_tensor = image.img_to_array(img)
     img_tensor = np.expand_dims(img_tensor, axis=0)
     img_tensor /= 255.
     prediction = model.predict(img_tensor)
