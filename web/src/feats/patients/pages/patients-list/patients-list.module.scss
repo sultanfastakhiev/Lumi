@@ -1,8 +1,9 @@
 @import "src/core/styles/breakpoints";
+@import "react-untitled-ui/src/styles/mixins";
 
 .page {
     height: 100%;
-    
+
     .grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -13,6 +14,35 @@
 
         @include lt-sm {
             grid-template-columns: 1fr;
+        }
+    }
+
+    .emptyState {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        min-height: 80vh;
+
+        svg.icon {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 24px;
+            color: var(--untitled-primary--600)
+        }
+
+        .title {
+            @include untitled-text-text-md-medium;
+            color: var(--untitled-gray--900);
+            margin-bottom: 4px;
+            text-align: center;
+        }
+
+        .subtitle {
+            @include untitled-text-text-sm-normal;
+            color: var(--untitled-gray--400);
+            margin-bottom: 12px;
+            text-align: center;
         }
     }
 }
