@@ -9,4 +9,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 12px;
+    
+    @include lt-sm {
+        align-items: start;
+        flex-direction: column;
+    }
 }
