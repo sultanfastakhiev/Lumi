@@ -18,9 +18,9 @@ class HomeScreen extends StatelessWidget {
     return BlocBuilder<PatientsListCubit, PatientsListState>(builder: (context, state) {
       if (state is IdlePatientsListState) {
         if (state.isEmpty) return const HomeEmptyState();
-        return Padding(
-          padding: const EdgeInsets.only(top: 12.0),
-          child: Scrollbar(
+        return Scrollbar(
+          child: Padding(
+            padding: const EdgeInsets.only(top: 12.0, left: 16, right: 16),
             child: ListView.builder(
               itemCount: state.patients.length + 1,
               itemBuilder: (context, index) {

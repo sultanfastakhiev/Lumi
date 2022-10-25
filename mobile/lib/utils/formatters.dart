@@ -29,7 +29,7 @@ class DateFormatters {
   static String formatNumber(int amount, List<String> words) {
     int last = amount % 10;
     if (last == 1) return "$amount ${words[0]}";
-    if (last <= 4) return "$amount ${words[2]}";
-    return "$amount ${words[3]}";
+    if (last <= 4) return "$amount ${words[1]}";
+    return "$amount ${words[2]}";
   }
 }

@@ -22,6 +22,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return EmptyLayout(
+      padding: EdgeInsets.zero,
       bottomNavBar: BottomNavBar(
         page: page,
         onTap: (newPage) => setState(() => page = newPage),
