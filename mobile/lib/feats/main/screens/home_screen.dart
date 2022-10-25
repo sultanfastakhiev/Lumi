@@ -5,7 +5,7 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:mobile/components/error/error_view.dart';
 import 'package:mobile/components/loading/main_loading_view.dart';
 import 'package:mobile/components/typography/page_title.dart';
-import 'package:mobile/feats/components/patient_card.dart';
+import 'package:mobile/feats/main/components/patient_card.dart';
 import 'package:mobile/feats/main/bloc/patients_list_cubit/patients_list_cubit.dart';
 import 'package:mobile/feats/main/screens/home_empty_state_screen.dart';
 import 'package:mobile/router/router.gr.dart';
@@ -20,7 +20,7 @@ class HomeScreen extends StatelessWidget {
         if (state.isEmpty) return const HomeEmptyState();
         return Scrollbar(
           child: Padding(
-            padding: const EdgeInsets.only(top: 12.0, left: 16, right: 16),
+            padding: const EdgeInsets.only(top: 12.0),
             child: ListView.builder(
               itemCount: state.patients.length + 1,
               itemBuilder: (context, index) {
@@ -31,7 +31,7 @@ class HomeScreen extends StatelessWidget {
                   );
                 }
                 return Padding(
-                  padding: const EdgeInsets.only(top: 14),
+                  padding: const EdgeInsets.only(top: 14, right: 16, left: 16),
                   child: PatientCard(patient: state.patients[index - 1]),
                 );
               },

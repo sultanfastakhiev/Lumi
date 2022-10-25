@@ -26,22 +26,22 @@ class BottomNavBar extends StatelessWidget {
         ),
         child: Center(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.end,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                _Item(
+                BottomNavBarItem(
                   onTap: () => onTap(MainPage.home),
                   active: page == MainPage.home,
                   icon: FeatherIcons.home,
                 ),
-                _Item(
+                BottomNavBarItem(
                   onTap: () => onTap(MainPage.decoding),
                   active: page == MainPage.decoding,
-                  icon: FeatherIcons.search,
+                  icon: FeatherIcons.fileText,
                 ),
-                _Item(
+                BottomNavBarItem(
                   onTap: () => onTap(MainPage.account),
                   active: page == MainPage.account,
                   icon: FeatherIcons.user,
@@ -55,12 +55,12 @@ class BottomNavBar extends StatelessWidget {
   }
 }
 
-class _Item extends StatefulWidget {
+class BottomNavBarItem extends StatefulWidget {
   final IconData icon;
   final bool active;
   final void Function() onTap;
 
-  const _Item({
+  const BottomNavBarItem({
     Key? key,
     required this.icon,
     required this.active,
@@ -68,10 +68,10 @@ class _Item extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<_Item> createState() => _ItemState();
+  State<BottomNavBarItem> createState() => _BottomNavBarItemState();
 }
 
-class _ItemState extends State<_Item> with SingleTickerProviderStateMixin {
+class _BottomNavBarItemState extends State<BottomNavBarItem> with SingleTickerProviderStateMixin {
   late final _animationController = AnimationController(
     vsync: this,
     duration: const Duration(milliseconds: 100),
@@ -97,7 +97,7 @@ class _ItemState extends State<_Item> with SingleTickerProviderStateMixin {
   }
 
   @override
-  void didUpdateWidget(_Item oldWidget) {
+  void didUpdateWidget(BottomNavBarItem oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (widget.active) {
       _animationController.forward();

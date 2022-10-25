@@ -16,20 +16,25 @@ class PageTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textWidget = Text(
+    Widget widget = Text(
       text,
       textAlign: textAlign,
       style: TextStyles.displayXsSemibold.apply(color: graySwatch.shade800),
     );
 
-    if (suffix == null) return textWidget;
+    if (suffix != null) {
+      widget = Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          widget,
+          suffix!,
+        ],
+      );
+    }
 
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        textWidget,
-        suffix!,
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: widget,
     );
   }
 }
