@@ -20,6 +20,10 @@
 	<string>$(FLUTTER_BUILD_NAME)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Нам нужен доступ к вашей галерее для загрузки изображений</string>
+	<key>NSCameraUsageDescription</key>
+    <string>Нам нужен доступ к вашей камере для загрузки изображений</string>
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
