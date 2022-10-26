@@ -7,5 +7,6 @@ abstract class Prediction with _$Prediction {
   const factory Prediction({
     required String label,
     required double probability,
+    List<String>? pathologies
   }) = _Prediction;
 }

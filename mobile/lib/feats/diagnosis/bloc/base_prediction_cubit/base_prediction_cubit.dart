@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:mobile/feats/diagnosis/api/base_predict_endpoint.dart';
 import 'package:mobile/feats/diagnosis/entities/prediction/prediction.dart';
 import 'package:mobile/utils/utils.dart';
@@ -21,8 +20,8 @@ class BasePredictionCubit extends Cubit<BasePredictionState> {
     required this.pushResultPage,
   }) : super(WaitingForFileBasePredictionState());
 
-  void uploadFile(XFile file) {
-    emit(FileUploadedBasePredictionState(File(file.path)));
+  void uploadFile(File file) {
+    emit(FileUploadedBasePredictionState(file));
   }
 
   void removeFile() {

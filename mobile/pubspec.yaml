@@ -36,6 +36,7 @@ dependencies:
     image_picker: ^0.8.6
     permission_handler: ^10.2.0
     mime: ^1.0.2
+    file_picker: ^5.2.2
 
     # UI
     curved_progress_bar: ^1.0.2

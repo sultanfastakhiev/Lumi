@@ -3,6 +3,7 @@ import 'package:mobile/feats/auth/api/check_username_uniqueness_endpoint.dart';
 import 'package:mobile/feats/auth/api/get_me_endpoint.dart';
 import 'package:mobile/feats/auth/api/login_user_endpoint.dart';
 import 'package:mobile/feats/auth/api/signup_user_endpoint.dart';
+import 'package:mobile/feats/diagnosis/api/decipher_analyzes_endpoint.dart';
 import 'package:mobile/feats/diagnosis/api/predict_kidney_diseases_endpoint.dart';
 import 'package:mobile/feats/main/api/create_patient_endpoint.dart';
 import 'package:mobile/feats/main/api/get_patients_endpoint.dart';
@@ -24,4 +25,5 @@ void setupLocator() {
   locator.registerLazySingleton(() => UpdatePatientEndpoint());
   locator.registerLazySingleton(() => CheckUsernameUniqueness());
   locator.registerLazySingleton(() => PredictKidneyDiseasesEndpoint());
+  locator.registerLazySingleton(() => DecipherAnalyzesEndpoint());
 }

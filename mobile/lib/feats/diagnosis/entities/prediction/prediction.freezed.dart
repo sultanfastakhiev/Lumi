@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$Prediction {
   String get label => throw _privateConstructorUsedError;
   double get probability => throw _privateConstructorUsedError;
+  List<String>? get pathologies => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PredictionCopyWith<Prediction> get copyWith =>
@@ -29,7 +30,7 @@ abstract class $PredictionCopyWith<$Res> {
   factory $PredictionCopyWith(
           Prediction value, $Res Function(Prediction) then) =
       _$PredictionCopyWithImpl<$Res>;
-  $Res call({String label, double probability});
+  $Res call({String label, double probability, List<String>? pathologies});
 }
 
 /// @nodoc
@@ -44,6 +45,7 @@ class _$PredictionCopyWithImpl<$Res> implements $PredictionCopyWith<$Res> {
   $Res call({
     Object? label = freezed,
     Object? probability = freezed,
+    Object? pathologies = freezed,
   }) {
     return _then(_value.copyWith(
       label: label == freezed
@@ -54,6 +56,10 @@ class _$PredictionCopyWithImpl<$Res> implements $PredictionCopyWith<$Res> {
           ? _value.probability
           : probability // ignore: cast_nullable_to_non_nullable
               as double,
+      pathologies: pathologies == freezed
+          ? _value.pathologies
+          : pathologies // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
     ));
   }
 }
@@ -65,7 +71,7 @@ abstract class _$$_PredictionCopyWith<$Res>
           _$_Prediction value, $Res Function(_$_Prediction) then) =
       __$$_PredictionCopyWithImpl<$Res>;
   @override
-  $Res call({String label, double probability});
+  $Res call({String label, double probability, List<String>? pathologies});
 }
 
 /// @nodoc
@@ -82,6 +88,7 @@ class __$$_PredictionCopyWithImpl<$Res> extends _$PredictionCopyWithImpl<$Res>
   $Res call({
     Object? label = freezed,
     Object? probability = freezed,
+    Object? pathologies = freezed,
   }) {
     return _then(_$_Prediction(
       label: label == freezed
@@ -92,6 +99,10 @@ class __$$_PredictionCopyWithImpl<$Res> extends _$PredictionCopyWithImpl<$Res>
           ? _value.probability
           : probability // ignore: cast_nullable_to_non_nullable
               as double,
+      pathologies: pathologies == freezed
+          ? _value._pathologies
+          : pathologies // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
     ));
   }
 }
@@ -99,16 +110,28 @@ class __$$_PredictionCopyWithImpl<$Res> extends _$PredictionCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Prediction implements _Prediction {
-  const _$_Prediction({required this.label, required this.probability});
+  const _$_Prediction(
+      {required this.label,
+      required this.probability,
+      final List<String>? pathologies})
+      : _pathologies = pathologies;
 
   @override
   final String label;
   @override
   final double probability;
+  final List<String>? _pathologies;
+  @override
+  List<String>? get pathologies {
+    final value = _pathologies;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'Prediction(label: $label, probability: $probability)';
+    return 'Prediction(label: $label, probability: $probability, pathologies: $pathologies)';
   }
 
   @override
@@ -118,14 +141,17 @@ class _$_Prediction implements _Prediction {
             other is _$_Prediction &&
             const DeepCollectionEquality().equals(other.label, label) &&
             const DeepCollectionEquality()
-                .equals(other.probability, probability));
+                .equals(other.probability, probability) &&
+            const DeepCollectionEquality()
+                .equals(other._pathologies, _pathologies));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(label),
-      const DeepCollectionEquality().hash(probability));
+      const DeepCollectionEquality().hash(probability),
+      const DeepCollectionEquality().hash(_pathologies));
 
   @JsonKey(ignore: true)
   @override
@@ -136,12 +162,15 @@ class _$_Prediction implements _Prediction {
 abstract class _Prediction implements Prediction {
   const factory _Prediction(
       {required final String label,
-      required final double probability}) = _$_Prediction;
+      required final double probability,
+      final List<String>? pathologies}) = _$_Prediction;
 
   @override
   String get label;
   @override
   double get probability;
+  @override
+  List<String>? get pathologies;
   @override
   @JsonKey(ignore: true)
   _$$_PredictionCopyWith<_$_Prediction> get copyWith =>
