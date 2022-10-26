@@ -15,6 +15,7 @@ class PredictKidneyDiseasesEndpoint extends BasePredictEndpoint with ApiLoggy {
     _dio = locator<Dio>();
   }
 
+  @override
   Future<Either<Failure, List<Prediction>>> call(File file) async {
     try {
       final response = await _dio.post(

@@ -8,10 +8,10 @@ import 'package:mobile/locator.dart';
 import 'package:mobile/utils/failure.dart';
 import 'package:mobile/utils/loggy.dart';
 
-class DecipherAnalyzesEndpoint extends BasePredictEndpoint with ApiLoggy {
+class PredictSkinCancerEndpoint extends BasePredictEndpoint with ApiLoggy {
   late final Dio _dio;
 
-  DecipherAnalyzesEndpoint({Dio? dio}) {
+  PredictSkinCancerEndpoint({Dio? dio}) {
     _dio = locator<Dio>();
   }
 
@@ -19,27 +19,28 @@ class DecipherAnalyzesEndpoint extends BasePredictEndpoint with ApiLoggy {
   Future<Either<Failure, List<Prediction>>> call(File file) async {
     try {
       final response = await _dio.post(
-        "/test_an",
+        "/melanoma",
         data: FormData.fromMap({
-          "file_in": await MultipartFile.fromFile(file.path),
+          "file_mel": await MultipartFile.fromFile(file.path),
         }),
       );
 
       if (response.statusCode == 401) return const Left(InvalidCredentials());
       if (response.statusCode != 200) {
-        loggy.error("Failed to decipher analyzes\n$response");
+        loggy.error("Failed to predict skin cancer\n$response");
         return const Left(FailedToPredict());
       }
 
       final Map<String, dynamic> data = response.data;
 
-      final predictions = (data["predict"] as List)
+      final predictions = (data["Predict"] as List)
           .cast<Map<String, dynamic>>()
-          .map((json) => Prediction(
-                label: json["title"],
-                probability: json["value"] / 100.0,
-                pathologies: (json["pathologies"] as List).cast<String>(),
-              ))
+          .map(
+            (json) => Prediction(
+              label: json["title"] == "melanoma" ? "Меланома" : "Здоров",
+              probability: json["value"] / 100.0,
+            ),
+          )
           .toList();
 
       predictions.sort((a, b) => b.probability.compareTo(a.probability));
@@ -47,11 +48,11 @@ class DecipherAnalyzesEndpoint extends BasePredictEndpoint with ApiLoggy {
       return Right(predictions);
     } on DioError catch (e, stackTrace) {
       loggy.debug(e);
-      loggy.error("Failed to decipher analyzes\n${e.response}", e, stackTrace);
+      loggy.error("Failed to predict skin cancer\n${e.response}", e, stackTrace);
       return const Left(CantAccessOurServices());
     } catch (e, stackTrace) {
       loggy.debug(e);
-      loggy.error("Failed to decipher analyzes", e, stackTrace);
+      loggy.error("Failed to predict skin cancer", e, stackTrace);
       return const Left(CantAccessOurServices());
     }
   }
