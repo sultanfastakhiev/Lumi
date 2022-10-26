@@ -27,3 +27,7 @@ class FailedToUpdatePatient extends Failure {
 class EmailAlreadyTaken extends Failure {
   const EmailAlreadyTaken() : super("Этот email уже используется");
 }
+
+class FailedToPredict extends Failure {
+  const FailedToPredict() : super("Произошла ошибка при диагностирование. Попробуйте снова чуть позже");
+}

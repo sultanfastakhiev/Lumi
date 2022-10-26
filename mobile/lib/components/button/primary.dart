@@ -1,11 +1,13 @@
 import 'package:curved_progress_bar/curved_progress_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile/utils/theme/text_styles.dart';
+import 'package:mobile/utils/theme/theme.dart';
 
 class PrimaryButton extends StatelessWidget {
   final String text;
   final void Function() onTap;
   final bool loading;
+  final bool disabled;
   final bool fullWidth;
 
   const PrimaryButton({
@@ -14,6 +16,7 @@ class PrimaryButton extends StatelessWidget {
     required this.onTap,
     this.loading = false,
     this.fullWidth = false,
+    this.disabled = false,
   }) : super(key: key);
 
   @override
@@ -35,11 +38,13 @@ class PrimaryButton extends StatelessWidget {
     return SizedBox(
       height: 44,
       child: Material(
-        color: Theme.of(context).primaryColor,
+        color: !disabled ? Theme.of(context).primaryColor : primarySwatch.shade100,
         borderRadius: BorderRadius.circular(8),
         child: InkWell(
+          highlightColor: loading || disabled ? Colors.transparent : null,
+          splashColor: loading || disabled ? Colors.transparent : null,
           onTap: () {
-            if (!loading) onTap();
+            if (!loading && !disabled) onTap();
           },
           borderRadius: BorderRadius.circular(8),
           child: Container(

@@ -25,45 +25,48 @@ class FileUpload extends StatelessWidget {
       ),
       child: GestureDetector(
         onTap: onTap,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              CircleAvatar(
-                radius: 23,
-                backgroundColor: graySwatch.shade50,
-                child: CircleAvatar(
-                  radius: 17,
-                  backgroundColor: graySwatch.shade100,
-                  child: Icon(
-                    FeatherIcons.uploadCloud,
-                    color: graySwatch.shade600,
-                    size: 20,
+        child: Material(
+          color: Colors.transparent,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                CircleAvatar(
+                  radius: 23,
+                  backgroundColor: graySwatch.shade50,
+                  child: CircleAvatar(
+                    radius: 17,
+                    backgroundColor: graySwatch.shade100,
+                    child: Icon(
+                      FeatherIcons.uploadCloud,
+                      color: graySwatch.shade600,
+                      size: 20,
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(height: 12),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Нажмите",
-                    style: TextStyles.textSmMedium.apply(color: primarySwatch.shade700),
-                  ),
-                  const SizedBox(width: 4),
-                  Text(
-                    text,
-                    style: TextStyles.textSmNormal.apply(color: graySwatch.shade500),
-                  )
-                ],
-              ),
-              const SizedBox(height: 4),
-              Text(
-                formatText,
-                style: TextStyles.textXsNormal.apply(color: graySwatch.shade500),
-              )
-            ],
+                const SizedBox(height: 12),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Нажмите",
+                      style: TextStyles.textSmMedium.apply(color: primarySwatch.shade700),
+                    ),
+                    const SizedBox(width: 4),
+                    Text(
+                      text,
+                      style: TextStyles.textSmNormal.apply(color: graySwatch.shade500),
+                    )
+                  ],
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  formatText,
+                  style: TextStyles.textXsNormal.apply(color: graySwatch.shade500),
+                )
+              ],
+            ),
           ),
         ),
       ),
