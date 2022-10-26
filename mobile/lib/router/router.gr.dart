@@ -11,20 +11,22 @@
 // ignore_for_file: type=lint
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:io' as _i17;
+import 'dart:io' as _i18;
 
-import 'package:auto_route/auto_route.dart' as _i15;
-import 'package:flutter/material.dart' as _i16;
+import 'package:auto_route/auto_route.dart' as _i16;
+import 'package:flutter/material.dart' as _i17;
 
 import '../feats/auth/screens/login_screen.dart' as _i2;
 import '../feats/auth/screens/signup_screen_stage_1.dart' as _i3;
 import '../feats/auth/screens/signup_screen_stage_2.dart' as _i4;
-import '../feats/diagnosis/entities/prediction/prediction.dart' as _i18;
+import '../feats/diagnosis/entities/prediction/prediction.dart' as _i19;
 import '../feats/diagnosis/screens/analyzes/analyzes_decoding_results_screen.dart'
     as _i13;
 import '../feats/diagnosis/screens/analyzes/analyzes_decoding_screen.dart'
     as _i9;
-import '../feats/diagnosis/screens/brain_tumors_screen.dart' as _i11;
+import '../feats/diagnosis/screens/brain/brain_tumors_results_screen.dart'
+    as _i15;
+import '../feats/diagnosis/screens/brain/brain_tumors_screen.dart' as _i11;
 import '../feats/diagnosis/screens/kidney/kidney_diseases_results_screen.dart'
     as _i12;
 import '../feats/diagnosis/screens/kidney/kidney_diseases_screen.dart' as _i8;
@@ -36,33 +38,33 @@ import '../feats/main/screens/create_patient_screen.dart' as _i6;
 import '../feats/main/screens/main_screen.dart' as _i5;
 import '../feats/main/screens/patient_detail_screen.dart' as _i7;
 
-class AppRouter extends _i15.RootStackRouter {
-  AppRouter([_i16.GlobalKey<_i16.NavigatorState>? navigatorKey])
+class AppRouter extends _i16.RootStackRouter {
+  AppRouter([_i17.GlobalKey<_i17.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
-  final Map<String, _i15.PageFactory> pagesMap = {
+  final Map<String, _i16.PageFactory> pagesMap = {
     InitScreenRoute.name: (routeData) {
-      return _i15.CupertinoPageX<dynamic>(
+      return _i16.CupertinoPageX<dynamic>(
         routeData: routeData,
         child: const _i1.InitScreen(),
       );
     },
     LoginScreenRoute.name: (routeData) {
-      return _i15.CupertinoPageX<dynamic>(
+      return _i16.CupertinoPageX<dynamic>(
         routeData: routeData,
         child: const _i2.LoginScreen(),
       );
     },
     FirstStageSignupScreenRoute.name: (routeData) {
-      return _i15.CupertinoPageX<dynamic>(
+      return _i16.CupertinoPageX<dynamic>(
         routeData: routeData,
         child: const _i3.FirstStageSignupScreen(),
       );
     },
     SecondStageSignupScreenRoute.name: (routeData) {
       final args = routeData.argsAs<SecondStageSignupScreenRouteArgs>();
-      return _i15.CupertinoPageX<dynamic>(
+      return _i16.CupertinoPageX<dynamic>(
         routeData: routeData,
         child: _i4.SecondStageSignupScreen(
           key: args.key,
@@ -72,20 +74,20 @@ class AppRouter extends _i15.RootStackRouter {
       );
     },
     MainScreenRoute.name: (routeData) {
-      return _i15.CupertinoPageX<dynamic>(
+      return _i16.CupertinoPageX<dynamic>(
         routeData: routeData,
         child: const _i5.MainScreen(),
       );
     },
     CreatePatientScreenRoute.name: (routeData) {
-      return _i15.CupertinoPageX<dynamic>(
+      return _i16.CupertinoPageX<dynamic>(
         routeData: routeData,
         child: const _i6.CreatePatientScreen(),
       );
     },
     PatientDetailScreenRoute.name: (routeData) {
       final args = routeData.argsAs<PatientDetailScreenRouteArgs>();
-      return _i15.CupertinoPageX<dynamic>(
+      return _i16.CupertinoPageX<dynamic>(
         routeData: routeData,
         child: _i7.PatientDetailScreen(
           key: args.key,
@@ -94,32 +96,32 @@ class AppRouter extends _i15.RootStackRouter {
       );
     },
     KidneyDiseasesScreenRoute.name: (routeData) {
-      return _i15.CupertinoPageX<dynamic>(
+      return _i16.CupertinoPageX<dynamic>(
         routeData: routeData,
         child: const _i8.KidneyDiseasesScreen(),
       );
     },
     AnalyzesDecodingScreenRoute.name: (routeData) {
-      return _i15.CupertinoPageX<dynamic>(
+      return _i16.CupertinoPageX<dynamic>(
         routeData: routeData,
         child: const _i9.AnalyzesDecodingScreen(),
       );
     },
     SkinCancerScreenRoute.name: (routeData) {
-      return _i15.CupertinoPageX<dynamic>(
+      return _i16.CupertinoPageX<dynamic>(
         routeData: routeData,
         child: const _i10.SkinCancerScreen(),
       );
     },
     BrainTumorsScreenRoute.name: (routeData) {
-      return _i15.CupertinoPageX<dynamic>(
+      return _i16.CupertinoPageX<dynamic>(
         routeData: routeData,
         child: const _i11.BrainTumorsScreen(),
       );
     },
     KidneyDiseasesResultsScreenRoute.name: (routeData) {
       final args = routeData.argsAs<KidneyDiseasesResultsScreenRouteArgs>();
-      return _i15.CupertinoPageX<dynamic>(
+      return _i16.CupertinoPageX<dynamic>(
         routeData: routeData,
         child: _i12.KidneyDiseasesResultsScreen(
           key: args.key,
@@ -130,7 +132,7 @@ class AppRouter extends _i15.RootStackRouter {
     },
     DecipherAnalysesResultsScreenRoute.name: (routeData) {
       final args = routeData.argsAs<DecipherAnalysesResultsScreenRouteArgs>();
-      return _i15.CupertinoPageX<dynamic>(
+      return _i16.CupertinoPageX<dynamic>(
         routeData: routeData,
         child: _i13.DecipherAnalysesResultsScreen(
           key: args.key,
@@ -140,9 +142,20 @@ class AppRouter extends _i15.RootStackRouter {
     },
     SkinCancerResultsScreenRoute.name: (routeData) {
       final args = routeData.argsAs<SkinCancerResultsScreenRouteArgs>();
-      return _i15.CupertinoPageX<dynamic>(
+      return _i16.CupertinoPageX<dynamic>(
         routeData: routeData,
         child: _i14.SkinCancerResultsScreen(
+          key: args.key,
+          image: args.image,
+          predictions: args.predictions,
+        ),
+      );
+    },
+    BrainTumorsResultsScreenRoute.name: (routeData) {
+      final args = routeData.argsAs<BrainTumorsResultsScreenRouteArgs>();
+      return _i16.CupertinoPageX<dynamic>(
+        routeData: routeData,
+        child: _i15.BrainTumorsResultsScreen(
           key: args.key,
           image: args.image,
           predictions: args.predictions,
@@ -152,69 +165,73 @@ class AppRouter extends _i15.RootStackRouter {
   };
 
   @override
-  List<_i15.RouteConfig> get routes => [
-        _i15.RouteConfig(
+  List<_i16.RouteConfig> get routes => [
+        _i16.RouteConfig(
           InitScreenRoute.name,
           path: '/',
         ),
-        _i15.RouteConfig(
+        _i16.RouteConfig(
           LoginScreenRoute.name,
           path: '/login-screen',
         ),
-        _i15.RouteConfig(
+        _i16.RouteConfig(
           FirstStageSignupScreenRoute.name,
           path: '/first-stage-signup-screen',
         ),
-        _i15.RouteConfig(
+        _i16.RouteConfig(
           SecondStageSignupScreenRoute.name,
           path: '/second-stage-signup-screen',
         ),
-        _i15.RouteConfig(
+        _i16.RouteConfig(
           MainScreenRoute.name,
           path: '/main-screen',
         ),
-        _i15.RouteConfig(
+        _i16.RouteConfig(
           CreatePatientScreenRoute.name,
           path: '/create-patient-screen',
         ),
-        _i15.RouteConfig(
+        _i16.RouteConfig(
           PatientDetailScreenRoute.name,
           path: '/patient-detail-screen',
         ),
-        _i15.RouteConfig(
+        _i16.RouteConfig(
           KidneyDiseasesScreenRoute.name,
           path: '/kidney-diseases-screen',
         ),
-        _i15.RouteConfig(
+        _i16.RouteConfig(
           AnalyzesDecodingScreenRoute.name,
           path: '/analyzes-decoding-screen',
         ),
-        _i15.RouteConfig(
+        _i16.RouteConfig(
           SkinCancerScreenRoute.name,
           path: '/skin-cancer-screen',
         ),
-        _i15.RouteConfig(
+        _i16.RouteConfig(
           BrainTumorsScreenRoute.name,
           path: '/brain-tumors-screen',
         ),
-        _i15.RouteConfig(
+        _i16.RouteConfig(
           KidneyDiseasesResultsScreenRoute.name,
           path: '/kidney-diseases-results-screen',
         ),
-        _i15.RouteConfig(
+        _i16.RouteConfig(
           DecipherAnalysesResultsScreenRoute.name,
           path: '/decipher-analyses-results-screen',
         ),
-        _i15.RouteConfig(
+        _i16.RouteConfig(
           SkinCancerResultsScreenRoute.name,
           path: '/skin-cancer-results-screen',
+        ),
+        _i16.RouteConfig(
+          BrainTumorsResultsScreenRoute.name,
+          path: '/brain-tumors-results-screen',
         ),
       ];
 }
 
 /// generated route for
 /// [_i1.InitScreen]
-class InitScreenRoute extends _i15.PageRouteInfo<void> {
+class InitScreenRoute extends _i16.PageRouteInfo<void> {
   const InitScreenRoute()
       : super(
           InitScreenRoute.name,
@@ -226,7 +243,7 @@ class InitScreenRoute extends _i15.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.LoginScreen]
-class LoginScreenRoute extends _i15.PageRouteInfo<void> {
+class LoginScreenRoute extends _i16.PageRouteInfo<void> {
   const LoginScreenRoute()
       : super(
           LoginScreenRoute.name,
@@ -238,7 +255,7 @@ class LoginScreenRoute extends _i15.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i3.FirstStageSignupScreen]
-class FirstStageSignupScreenRoute extends _i15.PageRouteInfo<void> {
+class FirstStageSignupScreenRoute extends _i16.PageRouteInfo<void> {
   const FirstStageSignupScreenRoute()
       : super(
           FirstStageSignupScreenRoute.name,
@@ -251,9 +268,9 @@ class FirstStageSignupScreenRoute extends _i15.PageRouteInfo<void> {
 /// generated route for
 /// [_i4.SecondStageSignupScreen]
 class SecondStageSignupScreenRoute
-    extends _i15.PageRouteInfo<SecondStageSignupScreenRouteArgs> {
+    extends _i16.PageRouteInfo<SecondStageSignupScreenRouteArgs> {
   SecondStageSignupScreenRoute({
-    _i16.Key? key,
+    _i17.Key? key,
     required String username,
     required String password,
   }) : super(
@@ -276,7 +293,7 @@ class SecondStageSignupScreenRouteArgs {
     required this.password,
   });
 
-  final _i16.Key? key;
+  final _i17.Key? key;
 
   final String username;
 
@@ -290,7 +307,7 @@ class SecondStageSignupScreenRouteArgs {
 
 /// generated route for
 /// [_i5.MainScreen]
-class MainScreenRoute extends _i15.PageRouteInfo<void> {
+class MainScreenRoute extends _i16.PageRouteInfo<void> {
   const MainScreenRoute()
       : super(
           MainScreenRoute.name,
@@ -302,7 +319,7 @@ class MainScreenRoute extends _i15.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i6.CreatePatientScreen]
-class CreatePatientScreenRoute extends _i15.PageRouteInfo<void> {
+class CreatePatientScreenRoute extends _i16.PageRouteInfo<void> {
   const CreatePatientScreenRoute()
       : super(
           CreatePatientScreenRoute.name,
@@ -315,9 +332,9 @@ class CreatePatientScreenRoute extends _i15.PageRouteInfo<void> {
 /// generated route for
 /// [_i7.PatientDetailScreen]
 class PatientDetailScreenRoute
-    extends _i15.PageRouteInfo<PatientDetailScreenRouteArgs> {
+    extends _i16.PageRouteInfo<PatientDetailScreenRouteArgs> {
   PatientDetailScreenRoute({
-    _i16.Key? key,
+    _i17.Key? key,
     required String id,
   }) : super(
           PatientDetailScreenRoute.name,
@@ -337,7 +354,7 @@ class PatientDetailScreenRouteArgs {
     required this.id,
   });
 
-  final _i16.Key? key;
+  final _i17.Key? key;
 
   final String id;
 
@@ -349,7 +366,7 @@ class PatientDetailScreenRouteArgs {
 
 /// generated route for
 /// [_i8.KidneyDiseasesScreen]
-class KidneyDiseasesScreenRoute extends _i15.PageRouteInfo<void> {
+class KidneyDiseasesScreenRoute extends _i16.PageRouteInfo<void> {
   const KidneyDiseasesScreenRoute()
       : super(
           KidneyDiseasesScreenRoute.name,
@@ -361,7 +378,7 @@ class KidneyDiseasesScreenRoute extends _i15.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i9.AnalyzesDecodingScreen]
-class AnalyzesDecodingScreenRoute extends _i15.PageRouteInfo<void> {
+class AnalyzesDecodingScreenRoute extends _i16.PageRouteInfo<void> {
   const AnalyzesDecodingScreenRoute()
       : super(
           AnalyzesDecodingScreenRoute.name,
@@ -373,7 +390,7 @@ class AnalyzesDecodingScreenRoute extends _i15.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i10.SkinCancerScreen]
-class SkinCancerScreenRoute extends _i15.PageRouteInfo<void> {
+class SkinCancerScreenRoute extends _i16.PageRouteInfo<void> {
   const SkinCancerScreenRoute()
       : super(
           SkinCancerScreenRoute.name,
@@ -385,7 +402,7 @@ class SkinCancerScreenRoute extends _i15.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i11.BrainTumorsScreen]
-class BrainTumorsScreenRoute extends _i15.PageRouteInfo<void> {
+class BrainTumorsScreenRoute extends _i16.PageRouteInfo<void> {
   const BrainTumorsScreenRoute()
       : super(
           BrainTumorsScreenRoute.name,
@@ -398,11 +415,11 @@ class BrainTumorsScreenRoute extends _i15.PageRouteInfo<void> {
 /// generated route for
 /// [_i12.KidneyDiseasesResultsScreen]
 class KidneyDiseasesResultsScreenRoute
-    extends _i15.PageRouteInfo<KidneyDiseasesResultsScreenRouteArgs> {
+    extends _i16.PageRouteInfo<KidneyDiseasesResultsScreenRouteArgs> {
   KidneyDiseasesResultsScreenRoute({
-    _i16.Key? key,
-    required _i17.File image,
-    required List<_i18.Prediction> predictions,
+    _i17.Key? key,
+    required _i18.File image,
+    required List<_i19.Prediction> predictions,
   }) : super(
           KidneyDiseasesResultsScreenRoute.name,
           path: '/kidney-diseases-results-screen',
@@ -423,11 +440,11 @@ class KidneyDiseasesResultsScreenRouteArgs {
     required this.predictions,
   });
 
-  final _i16.Key? key;
+  final _i17.Key? key;
 
-  final _i17.File image;
+  final _i18.File image;
 
-  final List<_i18.Prediction> predictions;
+  final List<_i19.Prediction> predictions;
 
   @override
   String toString() {
@@ -438,10 +455,10 @@ class KidneyDiseasesResultsScreenRouteArgs {
 /// generated route for
 /// [_i13.DecipherAnalysesResultsScreen]
 class DecipherAnalysesResultsScreenRoute
-    extends _i15.PageRouteInfo<DecipherAnalysesResultsScreenRouteArgs> {
+    extends _i16.PageRouteInfo<DecipherAnalysesResultsScreenRouteArgs> {
   DecipherAnalysesResultsScreenRoute({
-    _i16.Key? key,
-    required List<_i18.Prediction> predictions,
+    _i17.Key? key,
+    required List<_i19.Prediction> predictions,
   }) : super(
           DecipherAnalysesResultsScreenRoute.name,
           path: '/decipher-analyses-results-screen',
@@ -460,9 +477,9 @@ class DecipherAnalysesResultsScreenRouteArgs {
     required this.predictions,
   });
 
-  final _i16.Key? key;
+  final _i17.Key? key;
 
-  final List<_i18.Prediction> predictions;
+  final List<_i19.Prediction> predictions;
 
   @override
   String toString() {
@@ -473,11 +490,11 @@ class DecipherAnalysesResultsScreenRouteArgs {
 /// generated route for
 /// [_i14.SkinCancerResultsScreen]
 class SkinCancerResultsScreenRoute
-    extends _i15.PageRouteInfo<SkinCancerResultsScreenRouteArgs> {
+    extends _i16.PageRouteInfo<SkinCancerResultsScreenRouteArgs> {
   SkinCancerResultsScreenRoute({
-    _i16.Key? key,
-    required _i17.File image,
-    required List<_i18.Prediction> predictions,
+    _i17.Key? key,
+    required _i18.File image,
+    required List<_i19.Prediction> predictions,
   }) : super(
           SkinCancerResultsScreenRoute.name,
           path: '/skin-cancer-results-screen',
@@ -498,14 +515,54 @@ class SkinCancerResultsScreenRouteArgs {
     required this.predictions,
   });
 
-  final _i16.Key? key;
+  final _i17.Key? key;
 
-  final _i17.File image;
+  final _i18.File image;
 
-  final List<_i18.Prediction> predictions;
+  final List<_i19.Prediction> predictions;
 
   @override
   String toString() {
     return 'SkinCancerResultsScreenRouteArgs{key: $key, image: $image, predictions: $predictions}';
+  }
+}
+
+/// generated route for
+/// [_i15.BrainTumorsResultsScreen]
+class BrainTumorsResultsScreenRoute
+    extends _i16.PageRouteInfo<BrainTumorsResultsScreenRouteArgs> {
+  BrainTumorsResultsScreenRoute({
+    _i17.Key? key,
+    required _i18.File image,
+    required List<_i19.Prediction> predictions,
+  }) : super(
+          BrainTumorsResultsScreenRoute.name,
+          path: '/brain-tumors-results-screen',
+          args: BrainTumorsResultsScreenRouteArgs(
+            key: key,
+            image: image,
+            predictions: predictions,
+          ),
+        );
+
+  static const String name = 'BrainTumorsResultsScreenRoute';
+}
+
+class BrainTumorsResultsScreenRouteArgs {
+  const BrainTumorsResultsScreenRouteArgs({
+    this.key,
+    required this.image,
+    required this.predictions,
+  });
+
+  final _i17.Key? key;
+
+  final _i18.File image;
+
+  final List<_i19.Prediction> predictions;
+
+  @override
+  String toString() {
+    return 'BrainTumorsResultsScreenRouteArgs{key: $key, image: $image, predictions: $predictions}';
   }
 }

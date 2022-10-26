@@ -4,7 +4,8 @@ import 'package:mobile/feats/auth/screens/signup_screen_stage_1.dart';
 import 'package:mobile/feats/auth/screens/signup_screen_stage_2.dart';
 import 'package:mobile/feats/diagnosis/screens/analyzes/analyzes_decoding_results_screen.dart';
 import 'package:mobile/feats/diagnosis/screens/analyzes/analyzes_decoding_screen.dart';
-import 'package:mobile/feats/diagnosis/screens/brain_tumors_screen.dart';
+import 'package:mobile/feats/diagnosis/screens/brain/brain_tumors_results_screen.dart';
+import 'package:mobile/feats/diagnosis/screens/brain/brain_tumors_screen.dart';
 import 'package:mobile/feats/diagnosis/screens/kidney/kidney_diseases_results_screen.dart';
 import 'package:mobile/feats/diagnosis/screens/kidney/kidney_diseases_screen.dart';
 import 'package:mobile/feats/diagnosis/screens/skin/skin_cancer_results_screen.dart';
@@ -30,6 +31,7 @@ import 'package:mobile/feats/main/screens/patient_detail_screen.dart';
     AutoRoute(page: KidneyDiseasesResultsScreen),
     AutoRoute(page: DecipherAnalysesResultsScreen),
     AutoRoute(page: SkinCancerResultsScreen),
+    AutoRoute(page: BrainTumorsResultsScreen),
   ],
 )
 class $AppRouter {}
