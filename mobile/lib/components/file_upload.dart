@@ -36,7 +36,11 @@ class FileUpload extends StatelessWidget {
                 child: CircleAvatar(
                   radius: 17,
                   backgroundColor: graySwatch.shade100,
-                  child: Icon(FeatherIcons.uploadCloud, color: graySwatch.shade600),
+                  child: Icon(
+                    FeatherIcons.uploadCloud,
+                    color: graySwatch.shade600,
+                    size: 20,
+                  ),
                 ),
               ),
               const SizedBox(height: 12),
