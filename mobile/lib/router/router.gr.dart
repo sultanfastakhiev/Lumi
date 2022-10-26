@@ -19,9 +19,9 @@ import 'package:flutter/material.dart' as _i14;
 import '../feats/auth/screens/login_screen.dart' as _i2;
 import '../feats/auth/screens/signup_screen_stage_1.dart' as _i3;
 import '../feats/auth/screens/signup_screen_stage_2.dart' as _i4;
-import '../feats/diagnosis/entities/kidney_prediction/kidney_prediction.dart'
-    as _i16;
-import '../feats/diagnosis/screens/analyzes_decoding_screen.dart' as _i9;
+import '../feats/diagnosis/entities/prediction/prediction.dart' as _i16;
+import '../feats/diagnosis/screens/analyzes/analyzes_decoding_screen.dart'
+    as _i9;
 import '../feats/diagnosis/screens/brain_tumors_screen.dart' as _i11;
 import '../feats/diagnosis/screens/kidney/kidney_diseases_results_screen.dart'
     as _i12;
@@ -369,7 +369,7 @@ class KidneyDiseasesResultsScreenRoute
   KidneyDiseasesResultsScreenRoute({
     _i14.Key? key,
     required _i15.File image,
-    required List<_i16.KidneyPrediction> predictions,
+    required List<_i16.Prediction> predictions,
   }) : super(
           KidneyDiseasesResultsScreenRoute.name,
           path: '/kidney-diseases-results-screen',
@@ -394,7 +394,7 @@ class KidneyDiseasesResultsScreenRouteArgs {
 
   final _i15.File image;
 
-  final List<_i16.KidneyPrediction> predictions;
+  final List<_i16.Prediction> predictions;
 
   @override
   String toString() {

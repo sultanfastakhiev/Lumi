@@ -5,11 +5,11 @@ import 'package:mobile/components/header.dart';
 import 'package:mobile/components/image_preview.dart';
 import 'package:mobile/components/layouts/empty.dart';
 import 'package:mobile/components/prediction.dart';
-import 'package:mobile/feats/diagnosis/entities/kidney_prediction/kidney_prediction.dart';
+import 'package:mobile/feats/diagnosis/entities/prediction/prediction.dart';
 
 class KidneyDiseasesResultsScreen extends StatelessWidget {
   final File image;
-  final List<KidneyPrediction> predictions;
+  final List<Prediction> predictions;
 
   const KidneyDiseasesResultsScreen({
     Key? key,
@@ -29,7 +29,7 @@ class KidneyDiseasesResultsScreen extends StatelessWidget {
           ...predictions.map(
             (prediction) => Padding(
               padding: const EdgeInsets.only(bottom: 16),
-              child: Prediction(
+              child: PredictionWidget(
                 label: prediction.label,
                 value: prediction.probability,
               ),

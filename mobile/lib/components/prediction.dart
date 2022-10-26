@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:mobile/utils/theme/text_styles.dart';
 import 'package:mobile/utils/theme/theme.dart';
 
-class Prediction extends StatelessWidget {
+class PredictionWidget extends StatelessWidget {
   final String label;
   final double value;
 
-  const Prediction({
+  const PredictionWidget({
     Key? key,
     required this.label,
     required this.value,

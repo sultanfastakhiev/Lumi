@@ -2,19 +2,20 @@ import 'dart:io';
 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:mobile/feats/diagnosis/entities/kidney_prediction/kidney_prediction.dart';
+import 'package:mobile/feats/diagnosis/api/base_predict_endpoint.dart';
+import 'package:mobile/feats/diagnosis/entities/prediction/prediction.dart';
 import 'package:mobile/locator.dart';
 import 'package:mobile/utils/failure.dart';
 import 'package:mobile/utils/loggy.dart';
 
-class PredictKidneyDiseasesEndpoint with ApiLoggy {
+class PredictKidneyDiseasesEndpoint extends BasePredictEndpoint with ApiLoggy {
   late final Dio _dio;
 
   PredictKidneyDiseasesEndpoint({Dio? dio}) {
     _dio = locator<Dio>();
   }
 
-  Future<Either<Failure, List<KidneyPrediction>>> call(File file) async {
+  Future<Either<Failure, List<Prediction>>> call(File file) async {
     try {
       final response = await _dio.post(
         "/test",
@@ -32,10 +33,10 @@ class PredictKidneyDiseasesEndpoint with ApiLoggy {
       final Map<String, dynamic> data = response.data;
 
       final predictions = [
-        KidneyPrediction(label: "Киста", probability: data["cyst"] / 100.0),
-        KidneyPrediction(label: "Здоров", probability: data["normal"] / 100.0),
-        KidneyPrediction(label: "Камень", probability: data["stone"] / 100.0),
-        KidneyPrediction(label: "Опухоль", probability: data["tumor"] / 100.0),
+        Prediction(label: "Киста", probability: data["cyst"] / 100.0),
+        Prediction(label: "Здоров", probability: data["normal"] / 100.0),
+        Prediction(label: "Камень", probability: data["stone"] / 100.0),
+        Prediction(label: "Опухоль", probability: data["tumor"] / 100.0),
       ];
 
       predictions.sort((a, b) => b.probability.compareTo(a.probability));

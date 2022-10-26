@@ -1,4 +1,4 @@
-part of "kidney_diseases_cubit.dart";
+part of "base_prediction_cubit.dart";
 
 class UploadedFileSelector extends StatelessWidget {
   final Widget Function(BuildContext context, File? file) builder;
@@ -7,8 +7,8 @@ class UploadedFileSelector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocSelector<KidneyDiseasesCubit, KidneyDiseasesState, File?>(
-      selector: (state) => state is KidneyDiseasesStateWithFile ? state.file : null,
+    return BlocSelector<BasePredictionCubit, BasePredictionState, File?>(
+      selector: (state) => state is BasePredictionStateWithFile ? state.file : null,
       builder: builder,
     );
   }
