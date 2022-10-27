@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/components/bottom_nav_bar.dart';
 import 'package:mobile/components/layouts/empty.dart';
+import 'package:mobile/feats/account/screens/account_screen.dart';
 import 'package:mobile/feats/diagnosis/screens/diagnosis_list_screen.dart';
 import 'package:mobile/feats/main/screens/home_screen.dart';
 
@@ -31,7 +32,7 @@ class _MainScreenState extends State<MainScreen> {
       child: [
         const HomeScreen(),
         const DiagnosisListScreen(),
-        const Text("account"),
+        const AccountScreen(),
       ][page.index],
     );
   }

@@ -55,4 +55,20 @@ abstract class User with _$User {
       username: json["username"],
     );
   }
+
+  String get abbreviation {
+    final first = name.trim().isNotEmpty ? name.trim()[0].toUpperCase() : "";
+    final second = lastName.trim().isNotEmpty ? lastName.trim()[0].toUpperCase() : "";
+    return "$first$second";
+  }
+
+  String get fullName {
+    var fullName = "";
+    if (name.trim().isNotEmpty) fullName = name.trim();
+    if (lastName.trim().isNotEmpty) {
+      if (fullName.isNotEmpty) fullName += " ";
+      fullName += lastName.trim();
+    }
+    return fullName;
+  }
 }
