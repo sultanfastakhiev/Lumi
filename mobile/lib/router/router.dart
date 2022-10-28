@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:mobile/feats/account/components/feedback_screen.dart';
 import 'package:mobile/feats/account/screens/about_app_screen.dart';
 import 'package:mobile/feats/account/screens/password_screen.dart';
 import 'package:mobile/feats/account/screens/profile_screen.dart';
@@ -38,6 +39,7 @@ import 'package:mobile/feats/main/screens/patient_detail_screen.dart';
     AutoRoute(page: ProfileScreen),
     AutoRoute(page: PasswordScreen),
     AutoRoute(page: AboutAppScreen),
+    AutoRoute(page: FeedbackScreen),
   ],
 )
 class $AppRouter {}
