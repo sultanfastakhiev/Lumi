@@ -13,17 +13,21 @@ class UpdateUserEndpoint with ApiLoggy {
     _dio = locator<Dio>();
   }
 
-  Future<Either<Failure, void>> call(User user) async {
+  Future<Either<Failure, void>> call(User user, { String? password }) async {
     try {
+      final data = {
+        "username": user.username,
+        "last_name": user.lastName,
+        "name": user.name,
+        "patronymic": user.patronymic,
+        "birthday": DateFormatters.formatToBirthday(user.birthday),
+      };
+
+      if (password != null) data["password_hash"] = password;
+
       final response = await _dio.patch(
         "/me",
-        data: {
-          "username": user.username,
-          "last_name": user.lastName,
-          "name": user.name,
-          "patronymic": user.patronymic,
-          "birthday": DateFormatters.formatToBirthday(user.birthday),
-        },
+        data: data,
       ).catchError((err) => err.response);
 
       if (response.statusCode == 401) return const Left(InvalidCredentials());

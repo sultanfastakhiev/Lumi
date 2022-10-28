@@ -45,7 +45,7 @@ class AccountScreen extends StatelessWidget {
                  MenuTile(
                   icon: FeatherIcons.lock,
                   text: "Пароль",
-                  onTap: () {},
+                  onTap: () => AutoRouter.of(context).push(const PasswordScreenRoute()),
                 ),
                  MenuTile(
                   icon: FeatherIcons.info,

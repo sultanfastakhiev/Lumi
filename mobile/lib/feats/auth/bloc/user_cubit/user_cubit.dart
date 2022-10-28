@@ -116,6 +116,14 @@ class UserCubit extends HydratedCubit<UserState> with BlocLoggy {
     );
   }
 
+  Future<Failure?> updatePassword(String password) async {
+    final state = this.state;
+    if (state is! AuthorizedState) return const InvalidState();
+
+    final either = await _updateUserEndpoint(state.user, password: password);
+    return either.fold((failure) => failure, (_) => null);
+  }
+
   @override
   UserState? fromJson(Map<String, dynamic> json) {
     if (json["type"] == "user/authorized") return AuthorizedState.fromJson(json);
