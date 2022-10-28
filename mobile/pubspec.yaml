@@ -39,6 +39,7 @@ dependencies:
     file_picker: ^5.2.2
     package_info_plus: ^3.0.1
     url_launcher: ^6.1.6
+    in_app_review: ^2.0.4
 
     # UI
     curved_progress_bar: ^1.0.2
