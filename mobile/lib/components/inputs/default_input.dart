@@ -54,7 +54,7 @@ class Input extends StatelessWidget {
             textInputAction: textInputAction,
             style: TextStyles.textMdNormal.apply(color: graySwatch.shade900),
             minLines: minLines,
-            maxLines: maxLines,
+            maxLines: maxLines ?? 1,
             decoration: InputDecoration(
               isDense: true,
               contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),

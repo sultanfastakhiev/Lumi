@@ -31,3 +31,11 @@ class EmailAlreadyTaken extends Failure {
 class FailedToPredict extends Failure {
   const FailedToPredict() : super("Произошла ошибка при диагностирование. Попробуйте снова чуть позже");
 }
+
+class InvalidState extends Failure {
+  const InvalidState() : super("Неверное состояние приложения");
+}
+
+class UsernameUniqueFailure extends Failure {
+  const UsernameUniqueFailure(String username) : super("Username $username уже используется другим пользователем");
+}

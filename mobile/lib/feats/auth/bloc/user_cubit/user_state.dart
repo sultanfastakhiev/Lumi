@@ -14,15 +14,22 @@ class AuthorizedState extends UserState {
   });
 
   Map<String, dynamic> toJson() => {
-    "type": "user/authorized",
-    "token": token,
-    "user": user.toHydratedJson(),
-  };
+        "type": "user/authorized",
+        "token": token,
+        "user": user.toHydratedJson(),
+      };
 
   factory AuthorizedState.fromJson(Map<String, dynamic> json) {
     return AuthorizedState(
-        user: User.fromHydratedJson(json),
-        token: json["token"],
+      user: User.fromHydratedJson(json),
+      token: json["token"],
+    );
+  }
+
+  AuthorizedState copyWith({User? user, String? token}) {
+    return AuthorizedState(
+      user: user ?? this.user,
+      token: token ?? this.token,
     );
   }
 
@@ -36,10 +43,9 @@ class LoadingUserState extends UserState {
 }
 
 class NotAuthorizedState extends UserState {
-
   Map<String, dynamic> toJson() => {
-    "type": "not-authorized",
-  };
+        "type": "not-authorized",
+      };
 
   @override
   List<Object> get props => [];

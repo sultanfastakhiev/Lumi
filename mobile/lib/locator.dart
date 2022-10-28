@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:mobile/feats/account/api/update_user_endpoint.dart';
 import 'package:mobile/feats/auth/api/check_username_uniqueness_endpoint.dart';
 import 'package:mobile/feats/auth/api/get_me_endpoint.dart';
 import 'package:mobile/feats/auth/api/login_user_endpoint.dart';
@@ -30,4 +31,5 @@ void setupLocator() {
   locator.registerLazySingleton(() => DecipherAnalyzesEndpoint());
   locator.registerLazySingleton(() => PredictSkinCancerEndpoint());
   locator.registerLazySingleton(() => PredictBrainTumorsEndpoint());
+  locator.registerLazySingleton(() => UpdateUserEndpoint());
 }

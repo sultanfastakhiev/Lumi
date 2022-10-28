@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:mobile/feats/account/api/update_user_endpoint.dart';
 import 'package:mobile/feats/auth/api/get_me_endpoint.dart';
 import 'package:mobile/feats/auth/api/login_user_endpoint.dart';
 import 'package:mobile/feats/auth/api/signup_user_endpoint.dart';
@@ -16,12 +17,14 @@ class UserCubit extends HydratedCubit<UserState> with BlocLoggy {
   late final HiveService _hiveService;
   late final LoginUserEndpoint _loginUserEndpoint;
   late final SignupUserEndpoint _signupUserEndpoint;
+  late final UpdateUserEndpoint _updateUserEndpoint;
 
   UserCubit() : super(LoadingUserState()) {
     _getMeEndpoint = locator<GetMeEndpoint>();
     _hiveService = locator<HiveService>();
     _loginUserEndpoint = locator<LoginUserEndpoint>();
     _signupUserEndpoint = locator<SignupUserEndpoint>();
+    _updateUserEndpoint = locator<UpdateUserEndpoint>();
   }
 
   Future<void> getMe() async {
@@ -81,6 +84,34 @@ class UserCubit extends HydratedCubit<UserState> with BlocLoggy {
             return null;
           },
         );
+      },
+    );
+  }
+
+  Future<Failure?> update({
+    required String username,
+    required String name,
+    required String lastName,
+    required String patronymic,
+    required DateTime birthday,
+  }) async {
+    final state = this.state;
+    if (state is! AuthorizedState) return const InvalidState();
+
+    final newUser = state.user.copyWith(
+      username: username,
+      name: name,
+      lastName: lastName,
+      patronymic: patronymic,
+      birthday: birthday,
+    );
+
+    final either = await _updateUserEndpoint(newUser);
+    return either.fold(
+      (failure) => failure,
+      (_) {
+        emit(state.copyWith(user: newUser));
+        return null;
       },
     );
   }

@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
@@ -9,6 +10,7 @@ import 'package:mobile/components/user_tile.dart';
 import 'package:mobile/feats/account/components/menu_tile.dart';
 import 'package:mobile/feats/auth/bloc/user_cubit/user_cubit.dart';
 import 'package:mobile/feats/auth/entities/user/user.dart';
+import 'package:mobile/router/router.gr.dart';
 import 'package:mobile/utils/failure.dart';
 
 class AccountScreen extends StatelessWidget {
@@ -38,7 +40,7 @@ class AccountScreen extends StatelessWidget {
                  MenuTile(
                   icon: FeatherIcons.user,
                   text: "Профиль",
-                  onTap: () {},
+                  onTap: () => AutoRouter.of(context).push(const ProfileScreenRoute()),
                 ),
                  MenuTile(
                   icon: FeatherIcons.lock,
