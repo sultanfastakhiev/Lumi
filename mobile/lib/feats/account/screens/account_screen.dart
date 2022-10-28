@@ -50,7 +50,7 @@ class AccountScreen extends StatelessWidget {
                  MenuTile(
                   icon: FeatherIcons.info,
                   text: "О приложение",
-                  onTap: () {},
+                  onTap: () => AutoRouter.of(context).push(const AboutAppScreenRoute()),
                 ),
                  MenuTile(
                   icon: FeatherIcons.logOut,
