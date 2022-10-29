@@ -7,12 +7,12 @@ import { store } from "@redux/store";
 import { getHomeRoute } from "@router/routes";
 import { useAppDispatch } from "@redux/hooks";
 import { useErrorToast } from "@core/utils/ui/use-toast";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/router";
 
 export function useSignup() {
     const dispatch = useAppDispatch()
     const showError = useErrorToast()
-    const navigate = useNavigate()
+    const router = useRouter()
     
     return {
         formik: createFormik({
@@ -41,9 +41,8 @@ export function useSignup() {
                 } else if (authType === "not-authorized") {
                     showError("Пользователь не авторизован")
                 } else {
-                    navigate(getHomeRoute(), {replace: true})
+                    return router.replace(getHomeRoute())
                 }
-                
             },
             validationSchema: yup.object().shape({
                 username: yup.string().required("Это поле обязательно"),

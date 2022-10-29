@@ -4,18 +4,17 @@ import { Form, Formik } from "formik";
 import { FormInput } from "@core/components/inputs/form/form-input";
 import { FormPasswordInput } from "@core/components/inputs/form/form-password-input";
 import { SubmitButton } from "@core/components/buttons/form/submit-button";
-import { Link } from "react-router-dom";
+import Link  from "next/link";
 import { useSignup } from "@feats/auth/pages/signup/use-signup";
-import { Helmet } from "react-helmet";
-
+import Head from "next/head";
 
 export const SignupPage: React.FC = () => {
     const { formik } = useSignup()
     
     return <div className={ styles.page }>
-        <Helmet>
+        <Head>
             <title>Регистрация | Lumi</title>
-        </Helmet>
+        </Head>
         <div className={ styles.content }>
             <Formik { ...formik }>
                 <Form className={ styles.loginForm }>
@@ -58,7 +57,7 @@ export const SignupPage: React.FC = () => {
                         fullWidth/>
                     <SubmitButton fullWidth>Создать аккаунт</SubmitButton>
                     <span className={styles.actions}>
-                        Есть аккаунт? <Link to="/login">Войти</Link>
+                        Есть аккаунт? <Link href="/login">Войти</Link>
                     </span>
                 </Form>
             </Formik>
