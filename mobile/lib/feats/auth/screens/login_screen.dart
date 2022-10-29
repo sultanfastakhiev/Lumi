@@ -37,7 +37,7 @@ class _LoginScreenState extends State<LoginScreen> {
         return showError(context, failure.message);
       }
       await context.read<PatientsListCubit>().load();
-      AutoRouter.of(context).pushAndPopUntil(const MainScreenRoute(), predicate: (_) => false);
+      AutoRouter.of(context).replace(const MainScreenRoute());
     }
   }
 

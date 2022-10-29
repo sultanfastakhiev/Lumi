@@ -57,7 +57,7 @@ class AccountScreen extends StatelessWidget {
                   text: "Выйти",
                   onTap: () {
                     context.read<UserCubit>().logout();
-                    AutoRouter.of(context).pushAndPopUntil(const LoginScreenRoute(), predicate: (route) => false);
+                    AutoRouter.of(context).replace(const LoginScreenRoute());
                   },
                 )
               ],
