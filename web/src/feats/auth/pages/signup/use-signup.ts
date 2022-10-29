@@ -4,7 +4,7 @@ import { checkUsernameUniqueness } from "@api/check-username-uniqueness";
 import { createUser } from "@feats/auth/redux/auth/auth-actions";
 import { selectAuthType } from "@feats/auth/redux/auth/auth-selectors";
 import { store } from "@redux/store";
-import { getHomeRoute } from "@router/routes";
+import { getHomeRoute } from "@router/get-home-route";
 import { useAppDispatch } from "@redux/hooks";
 import { useErrorToast } from "@core/utils/ui/use-toast";
 import { useRouter } from "next/router";
