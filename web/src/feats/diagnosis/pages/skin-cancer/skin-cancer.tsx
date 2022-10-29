@@ -12,7 +12,7 @@ import { PredictionResults } from "@feats/diagnosis/components/prediction-result
 import { Button, Divider, FileUpload } from "react-untitled-ui";
 import { useSkinCancer } from "@feats/diagnosis/pages/skin-cancer/use-skin-cancer";
 import { PickedImage } from "@core/components/picked-image/picked-image";
-import { Helmet } from "react-helmet";
+import Head from "next/head";
 
 export type SkinCancerProps = {}
 
@@ -20,9 +20,9 @@ export const SkinCancer: React.FC<SkinCancerProps> = () => {
     const {file, onPick, loading, handleButtonClick, predictions, clearFile} = useSkinCancer()
 
     return <Layout>
-        <Helmet>
+        <Head>
             <title>Диагностика рака кожи | Lumi</title>
-        </Helmet>
+        </Head>
         <ContentWrapper>
             <Title>Диагностика рака кожи</Title>
             <Subtitle>Автоматическая диагностика рака кожи по фотографии опухоли</Subtitle>

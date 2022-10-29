@@ -12,7 +12,7 @@ import { PickedImage } from "@core/components/picked-image/picked-image";
 import { Button, Divider, FileUpload } from "react-untitled-ui";
 import { PredictionResults } from "@feats/diagnosis/components/prediction-results/prediction-results";
 import { useKidneyDiseases } from "@feats/diagnosis/pages/kidney-diseases/use-kidney-diseases";
-import { Helmet } from "react-helmet";
+import Head from "next/head";
 
 export type KidneyDiseasesProps = {
 
@@ -22,9 +22,9 @@ export const KidneyDiseases: React.FC<KidneyDiseasesProps> = () => {
     const { file, clearFile, onPick, loading, handleButtonClick, predictions } = useKidneyDiseases()
 
     return <Layout>
-        <Helmet>
+        <Head>
             <title>Диагностика почечных образований | Lumi</title>
-        </Helmet>
+        </Head>
         <ContentWrapper>
             <Title>Диагностика почечных образований</Title>
             <Subtitle>Автоматическая диагностика опасных почечных новобразований по КТ почек</Subtitle>

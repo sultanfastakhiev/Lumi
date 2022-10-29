@@ -3,7 +3,6 @@ import type { AppProps } from 'next/app'
 // Styles
 import "@core/styles/globals.scss";
 import "@core/styles/normalize.css";
-import "@core/styles/chakra.scss";
 import "@core/styles/forms.scss";
 import "react-untitled-ui/dist/esm/index.css";
 import "@core/styles/untitled-ui.scss";

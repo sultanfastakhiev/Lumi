@@ -1,11 +1,9 @@
 import React from "react";
-import { ResponsiveValue } from "@chakra-ui/react";
 import { useField, useFormikContext } from "formik";
 import { Textarea, TextareaProps } from "react-untitled-ui";
 
 export type Props = {
     name: string,
-    col?: ResponsiveValue<number>,
 } & TextareaProps
 
 export const FormTextArea: React.FC<Props> = React.memo((props) => {

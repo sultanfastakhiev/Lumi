@@ -8,17 +8,17 @@ import { Plus, Search } from "react-feather";
 import { usePatientsList } from "@feats/patients/pages/patients-list/use-patients-list";
 import { LoadingView } from "@core/components/loading/loading-view/loading-view";
 import { PatientCard } from "@feats/patients/components/patient-card/patient-card";
-import { Helmet } from "react-helmet";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 export const PatientsListPage: React.FC = () => {
     const {data, isLoading} = usePatientsList();
     const router = useRouter()
     
     return <Layout className={ styles.page }>
-        <Helmet>
+        <Head>
             <title>Мои пациенты | Lumi</title>
-        </Helmet>
+        </Head>
         {
             isLoading
                 ? <LoadingView/>
