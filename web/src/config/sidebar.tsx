@@ -24,7 +24,7 @@ export const sidebarConfig: SidebarConfig = {
                 },
                 {
                     text: "Опухоли мозга",
-                    url: "/apps/diagnosis/brain-cancer",
+                    url: "/apps/diagnosis/brain-tumors",
                 },
                 {
                     text: "Заболевания почек",

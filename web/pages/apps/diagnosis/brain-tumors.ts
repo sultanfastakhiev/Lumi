@@ -1,0 +1,1 @@
+export { BrainTumors as default } from "@feats/diagnosis/pages/brain-tumors"

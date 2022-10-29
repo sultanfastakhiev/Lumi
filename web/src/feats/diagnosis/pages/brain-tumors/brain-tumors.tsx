@@ -11,20 +11,18 @@ import {
 import { PickedImage } from "@core/components/picked-image/picked-image";
 import { Button, Divider, FileUpload } from "react-untitled-ui";
 import { PredictionResults } from "@feats/diagnosis/components/prediction-results/prediction-results";
-import { useBrainCancer } from "@feats/diagnosis/pages/brain-cancer/use-brain-cancer";
-import { Helmet } from "react-helmet";
+import { useBrainTumors } from "@feats/diagnosis/pages/brain-tumors/use-brain-tumors";
+import Head from "next/head";
 
-export type BrainCancerProps = {
-    
-}
+export type BrainCancerProps = {}
 
-export const BrainCancer: React.FC<BrainCancerProps> = () => {
-    const { file, clearFile, onPick, loading, handleButtonClick, predictions } = useBrainCancer()
-    
+export const BrainTumors: React.FC<BrainCancerProps> = () => {
+    const {file, clearFile, onPick, loading, handleButtonClick, predictions} = useBrainTumors()
+
     return <Layout>
-        <Helmet>
+        <Head>
             <title>Диагностика опухолей мозга | Lumi</title>
-        </Helmet>
+        </Head>
         <ContentWrapper>
             <Title>Диагностика опухолей мозга</Title>
             <Subtitle>Автоматическая диагностика злокачественных опухолей по МРТ головного мозга</Subtitle>

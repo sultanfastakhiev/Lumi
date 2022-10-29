@@ -1,6 +1,6 @@
 import { Route } from "@router/router";
 import { SkinCancer } from "@feats/diagnosis/pages/skin-cancer/skin-cancer";
-import { BrainCancer } from "@feats/diagnosis/pages/brain-cancer/brain-cancer";
+import { BrainTumors } from "@feats/diagnosis/pages/brain-tumors/brain-tumors";
 import { KidneyDiseases } from "@feats/diagnosis/pages/kidney-diseases/kidney-diseases";
 import { Analyzes } from "@feats/diagnosis/pages/analyzes/analyzes";
 
@@ -12,7 +12,7 @@ export const diagnosisRoutes: Route[] = [
     },
     {
         path: "/apps/diagnosis/brain-cancer",
-        page: <BrainCancer/>,
+        page: <BrainTumors/>,
         authentication: true,
     },
     {
