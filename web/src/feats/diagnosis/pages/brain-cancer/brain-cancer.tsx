@@ -23,7 +23,7 @@ export const BrainCancer: React.FC<BrainCancerProps> = () => {
     
     return <Layout>
         <Helmet>
-            <title>Диагностика рака мозга | Lumi</title>
+            <title>Диагностика опухолей мозга | Lumi</title>
         </Helmet>
         <ContentWrapper>
             <Title>Диагностика опухолей мозга</Title>
