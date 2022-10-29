@@ -5,16 +5,16 @@ import {
     openSidebar,
     selectIsSidebarItemExpanded,
     selectIsSidebarOpen,
-    toggle, toggleExpand
+    toggle, toggleExpand, selectIsSidebarMobileOpen, toggleMobile
 } from "@core/redux/sidebar-reducer";
 import { logout } from "@feats/auth/redux/auth/auth-reducer";
 import { ContainerNavPage, isContainerNavPage, NavPage } from "@core/types/layout";
 import useCollapse from "react-collapsed";
-import { useMediaQuery } from "react-untitled-ui";
 import { useRouter } from "next/router";
 import { useQuery } from "@tanstack/react-query";
 import { fetchMe } from "@api/fetch-me";
 import { isServer } from "@core/utils";
+import { useMediaQuery } from "react-responsive";
 
 /**
  * React hook that load & changes is sidebar opened UI property
@@ -23,15 +23,25 @@ import { isServer } from "@core/utils";
 export function useSidebar() {
     const dispatch = useAppDispatch()
     const open = useAppSelector(selectIsSidebarOpen)
+    const mobileOpen = useAppSelector(selectIsSidebarMobileOpen)
     const userData = useQuery(["me"], fetchMe)
     const router = useRouter()
 
+    const isMobile = useMediaQuery({query: "(max-width: 767px)"})
+    
     const toggleSidebar = useCallback(() => {
-        dispatch(toggle())
-    }, [dispatch])
+        if (isMobile) {
+            dispatch(toggleMobile())
+        } else {
+            dispatch(toggle())
+        }
+    }, [dispatch, isMobile])
 
     return {
-        isSidebarOpened: open, toggleSidebar,
+        isSidebarOpened: open,
+        mobileOpen,
+        toggleSidebar,
+        toggleMainSidebar: () => dispatch(toggle()),
         handleLogout: useCallback(() => {
             dispatch(logout())
             return router.replace("/login")
@@ -49,7 +59,7 @@ export function useSidebarItem(props: NavPage | ContainerNavPage, key: string) {
     const dispatch = useAppDispatch()
     const expanded = useAppSelector(selectIsSidebarItemExpanded(key))
     const [firstRender, setFirstRender] = useState(true)
-    const [isMobile] = useMediaQuery('(max-width: 767px)')
+    const isMobile = useMediaQuery({query: '(max-width: 767px)'})
     const router = useRouter()
 
     useEffect(() => {

@@ -17,7 +17,7 @@ import Link from "next/link";
 import { fullName } from "@feats/auth/entities";
 
 export const Sidebar: React.FC<SidebarConfig> = React.memo((props) => {
-    const {isSidebarOpened: open, toggleSidebar: toggle, user, handleLogout} = useSidebar()
+    const {isSidebarOpened: open, toggleSidebar: toggle, user, handleLogout, mobileOpen, toggleMainSidebar} = useSidebar()
     const containerRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
@@ -31,9 +31,9 @@ export const Sidebar: React.FC<SidebarConfig> = React.memo((props) => {
         return () => window.removeEventListener("resize", handleResize)
     }, [])
 
-    return <div className={ styles.sidebar } data-open={ open }>
-        <div className={ styles.container } data-open={ open } ref={ containerRef }>
-            <div className={ styles.nav } data-open={ open }>
+    return <div className={ styles.sidebar } data-open={ open } data-mobileOpen={ mobileOpen }>
+        <div className={ styles.container } data-open={ open } data-mobileOpen={ mobileOpen } ref={ containerRef }>
+            <div className={ styles.nav } data-open={ open } data-mobileOpen={ mobileOpen }>
                 <div className={ styles.header }>
                     <Logo/>
                     <div className={ styles.disposable }>
@@ -54,7 +54,7 @@ export const Sidebar: React.FC<SidebarConfig> = React.memo((props) => {
             <div className={ styles.footer }>
                 <div className={ styles.navigation }>
                     <div className={ styles.user }>
-                        <Avatar onClick={ toggle } className={ styles.avatar }/>
+                        <Avatar onClick={ toggleMainSidebar } className={ styles.avatar }/>
                         <div className={ styles.disposable } data-type="user">
                             <div className={ styles.userDetails }>
                                 <h5 className={ styles.userName }>{ fullName(user) }</h5>
@@ -70,7 +70,7 @@ export const Sidebar: React.FC<SidebarConfig> = React.memo((props) => {
                 </div>
             </div>
         </div>
-        <div className={ styles.sidebarOverlay } data-open={ open } onClick={ toggle }/>
+        <div className={ styles.sidebarOverlay } data-open={ open } data-mobileOpen={ mobileOpen } onClick={ toggle }/>
     </div>
 })
 

@@ -7,6 +7,7 @@ import { isClient } from "@core/utils";
 
 type State = {
     open: boolean,
+    mobileOpen: boolean,
     expandedItems: string[], // stores keys of expanded items
 }
 
@@ -20,6 +21,7 @@ const slice = createSlice({
                     x => window.location.href.includes(x.url)
                 )
             ).map(x => x.key),
+            mobileOpen: false,
         } as State
     },
     reducers: {
@@ -27,6 +29,10 @@ const slice = createSlice({
             const newValue = !state.open
             LocalStorage.isSidebarOpened = newValue
             state.open = newValue;
+        },
+        toggleMobile: (state) => {
+            state.mobileOpen = !state.mobileOpen;
+            state.open = true;
         },
         openSidebar: (state) => {
             LocalStorage.isSidebarOpened = true
@@ -47,7 +53,8 @@ const slice = createSlice({
 
 export default slice.reducer
 
-export const {toggle, openSidebar, toggleExpand, shrinkItem} = slice.actions
+export const {toggle, openSidebar, toggleExpand, shrinkItem, toggleMobile} = slice.actions
 
 export const selectIsSidebarOpen = (state: RootState) => state.coreSidebar.open
+export const selectIsSidebarMobileOpen = (state: RootState) => state.coreSidebar.mobileOpen
 export const selectIsSidebarItemExpanded = (key: string) => (state: RootState) => state.coreSidebar.expandedItems.includes(key)

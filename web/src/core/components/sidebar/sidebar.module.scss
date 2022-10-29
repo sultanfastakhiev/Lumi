@@ -264,7 +264,7 @@ $sizedBarOpenWidth: 280px;
             max-width: $sizedBarOpenWidth;
             transition: transform 0.5s;
 
-            &:not(&[data-open=true]) {
+            &:not(&[data-mobileOpen=true]) {
                 transform: translateX(-$sizedBarOpenWidth);
             }
         }
@@ -292,7 +292,7 @@ $sizedBarOpenWidth: 280px;
         pointer-events: none;
 
         @include lt-md {
-            &[data-open=true] {
+            &[data-mobileOpen=true] {
                 opacity: 1;
                 pointer-events: initial;
             }
