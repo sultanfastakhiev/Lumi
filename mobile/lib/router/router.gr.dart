@@ -11,19 +11,20 @@
 // ignore_for_file: type=lint
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:io' as _i22;
+import 'dart:io' as _i23;
 
-import 'package:auto_route/auto_route.dart' as _i20;
-import 'package:flutter/material.dart' as _i21;
+import 'package:auto_route/auto_route.dart' as _i21;
+import 'package:flutter/material.dart' as _i22;
 
 import '../feats/account/components/feedback_screen.dart' as _i19;
 import '../feats/account/screens/about_app_screen.dart' as _i18;
 import '../feats/account/screens/password_screen.dart' as _i17;
+import '../feats/account/screens/privacy_policy_screen.dart' as _i20;
 import '../feats/account/screens/profile_screen.dart' as _i16;
 import '../feats/auth/screens/login_screen.dart' as _i2;
 import '../feats/auth/screens/signup_screen_stage_1.dart' as _i3;
 import '../feats/auth/screens/signup_screen_stage_2.dart' as _i4;
-import '../feats/diagnosis/entities/prediction/prediction.dart' as _i23;
+import '../feats/diagnosis/entities/prediction/prediction.dart' as _i24;
 import '../feats/diagnosis/screens/analyzes/analyzes_decoding_results_screen.dart'
     as _i13;
 import '../feats/diagnosis/screens/analyzes/analyzes_decoding_screen.dart'
@@ -42,33 +43,33 @@ import '../feats/main/screens/create_patient_screen.dart' as _i6;
 import '../feats/main/screens/main_screen.dart' as _i5;
 import '../feats/main/screens/patient_detail_screen.dart' as _i7;
 
-class AppRouter extends _i20.RootStackRouter {
-  AppRouter([_i21.GlobalKey<_i21.NavigatorState>? navigatorKey])
+class AppRouter extends _i21.RootStackRouter {
+  AppRouter([_i22.GlobalKey<_i22.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
-  final Map<String, _i20.PageFactory> pagesMap = {
+  final Map<String, _i21.PageFactory> pagesMap = {
     InitScreenRoute.name: (routeData) {
-      return _i20.CupertinoPageX<dynamic>(
+      return _i21.CupertinoPageX<dynamic>(
         routeData: routeData,
         child: const _i1.InitScreen(),
       );
     },
     LoginScreenRoute.name: (routeData) {
-      return _i20.CupertinoPageX<dynamic>(
+      return _i21.CupertinoPageX<dynamic>(
         routeData: routeData,
         child: const _i2.LoginScreen(),
       );
     },
     FirstStageSignupScreenRoute.name: (routeData) {
-      return _i20.CupertinoPageX<dynamic>(
+      return _i21.CupertinoPageX<dynamic>(
         routeData: routeData,
         child: const _i3.FirstStageSignupScreen(),
       );
     },
     SecondStageSignupScreenRoute.name: (routeData) {
       final args = routeData.argsAs<SecondStageSignupScreenRouteArgs>();
-      return _i20.CupertinoPageX<dynamic>(
+      return _i21.CupertinoPageX<dynamic>(
         routeData: routeData,
         child: _i4.SecondStageSignupScreen(
           key: args.key,
@@ -78,20 +79,20 @@ class AppRouter extends _i20.RootStackRouter {
       );
     },
     MainScreenRoute.name: (routeData) {
-      return _i20.CupertinoPageX<dynamic>(
+      return _i21.CupertinoPageX<dynamic>(
         routeData: routeData,
         child: const _i5.MainScreen(),
       );
     },
     CreatePatientScreenRoute.name: (routeData) {
-      return _i20.CupertinoPageX<dynamic>(
+      return _i21.CupertinoPageX<dynamic>(
         routeData: routeData,
         child: const _i6.CreatePatientScreen(),
       );
     },
     PatientDetailScreenRoute.name: (routeData) {
       final args = routeData.argsAs<PatientDetailScreenRouteArgs>();
-      return _i20.CupertinoPageX<dynamic>(
+      return _i21.CupertinoPageX<dynamic>(
         routeData: routeData,
         child: _i7.PatientDetailScreen(
           key: args.key,
@@ -100,32 +101,32 @@ class AppRouter extends _i20.RootStackRouter {
       );
     },
     KidneyDiseasesScreenRoute.name: (routeData) {
-      return _i20.CupertinoPageX<dynamic>(
+      return _i21.CupertinoPageX<dynamic>(
         routeData: routeData,
         child: const _i8.KidneyDiseasesScreen(),
       );
     },
     AnalyzesDecodingScreenRoute.name: (routeData) {
-      return _i20.CupertinoPageX<dynamic>(
+      return _i21.CupertinoPageX<dynamic>(
         routeData: routeData,
         child: const _i9.AnalyzesDecodingScreen(),
       );
     },
     SkinCancerScreenRoute.name: (routeData) {
-      return _i20.CupertinoPageX<dynamic>(
+      return _i21.CupertinoPageX<dynamic>(
         routeData: routeData,
         child: const _i10.SkinCancerScreen(),
       );
     },
     BrainTumorsScreenRoute.name: (routeData) {
-      return _i20.CupertinoPageX<dynamic>(
+      return _i21.CupertinoPageX<dynamic>(
         routeData: routeData,
         child: const _i11.BrainTumorsScreen(),
       );
     },
     KidneyDiseasesResultsScreenRoute.name: (routeData) {
       final args = routeData.argsAs<KidneyDiseasesResultsScreenRouteArgs>();
-      return _i20.CupertinoPageX<dynamic>(
+      return _i21.CupertinoPageX<dynamic>(
         routeData: routeData,
         child: _i12.KidneyDiseasesResultsScreen(
           key: args.key,
@@ -136,7 +137,7 @@ class AppRouter extends _i20.RootStackRouter {
     },
     DecipherAnalysesResultsScreenRoute.name: (routeData) {
       final args = routeData.argsAs<DecipherAnalysesResultsScreenRouteArgs>();
-      return _i20.CupertinoPageX<dynamic>(
+      return _i21.CupertinoPageX<dynamic>(
         routeData: routeData,
         child: _i13.DecipherAnalysesResultsScreen(
           key: args.key,
@@ -146,7 +147,7 @@ class AppRouter extends _i20.RootStackRouter {
     },
     SkinCancerResultsScreenRoute.name: (routeData) {
       final args = routeData.argsAs<SkinCancerResultsScreenRouteArgs>();
-      return _i20.CupertinoPageX<dynamic>(
+      return _i21.CupertinoPageX<dynamic>(
         routeData: routeData,
         child: _i14.SkinCancerResultsScreen(
           key: args.key,
@@ -157,7 +158,7 @@ class AppRouter extends _i20.RootStackRouter {
     },
     BrainTumorsResultsScreenRoute.name: (routeData) {
       final args = routeData.argsAs<BrainTumorsResultsScreenRouteArgs>();
-      return _i20.CupertinoPageX<dynamic>(
+      return _i21.CupertinoPageX<dynamic>(
         routeData: routeData,
         child: _i15.BrainTumorsResultsScreen(
           key: args.key,
@@ -167,115 +168,125 @@ class AppRouter extends _i20.RootStackRouter {
       );
     },
     ProfileScreenRoute.name: (routeData) {
-      return _i20.CupertinoPageX<dynamic>(
+      return _i21.CupertinoPageX<dynamic>(
         routeData: routeData,
         child: const _i16.ProfileScreen(),
       );
     },
     PasswordScreenRoute.name: (routeData) {
-      return _i20.CupertinoPageX<dynamic>(
+      return _i21.CupertinoPageX<dynamic>(
         routeData: routeData,
         child: const _i17.PasswordScreen(),
       );
     },
     AboutAppScreenRoute.name: (routeData) {
-      return _i20.CupertinoPageX<dynamic>(
+      return _i21.CupertinoPageX<dynamic>(
         routeData: routeData,
         child: const _i18.AboutAppScreen(),
       );
     },
     FeedbackScreenRoute.name: (routeData) {
-      return _i20.CupertinoPageX<dynamic>(
+      return _i21.CupertinoPageX<dynamic>(
         routeData: routeData,
         child: const _i19.FeedbackScreen(),
+      );
+    },
+    PrivacyPolicyScreenRoute.name: (routeData) {
+      return _i21.CupertinoPageX<dynamic>(
+        routeData: routeData,
+        child: const _i20.PrivacyPolicyScreen(),
       );
     },
   };
 
   @override
-  List<_i20.RouteConfig> get routes => [
-        _i20.RouteConfig(
+  List<_i21.RouteConfig> get routes => [
+        _i21.RouteConfig(
           InitScreenRoute.name,
           path: '/',
         ),
-        _i20.RouteConfig(
+        _i21.RouteConfig(
           LoginScreenRoute.name,
           path: '/login-screen',
         ),
-        _i20.RouteConfig(
+        _i21.RouteConfig(
           FirstStageSignupScreenRoute.name,
           path: '/first-stage-signup-screen',
         ),
-        _i20.RouteConfig(
+        _i21.RouteConfig(
           SecondStageSignupScreenRoute.name,
           path: '/second-stage-signup-screen',
         ),
-        _i20.RouteConfig(
+        _i21.RouteConfig(
           MainScreenRoute.name,
           path: '/main-screen',
         ),
-        _i20.RouteConfig(
+        _i21.RouteConfig(
           CreatePatientScreenRoute.name,
           path: '/create-patient-screen',
         ),
-        _i20.RouteConfig(
+        _i21.RouteConfig(
           PatientDetailScreenRoute.name,
           path: '/patient-detail-screen',
         ),
-        _i20.RouteConfig(
+        _i21.RouteConfig(
           KidneyDiseasesScreenRoute.name,
           path: '/kidney-diseases-screen',
         ),
-        _i20.RouteConfig(
+        _i21.RouteConfig(
           AnalyzesDecodingScreenRoute.name,
           path: '/analyzes-decoding-screen',
         ),
-        _i20.RouteConfig(
+        _i21.RouteConfig(
           SkinCancerScreenRoute.name,
           path: '/skin-cancer-screen',
         ),
-        _i20.RouteConfig(
+        _i21.RouteConfig(
           BrainTumorsScreenRoute.name,
           path: '/brain-tumors-screen',
         ),
-        _i20.RouteConfig(
+        _i21.RouteConfig(
           KidneyDiseasesResultsScreenRoute.name,
           path: '/kidney-diseases-results-screen',
         ),
-        _i20.RouteConfig(
+        _i21.RouteConfig(
           DecipherAnalysesResultsScreenRoute.name,
           path: '/decipher-analyses-results-screen',
         ),
-        _i20.RouteConfig(
+        _i21.RouteConfig(
           SkinCancerResultsScreenRoute.name,
           path: '/skin-cancer-results-screen',
         ),
-        _i20.RouteConfig(
+        _i21.RouteConfig(
           BrainTumorsResultsScreenRoute.name,
           path: '/brain-tumors-results-screen',
         ),
-        _i20.RouteConfig(
+        _i21.RouteConfig(
           ProfileScreenRoute.name,
           path: '/profile-screen',
         ),
-        _i20.RouteConfig(
+        _i21.RouteConfig(
           PasswordScreenRoute.name,
           path: '/password-screen',
         ),
-        _i20.RouteConfig(
+        _i21.RouteConfig(
           AboutAppScreenRoute.name,
           path: '/about-app-screen',
         ),
-        _i20.RouteConfig(
+        _i21.RouteConfig(
           FeedbackScreenRoute.name,
           path: '/feedback-screen',
+        ),
+        _i21.RouteConfig(
+          PrivacyPolicyScreenRoute.name,
+          path: '/privacy-policy-screen',
         ),
       ];
 }
 
 /// generated route for
 /// [_i1.InitScreen]
-class InitScreenRoute extends _i20.PageRouteInfo<void> {
+class InitScreenRoute extends _i21.PageRouteInfo<void> {
   const InitScreenRoute()
       : super(
           InitScreenRoute.name,
@@ -287,7 +298,7 @@ class InitScreenRoute extends _i20.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.LoginScreen]
-class LoginScreenRoute extends _i20.PageRouteInfo<void> {
+class LoginScreenRoute extends _i21.PageRouteInfo<void> {
   const LoginScreenRoute()
       : super(
           LoginScreenRoute.name,
@@ -299,7 +310,7 @@ class LoginScreenRoute extends _i20.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i3.FirstStageSignupScreen]
-class FirstStageSignupScreenRoute extends _i20.PageRouteInfo<void> {
+class FirstStageSignupScreenRoute extends _i21.PageRouteInfo<void> {
   const FirstStageSignupScreenRoute()
       : super(
           FirstStageSignupScreenRoute.name,
@@ -312,9 +323,9 @@ class FirstStageSignupScreenRoute extends _i20.PageRouteInfo<void> {
 /// generated route for
 /// [_i4.SecondStageSignupScreen]
 class SecondStageSignupScreenRoute
-    extends _i20.PageRouteInfo<SecondStageSignupScreenRouteArgs> {
+    extends _i21.PageRouteInfo<SecondStageSignupScreenRouteArgs> {
   SecondStageSignupScreenRoute({
-    _i21.Key? key,
+    _i22.Key? key,
     required String username,
     required String password,
   }) : super(
@@ -337,7 +348,7 @@ class SecondStageSignupScreenRouteArgs {
     required this.password,
   });
 
-  final _i21.Key? key;
+  final _i22.Key? key;
 
   final String username;
 
@@ -351,7 +362,7 @@ class SecondStageSignupScreenRouteArgs {
 
 /// generated route for
 /// [_i5.MainScreen]
-class MainScreenRoute extends _i20.PageRouteInfo<void> {
+class MainScreenRoute extends _i21.PageRouteInfo<void> {
   const MainScreenRoute()
       : super(
           MainScreenRoute.name,
@@ -363,7 +374,7 @@ class MainScreenRoute extends _i20.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i6.CreatePatientScreen]
-class CreatePatientScreenRoute extends _i20.PageRouteInfo<void> {
+class CreatePatientScreenRoute extends _i21.PageRouteInfo<void> {
   const CreatePatientScreenRoute()
       : super(
           CreatePatientScreenRoute.name,
@@ -376,9 +387,9 @@ class CreatePatientScreenRoute extends _i20.PageRouteInfo<void> {
 /// generated route for
 /// [_i7.PatientDetailScreen]
 class PatientDetailScreenRoute
-    extends _i20.PageRouteInfo<PatientDetailScreenRouteArgs> {
+    extends _i21.PageRouteInfo<PatientDetailScreenRouteArgs> {
   PatientDetailScreenRoute({
-    _i21.Key? key,
+    _i22.Key? key,
     required String id,
   }) : super(
           PatientDetailScreenRoute.name,
@@ -398,7 +409,7 @@ class PatientDetailScreenRouteArgs {
     required this.id,
   });
 
-  final _i21.Key? key;
+  final _i22.Key? key;
 
   final String id;
 
@@ -410,7 +421,7 @@ class PatientDetailScreenRouteArgs {
 
 /// generated route for
 /// [_i8.KidneyDiseasesScreen]
-class KidneyDiseasesScreenRoute extends _i20.PageRouteInfo<void> {
+class KidneyDiseasesScreenRoute extends _i21.PageRouteInfo<void> {
   const KidneyDiseasesScreenRoute()
       : super(
           KidneyDiseasesScreenRoute.name,
@@ -422,7 +433,7 @@ class KidneyDiseasesScreenRoute extends _i20.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i9.AnalyzesDecodingScreen]
-class AnalyzesDecodingScreenRoute extends _i20.PageRouteInfo<void> {
+class AnalyzesDecodingScreenRoute extends _i21.PageRouteInfo<void> {
   const AnalyzesDecodingScreenRoute()
       : super(
           AnalyzesDecodingScreenRoute.name,
@@ -434,7 +445,7 @@ class AnalyzesDecodingScreenRoute extends _i20.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i10.SkinCancerScreen]
-class SkinCancerScreenRoute extends _i20.PageRouteInfo<void> {
+class SkinCancerScreenRoute extends _i21.PageRouteInfo<void> {
   const SkinCancerScreenRoute()
       : super(
           SkinCancerScreenRoute.name,
@@ -446,7 +457,7 @@ class SkinCancerScreenRoute extends _i20.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i11.BrainTumorsScreen]
-class BrainTumorsScreenRoute extends _i20.PageRouteInfo<void> {
+class BrainTumorsScreenRoute extends _i21.PageRouteInfo<void> {
   const BrainTumorsScreenRoute()
       : super(
           BrainTumorsScreenRoute.name,
@@ -459,11 +470,11 @@ class BrainTumorsScreenRoute extends _i20.PageRouteInfo<void> {
 /// generated route for
 /// [_i12.KidneyDiseasesResultsScreen]
 class KidneyDiseasesResultsScreenRoute
-    extends _i20.PageRouteInfo<KidneyDiseasesResultsScreenRouteArgs> {
+    extends _i21.PageRouteInfo<KidneyDiseasesResultsScreenRouteArgs> {
   KidneyDiseasesResultsScreenRoute({
-    _i21.Key? key,
-    required _i22.File image,
-    required List<_i23.Prediction> predictions,
+    _i22.Key? key,
+    required _i23.File image,
+    required List<_i24.Prediction> predictions,
   }) : super(
           KidneyDiseasesResultsScreenRoute.name,
           path: '/kidney-diseases-results-screen',
@@ -484,11 +495,11 @@ class KidneyDiseasesResultsScreenRouteArgs {
     required this.predictions,
   });
 
-  final _i21.Key? key;
+  final _i22.Key? key;
 
-  final _i22.File image;
+  final _i23.File image;
 
-  final List<_i23.Prediction> predictions;
+  final List<_i24.Prediction> predictions;
 
   @override
   String toString() {
@@ -499,10 +510,10 @@ class KidneyDiseasesResultsScreenRouteArgs {
 /// generated route for
 /// [_i13.DecipherAnalysesResultsScreen]
 class DecipherAnalysesResultsScreenRoute
-    extends _i20.PageRouteInfo<DecipherAnalysesResultsScreenRouteArgs> {
+    extends _i21.PageRouteInfo<DecipherAnalysesResultsScreenRouteArgs> {
   DecipherAnalysesResultsScreenRoute({
-    _i21.Key? key,
-    required List<_i23.Prediction> predictions,
+    _i22.Key? key,
+    required List<_i24.Prediction> predictions,
   }) : super(
           DecipherAnalysesResultsScreenRoute.name,
           path: '/decipher-analyses-results-screen',
@@ -521,9 +532,9 @@ class DecipherAnalysesResultsScreenRouteArgs {
     required this.predictions,
   });
 
-  final _i21.Key? key;
+  final _i22.Key? key;
 
-  final List<_i23.Prediction> predictions;
+  final List<_i24.Prediction> predictions;
 
   @override
   String toString() {
@@ -534,11 +545,11 @@ class DecipherAnalysesResultsScreenRouteArgs {
 /// generated route for
 /// [_i14.SkinCancerResultsScreen]
 class SkinCancerResultsScreenRoute
-    extends _i20.PageRouteInfo<SkinCancerResultsScreenRouteArgs> {
+    extends _i21.PageRouteInfo<SkinCancerResultsScreenRouteArgs> {
   SkinCancerResultsScreenRoute({
-    _i21.Key? key,
-    required _i22.File image,
-    required List<_i23.Prediction> predictions,
+    _i22.Key? key,
+    required _i23.File image,
+    required List<_i24.Prediction> predictions,
   }) : super(
           SkinCancerResultsScreenRoute.name,
           path: '/skin-cancer-results-screen',
@@ -559,11 +570,11 @@ class SkinCancerResultsScreenRouteArgs {
     required this.predictions,
   });
 
-  final _i21.Key? key;
+  final _i22.Key? key;
 
-  final _i22.File image;
+  final _i23.File image;
 
-  final List<_i23.Prediction> predictions;
+  final List<_i24.Prediction> predictions;
 
   @override
   String toString() {
@@ -574,11 +585,11 @@ class SkinCancerResultsScreenRouteArgs {
 /// generated route for
 /// [_i15.BrainTumorsResultsScreen]
 class BrainTumorsResultsScreenRoute
-    extends _i20.PageRouteInfo<BrainTumorsResultsScreenRouteArgs> {
+    extends _i21.PageRouteInfo<BrainTumorsResultsScreenRouteArgs> {
   BrainTumorsResultsScreenRoute({
-    _i21.Key? key,
-    required _i22.File image,
-    required List<_i23.Prediction> predictions,
+    _i22.Key? key,
+    required _i23.File image,
+    required List<_i24.Prediction> predictions,
   }) : super(
           BrainTumorsResultsScreenRoute.name,
           path: '/brain-tumors-results-screen',
@@ -599,11 +610,11 @@ class BrainTumorsResultsScreenRouteArgs {
     required this.predictions,
   });
 
-  final _i21.Key? key;
+  final _i22.Key? key;
 
-  final _i22.File image;
+  final _i23.File image;
 
-  final List<_i23.Prediction> predictions;
+  final List<_i24.Prediction> predictions;
 
   @override
   String toString() {
@@ -613,7 +624,7 @@ class BrainTumorsResultsScreenRouteArgs {
 
 /// generated route for
 /// [_i16.ProfileScreen]
-class ProfileScreenRoute extends _i20.PageRouteInfo<void> {
+class ProfileScreenRoute extends _i21.PageRouteInfo<void> {
   const ProfileScreenRoute()
       : super(
           ProfileScreenRoute.name,
@@ -625,7 +636,7 @@ class ProfileScreenRoute extends _i20.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i17.PasswordScreen]
-class PasswordScreenRoute extends _i20.PageRouteInfo<void> {
+class PasswordScreenRoute extends _i21.PageRouteInfo<void> {
   const PasswordScreenRoute()
       : super(
           PasswordScreenRoute.name,
@@ -637,7 +648,7 @@ class PasswordScreenRoute extends _i20.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i18.AboutAppScreen]
-class AboutAppScreenRoute extends _i20.PageRouteInfo<void> {
+class AboutAppScreenRoute extends _i21.PageRouteInfo<void> {
   const AboutAppScreenRoute()
       : super(
           AboutAppScreenRoute.name,
@@ -649,7 +660,7 @@ class AboutAppScreenRoute extends _i20.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i19.FeedbackScreen]
-class FeedbackScreenRoute extends _i20.PageRouteInfo<void> {
+class FeedbackScreenRoute extends _i21.PageRouteInfo<void> {
   const FeedbackScreenRoute()
       : super(
           FeedbackScreenRoute.name,
@@ -657,4 +668,16 @@ class FeedbackScreenRoute extends _i20.PageRouteInfo<void> {
         );
 
   static const String name = 'FeedbackScreenRoute';
+}
+
+/// generated route for
+/// [_i20.PrivacyPolicyScreen]
+class PrivacyPolicyScreenRoute extends _i21.PageRouteInfo<void> {
+  const PrivacyPolicyScreenRoute()
+      : super(
+          PrivacyPolicyScreenRoute.name,
+          path: '/privacy-policy-screen',
+        );
+
+  static const String name = 'PrivacyPolicyScreenRoute';
 }

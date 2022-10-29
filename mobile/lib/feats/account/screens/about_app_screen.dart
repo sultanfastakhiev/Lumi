@@ -51,7 +51,7 @@ class AboutAppScreen extends StatelessWidget {
             ),
             SecondaryMenuTile(
               text: "Политика конфиденциальности",
-              onTap: () {},
+              onTap: () => AutoRouter.of(context).push(const PrivacyPolicyScreenRoute()),
             ),
             SecondaryMenuTile(
               text: "Пользовательское соглашение",
