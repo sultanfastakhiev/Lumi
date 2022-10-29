@@ -1,14 +1,12 @@
 import { useCallback } from "react";
-import { useToast } from "@chakra-ui/react";
+import { toast, Slide } from "react-toastify";
 
 export function useErrorToast() {
-    const toast = useToast()
-
     return useCallback((message: string) => {
-        toast({
-            status: "error",
+        toast.error(message, {
             position: "bottom-right",
-            title: message
+            hideProgressBar: true,
+            transition: Slide,
         })
-    }, [toast])
+    }, [])
 }

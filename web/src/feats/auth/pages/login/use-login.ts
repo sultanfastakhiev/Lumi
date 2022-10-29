@@ -4,13 +4,13 @@ import { useAppDispatch } from "@redux/hooks";
 import { login } from "@feats/auth/redux/auth/auth-actions";
 import { selectAuthType } from "@feats/auth/redux/auth/auth-selectors";
 import { store } from "@redux/store";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/router";
 import { useErrorToast } from "@core/utils/ui/use-toast";
 import { getHomeRoute } from "router/routes";
 
 export function useLogin() {
     const dispatch = useAppDispatch()
-    const navigate = useNavigate()
+    const router = useRouter()
     const showError = useErrorToast()
 
     return {
@@ -23,13 +23,15 @@ export function useLogin() {
                 await dispatch(login(values));
 
                 const authType = selectAuthType(store.getState())
+                
+                console.log(authType)
 
                 if (authType === "invalid") {
                     showError("Неверный username или пароль")
                 } else if (authType === "not-authorized") {
                     showError("Пользователь не авторизован")
                 } else {
-                    navigate(getHomeRoute(), {replace: true})
+                    return router.replace(getHomeRoute())
                 }
             },
             validationSchema: yup.object({

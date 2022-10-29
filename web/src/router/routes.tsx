@@ -10,9 +10,9 @@ export const routes: Route[] = [
         path: "*",
         page: <Page404/>,
     },
-    ...authRoutes,
-    ...patientsRoutes,
-    ...diagnosisRoutes,
+    // ...authRoutes,
+    // ...patientsRoutes,
+    // ...diagnosisRoutes,
 ]
 
 export function getHomeRoute(): string {

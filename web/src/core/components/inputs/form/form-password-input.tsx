@@ -27,10 +27,10 @@ export const FormPasswordInput: React.FC<Props> = React.memo((props) => {
 
 export const EyeButton: Icon = React.memo((props) => {
     const context = useContext(FormPasswordInputContext)
-    
+
     const className = classNames(props.className, styles.passwordEyeButton)
 
     return context!.show
-        ? <EyeOff color="var(--hint)" size={ 15 } className={ className } onClick={ context!.toggle }/>
-        : <Eye color="var(--hint)" size={ 15 } className={ className } onClick={ context!.toggle }/>
+        ? <EyeOff size={ 15 } className={ className } onClick={ context!.toggle }/>
+        : <Eye size={ 15 } className={ className } onClick={ context!.toggle }/>
 })

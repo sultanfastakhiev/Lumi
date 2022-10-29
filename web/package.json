@@ -23,6 +23,7 @@
     "classnames": "^2.3.1",
     "formik": "^2.2.9",
     "framer-motion": "^6",
+    "next": "^13.0.0",
     "react": "^18.2.0",
     "react-collapsed": "^3.3.2",
     "react-data-table-component": "^7.5.3",
@@ -33,7 +34,7 @@
     "react-redux": "^8.0.2",
     "react-responsive": "^9.0.0-beta.10",
     "react-router-dom": "6",
-    "react-scripts": "5.0.1",
+    "react-toastify": "^9.0.8",
     "react-untitled-ui": "^0.0.54",
     "sass": "^1.53.0",
     "styled-components": "^5.3.5",
@@ -43,10 +44,9 @@
     "yup": "^0.32.11"
   },
   "scripts": {
-    "start": "craco start",
-    "build":  "craco build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "next start",
+    "dev": "next dev",
+    "build": "next build"
   },
   "eslintConfig": {
     "extends": [
