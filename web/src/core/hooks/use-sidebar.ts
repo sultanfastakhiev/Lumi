@@ -7,13 +7,13 @@ import {
     selectIsSidebarOpen,
     toggle, toggleExpand
 } from "@core/redux/sidebar-reducer";
-import { useSelector } from "react-redux";
-import { selectUser } from "@feats/auth/redux/auth/auth-selectors";
-import { useNavigate } from "react-router-dom";
 import { logout } from "@feats/auth/redux/auth/auth-reducer";
 import { ContainerNavPage, isContainerNavPage, NavPage } from "@core/types/layout";
 import useCollapse from "react-collapsed";
 import { useMediaQuery } from "react-untitled-ui";
+import { useRouter } from "next/router";
+import { useQuery } from "@tanstack/react-query";
+import { fetchMe } from "@api/fetch-me";
 
 /**
  * React hook that load & changes is sidebar opened UI property
@@ -22,9 +22,9 @@ import { useMediaQuery } from "react-untitled-ui";
 export function useSidebar() {
     const dispatch = useAppDispatch()
     const open = useAppSelector(selectIsSidebarOpen)
-    const user = useSelector(selectUser)
-    const navigate = useNavigate()
-
+    const userData = useQuery(["me"], fetchMe)
+    const router = useRouter()
+    
     const toggleSidebar = useCallback(() => {
         dispatch(toggle())
     }, [dispatch])
@@ -33,9 +33,9 @@ export function useSidebar() {
         isSidebarOpened: open, toggleSidebar,
         handleLogout: useCallback(() => {
             dispatch(logout())
-            navigate("/")
-        }, [navigate, dispatch]),
-        user,
+            return router.replace("/login")
+        }, [router, dispatch]),
+        user: userData.data,
     }
 }
 
@@ -49,6 +49,7 @@ export function useSidebarItem(props: NavPage | ContainerNavPage, key: string) {
     const expanded = useAppSelector(selectIsSidebarItemExpanded(key))
     const [firstRender, setFirstRender] = useState(true)
     const [isMobile] = useMediaQuery('(max-width: 767px)')
+    const router = useRouter()
 
     useEffect(() => {
         if (!firstRender && !open) dispatch(shrinkItem(key));
@@ -72,10 +73,10 @@ export function useSidebarItem(props: NavPage | ContainerNavPage, key: string) {
                 : undefined
         }),
         active: isContainerNavPage(props)
-            ? props.children?.some(x => window.location.href.includes(x.url)) ?? false
-            : window.location.href.includes(props.url),
+            ? props.children?.some(x => router.pathname.includes(x.url)) ?? false
+            : router.pathname.includes(props.url),
         activeChildren: isContainerNavPage(props)
-            ? props.children.findIndex(x => window.location.href.includes(x.url))
+            ? props.children.findIndex(x =>  router.pathname.includes(x.url))
             : undefined,
         handleItemClick: () => {
             if (isMobile) dispatch(toggle());

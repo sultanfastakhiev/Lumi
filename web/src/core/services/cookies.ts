@@ -1,0 +1,30 @@
+import { GetServerSidePropsContext } from "next";
+import { getCookie, setCookie } from "cookies-next";
+
+type CookiesStore = {
+    [key: string]: string | null | undefined
+}
+
+export default class Cookies {
+    private static readonly keys = {
+        // Auth
+        token: "token",
+    }
+    
+    private static store: CookiesStore = {
+        token: undefined,
+    };
+    
+    static apply(context: GetServerSidePropsContext) {
+        this.store.token = context.req.cookies[this.keys.token];
+    }
+    
+    static get token() {
+        return (getCookie(this.keys.token) ?? this.store.token) as string | null | undefined;
+    }
+    
+    static set token(token: string | null | undefined) {
+        setCookie(this.keys.token, token);
+        this.store.token = token;
+    }
+}

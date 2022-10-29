@@ -1,15 +1,15 @@
 import { LoginArgs, SignupArgs } from "@feats/auth/redux/auth/auth-actions";
 import { AuthenticationStatus } from "@feats/auth/redux/auth/auth-state";
-import LocalStorage from "@core/services/local-storage";
 import { fetchMe } from "@api/fetch-me";
 import { authorize } from "@api/authorize";
 import { createUser } from "@api/create–user";
+import Cookies from "@core/services/cookies";
 
 export default class AuthService {
     static async login(arg: LoginArgs): Promise<AuthenticationStatus> {
         const token = await authorize(arg.username, arg.password);
         if (token) {
-            LocalStorage.token = token;
+            Cookies.token = token;
             const user = (await fetchMe())!
             return {user, token}
         }
@@ -23,11 +23,10 @@ export default class AuthService {
     }
 
     static isSignedIn(): boolean {
-        return !!LocalStorage.user && !!LocalStorage.token
+        return Cookies.token !== undefined
     }
 
     static logout() {
-        LocalStorage.user = undefined
-        LocalStorage.token = undefined
+        Cookies.token = undefined
     }
 }

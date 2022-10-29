@@ -10,7 +10,9 @@ export function formatDate(date: Date): string {
 }
 
 /// function which formats date as a string like 21 ноября 2005 г. (16 лет)
-export function formatBirthdayWithAge(date: Date): string {
+export function formatBirthdayWithAge(date: Date | string): string {
+    date = new Date(date)
+    
     /// format date as 21 November 2005
     const formattedDate = date.toLocaleDateString("ru-RU", {
         day: "numeric",

@@ -5,6 +5,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { User } from "@feats/auth/entities";
 import { RootState } from "@redux/store";
 import { wait } from "@core/utils/wait";
+import Cookies from "@core/services/cookies";
 
 export type LoginArgs = {
     username: string,
@@ -26,7 +27,7 @@ export const login = createAsyncThunk(
 
         // Save user & tokens
         LocalStorage.user = data.user
-        LocalStorage.token = data.token
+        Cookies.token = data.token
 
         return {
             type: "authorized",
@@ -52,7 +53,7 @@ export const createUser = createAsyncThunk(
 
         // Save user & tokens
         LocalStorage.user = data.user
-        LocalStorage.token = data.token
+        Cookies.token = data.token
 
         return {
             type: "authorized",

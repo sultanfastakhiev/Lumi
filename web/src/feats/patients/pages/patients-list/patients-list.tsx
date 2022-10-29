@@ -8,13 +8,13 @@ import { Plus, Search } from "react-feather";
 import { usePatientsList } from "@feats/patients/pages/patients-list/use-patients-list";
 import { LoadingView } from "@core/components/loading/loading-view/loading-view";
 import { PatientCard } from "@feats/patients/components/patient-card/patient-card";
-import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import { useRouter } from "next/router";
 
 export const PatientsListPage: React.FC = () => {
     const {data, isLoading} = usePatientsList();
-    const navigate = useNavigate()
-
+    const router = useRouter()
+    
     return <Layout className={ styles.page }>
         <Helmet>
             <title>Мои пациенты | Lumi</title>
@@ -29,7 +29,7 @@ export const PatientsListPage: React.FC = () => {
                             : <React.Fragment>
                                 <Title
                                     suffix={ <Button
-                                        onClick={ () => navigate("/apps/patients/create") }
+                                        onClick={ () => router.push("/apps/patients/create") }
                                         trailingIcon={ Plus }
                                         variant="secondary-gray">Создать пациента</Button> }>
                                     Мои пациенты
@@ -47,12 +47,12 @@ export const PatientsListPage: React.FC = () => {
 }
 
 export const EmptyState: React.FC = () => {
-    const navigate = useNavigate()
+    const router = useRouter()
 
     return <div className={ styles.emptyState }>
         <Search className={ styles.icon }/>
         <h3 className={ styles.title }>Пациентов не найдено</h3>
         <span className={ styles.subtitle }>Нажмите на кнопку чтобы<br/>вашего первого пациента</span>
-        <Button onClick={ () => navigate("/apps/patients/create") }>Создать пациента</Button>
+        <Button onClick={ () => router.push("/apps/patients/create") }>Создать пациента</Button>
     </div>
 }

@@ -13,7 +13,7 @@ import { useSidebar, useSidebarItem } from "@core/hooks/use-sidebar";
 import { Logo } from "@core/components/logo/logo";
 import { ChevronDown, LogOut } from "react-feather";
 import { Avatar, Badge } from "react-untitled-ui";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { fullName } from "@feats/auth/entities";
 
 export const Sidebar: React.FC<SidebarConfig> = React.memo((props) => {
@@ -22,12 +22,16 @@ export const Sidebar: React.FC<SidebarConfig> = React.memo((props) => {
 
     useEffect(() => {
         const handleResize = () => {
-            containerRef.current!.style.height = `${ window.innerHeight }px`
+            if (containerRef.current) {
+                containerRef.current!.style.height = `${ window.innerHeight }px`
+            }
         }
         handleResize();
         window.addEventListener("resize", handleResize)
         return () => window.removeEventListener("resize", handleResize)
     }, [])
+
+    if (!user) return <React.Fragment/>
 
     return <div className={ styles.sidebar } data-open={ open }>
         <div className={ styles.container } data-open={ open } ref={ containerRef }>
@@ -51,14 +55,6 @@ export const Sidebar: React.FC<SidebarConfig> = React.memo((props) => {
             </div>
             <div className={ styles.footer }>
                 <div className={ styles.navigation }>
-                    {/*<SidebarItem*/ }
-                    {/*    icon={ <Settings/> }*/ }
-                    {/*    type="page"*/ }
-                    {/*    text=""*/ }
-                    {/*    url="/apps/users/settings"*/ }
-                    {/*    key="settings-nav-item"*/ }
-                    {/*    itemKey="settings-nav-item"/>*/ }
-                    {/*<SidebarDivider/>*/ }
                     <div className={ styles.user }>
                         <Avatar onClick={ toggle } className={ styles.avatar }/>
                         <div className={ styles.disposable } data-type="user">
@@ -98,7 +94,7 @@ export const SidebarItem: React.FC<(NavPage | ContainerNavPage) & { itemKey: str
             { ...getToggleProps() }
             // @ts-ignore
             type="link"
-            to={ isNavPage(props) ? props.url : "#" }
+            href={ isNavPage(props) ? props.url : "#" }
             className={ styles.navItem }
             data-open={ open }
             data-active={ active }
@@ -118,7 +114,7 @@ export const SidebarItem: React.FC<(NavPage | ContainerNavPage) & { itemKey: str
                 isContainerNavPage(props) && props.children.map((item: SubNavPage, i) => {
                     return <Link
                         onClick={ handleItemClick }
-                        to={ item.url }
+                        href={ item.url }
                         key={ `${ props.itemKey }-${ i }` }
                         data-active={ i === activeChildren }
                         className={ styles.navChildrenItem }>

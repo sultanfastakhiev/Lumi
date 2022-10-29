@@ -1,14 +1,16 @@
+import { flipDate } from "@core/utils";
+
 export type Patient = {
     id: string;
     lastName: string;
     name: string;
     patronymic: string;
-    birthday: Date;
+    birthday: string;
     consultations?: string;
     diagnosis?: string;
     operations?: string;
     doctorId: string;
-    createdAt?: Date;
+    createdAt?: string;
 }
 
 export function fullName(patient: Patient) {
@@ -19,19 +21,17 @@ export function fullName(patient: Patient) {
     return name;
 }
 
-export function parsePatient(json: any) {
-    const birthday = json.birthday.split(".")
-    
+export function parsePatient(json: any): Patient {
     return {
         id: json.id,
         lastName: json.last_name,
         name: json.name,
         patronymic: json.patronymic,
-        birthday: new Date(parseInt(birthday[2]), parseInt(birthday[1]) - 1, parseInt(birthday[0])),
+        birthday: flipDate(json.birthday),  
         consultations: json.consultations,
         diagnosis: json.diagnosis,
         operations: json.operations,
         doctorId: json.doctor,
-        createdAt: new Date(json.createdAt),
+        createdAt:  json.createdAt ?? null,
     };
 }
