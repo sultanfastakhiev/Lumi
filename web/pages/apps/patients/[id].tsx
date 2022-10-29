@@ -1,0 +1,1 @@
+export { PatientDetail as default } from "@feats/patients/pages/patient-detail";

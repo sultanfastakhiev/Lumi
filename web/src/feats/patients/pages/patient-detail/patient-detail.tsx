@@ -8,30 +8,21 @@ import { SubmitButton } from "@core/components/buttons/form/submit-button";
 import { ResetButton } from "@core/components/buttons/form/reset-button";
 import { usePatientDetail } from "@feats/patients/pages/patient-detail/use-patient-detail";
 import { Form, Formik } from "formik";
-import { useParams } from "react-router";
-import { useNavigate } from "react-router-dom";
 import { LoadingView } from "@core/components/loading/loading-view/loading-view";
 import { FormTextArea } from "@core/components/inputs/form/form-textarea";
-import { Helmet } from "react-helmet";
+import { useRouter } from "next/router";
+import Head from "next/head";
 
 export type PatientDetailProps = {}
 
 export const PatientDetail: React.FC<PatientDetailProps> = () => {
-    const {id} = useParams()
-    const navigate = useNavigate()
-
-    if (!id) {
-        navigate("/apps/patients")
-        return <React.Fragment/>
-    }
-
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const {formik} = usePatientDetail(id)
+    const { query } = useRouter()
+    const {formik} = usePatientDetail(query.id as string)
 
     return <Layout className={ styles.page }>
-        <Helmet>
+        <Head>
             <title>Редактирование пациента | Lumi</title>
-        </Helmet>
+        </Head>
         {
             formik
                 ? <Formik { ...formik }>

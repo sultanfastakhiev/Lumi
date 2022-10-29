@@ -1,4 +1,1 @@
-import { PatientsListPage } from "@feats/patients/pages/patients-list/patients-list";
-export default PatientsListPage
-
-export { getServerSideProps } from "@feats/patients/pages/patients-list/ssr-patients-list"
+export { PatientsListPage as default } from "@feats/patients/pages/patients-list";
