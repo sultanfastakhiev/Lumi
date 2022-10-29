@@ -1,0 +1,1 @@
+export { SkinCancer as default } from "@feats/diagnosis/pages/skin-cancer"
