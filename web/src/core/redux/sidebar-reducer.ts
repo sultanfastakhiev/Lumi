@@ -3,6 +3,7 @@ import LocalStorage from "@core/services/local-storage";
 import { RootState } from "@redux/store";
 import { sidebarConfig } from "@config/sidebar";
 import { isContainerNavPage } from "@core/types/layout";
+import { isClient } from "@core/utils";
 
 type State = {
     open: boolean,
@@ -15,7 +16,7 @@ const slice = createSlice({
         return {
             open: LocalStorage.isSidebarOpened,
             expandedItems: sidebarConfig.items.filter(
-                x => isContainerNavPage(x) && x.children?.some(
+                x => isClient() && isContainerNavPage(x) && x.children?.some(
                     x => window.location.href.includes(x.url)
                 )
             ).map(x => x.key),

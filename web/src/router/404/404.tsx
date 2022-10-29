@@ -1,16 +1,16 @@
 import React, { useCallback } from "react";
 import styles from "./404.module.scss"
-import { useNavigate } from "react-router-dom";
 import { Button } from "react-untitled-ui";
 import { ArrowLeft } from "react-feather";
 import { useMediaQuery } from "react-responsive";
+import { useRouter } from "next/router";
 
 export const Page404: React.FC = () => {
-    const navigate = useNavigate()
+    const router = useRouter()
     const isMobile = useMediaQuery({query: "(max-width: 575px)"})
 
-    const handleHomeClick = useCallback(() => navigate("/"), [navigate]);
-    const handleBackClick = useCallback(() => navigate(-1), [navigate]);
+    const handleHomeClick = useCallback(() => router.push("/"), [router]);
+    const handleBackClick = useCallback(() => router.back(), [router]);
 
     const size = isMobile ? "xl" : "2xl"
 
