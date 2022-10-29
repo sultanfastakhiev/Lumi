@@ -1,0 +1,1 @@
+export { Analyzes as default } from "@feats/diagnosis/pages/analyzes" 

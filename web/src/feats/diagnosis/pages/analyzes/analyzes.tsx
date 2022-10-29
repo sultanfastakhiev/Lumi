@@ -12,7 +12,7 @@ import { PredictionResults } from "@feats/diagnosis/components/prediction-result
 import { Layout } from "@core/components/layout/layout";
 import { useAnalyzes } from "@feats/diagnosis/pages/analyzes/use-analyzes";
 import { FilePreview } from "@core/components/file-preview/file-preview";
-import { Helmet } from "react-helmet";
+import Head from "next/head";
 
 export type AnalyzesProps = {}
 
@@ -20,9 +20,9 @@ export const Analyzes: React.FC<AnalyzesProps> = () => {
     const {file, clearFile, onPick, loading, handleButtonClick, predictions} = useAnalyzes();
 
     return <Layout>
-        <Helmet>
+        <Head>
             <title>Расшифровка анализов | Lumi</title>
-        </Helmet>
+        </Head>
         <ContentWrapper>
             <Title>Расшифровка анализов</Title>
             <Subtitle>Автоматическое выявление сердечно-сосудистых заболеваний по анализам крови</Subtitle>
