@@ -16,8 +16,8 @@ import 'dart:io' as _i24;
 import 'package:auto_route/auto_route.dart' as _i22;
 import 'package:flutter/material.dart' as _i23;
 
-import '../feats/account/components/feedback_screen.dart' as _i19;
 import '../feats/account/screens/about_app_screen.dart' as _i18;
+import '../feats/account/screens/feedback_screen.dart' as _i19;
 import '../feats/account/screens/password_screen.dart' as _i17;
 import '../feats/account/screens/privacy_policy_screen.dart' as _i20;
 import '../feats/account/screens/profile_screen.dart' as _i16;

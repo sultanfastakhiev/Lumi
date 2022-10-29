@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:mobile/feats/account/components/feedback_screen.dart';
+import 'package:mobile/feats/account/screens/feedback_screen.dart';
 import 'package:mobile/feats/account/screens/about_app_screen.dart';
 import 'package:mobile/feats/account/screens/password_screen.dart';
 import 'package:mobile/feats/account/screens/privacy_policy_screen.dart';

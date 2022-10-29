@@ -6,11 +6,13 @@ import 'package:mobile/utils/theme/text_styles.dart';
 import 'package:mobile/utils/theme/theme.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+const email = "lumi@zotov.dev";
+
 class FeedbackScreen extends StatelessWidget {
   const FeedbackScreen({Key? key}) : super(key: key);
 
   void handleEmailTap() {
-    launchUrl(Uri.parse("mailto:feedback@lumi.zotov.dev")).catchError(print);
+    launchUrl(Uri.parse("mailto:$email"));
   }
 
   @override
@@ -29,7 +31,7 @@ class FeedbackScreen extends StatelessWidget {
                   style: TextStyles.textMdNormal.apply(color: graySwatch.shade500),
                 ),
                 TextSpan(
-                  text: "feedback@lumi.ru",
+                  text: email,
                   recognizer: TapGestureRecognizer()..onTap = handleEmailTap,
                   style: TextStyles.textMdMedium.apply(color: primarySwatch.shade600),
                 ),
