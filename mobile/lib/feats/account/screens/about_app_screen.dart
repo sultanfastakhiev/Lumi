@@ -6,6 +6,7 @@ import 'package:mobile/components/header.dart';
 import 'package:mobile/components/layouts/empty.dart';
 import 'package:mobile/feats/account/components/app_version.dart';
 import 'package:mobile/feats/account/components/secondary_menu_tile.dart';
+import 'package:mobile/feats/account/screens/terms_of_use_screen.dart';
 import 'package:mobile/router/router.gr.dart';
 import 'package:mobile/utils/utils.dart';
 
@@ -55,7 +56,7 @@ class AboutAppScreen extends StatelessWidget {
             ),
             SecondaryMenuTile(
               text: "Пользовательское соглашение",
-              onTap: () {},
+              onTap: () => AutoRouter.of(context).push(const TermsOfUseRoute()),
             ),
           ],
         ),

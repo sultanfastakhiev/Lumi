@@ -4,6 +4,7 @@ import 'package:mobile/feats/account/screens/about_app_screen.dart';
 import 'package:mobile/feats/account/screens/password_screen.dart';
 import 'package:mobile/feats/account/screens/privacy_policy_screen.dart';
 import 'package:mobile/feats/account/screens/profile_screen.dart';
+import 'package:mobile/feats/account/screens/terms_of_use_screen.dart';
 import 'package:mobile/feats/auth/screens/login_screen.dart';
 import 'package:mobile/feats/auth/screens/signup_screen_stage_1.dart';
 import 'package:mobile/feats/auth/screens/signup_screen_stage_2.dart';
@@ -42,6 +43,7 @@ import 'package:mobile/feats/main/screens/patient_detail_screen.dart';
     AutoRoute(page: AboutAppScreen),
     AutoRoute(page: FeedbackScreen),
     AutoRoute(page: PrivacyPolicyScreen),
+    AutoRoute(page: TermsOfUse),
   ],
 )
 class $AppRouter {}
