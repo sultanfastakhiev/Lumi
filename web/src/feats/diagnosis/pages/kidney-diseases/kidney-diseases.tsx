@@ -14,12 +14,10 @@ import { PredictionResults } from "@feats/diagnosis/components/prediction-result
 import { useKidneyDiseases } from "@feats/diagnosis/pages/kidney-diseases/use-kidney-diseases";
 import Head from "next/head";
 
-export type KidneyDiseasesProps = {
-
-}
+export type KidneyDiseasesProps = {}
 
 export const KidneyDiseases: React.FC<KidneyDiseasesProps> = () => {
-    const { file, clearFile, onPick, loading, handleButtonClick, predictions } = useKidneyDiseases()
+    const {file, clearFile, onPick, loading, handleButtonClick, predictions} = useKidneyDiseases()
 
     return <Layout>
         <Head>

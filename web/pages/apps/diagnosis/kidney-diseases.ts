@@ -1,0 +1,1 @@
+export { KidneyDiseases as default } from "@feats/diagnosis/pages/kidney-diseases";
