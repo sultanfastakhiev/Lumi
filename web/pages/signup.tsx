@@ -1,2 +1,1 @@
-import { SignupPage } from "@feats/auth/pages/signup/signup";
-export default SignupPage
+export { SignupPage as default } from "@feats/auth/pages/signup/signup";

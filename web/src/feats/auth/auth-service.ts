@@ -23,7 +23,7 @@ export default class AuthService {
     }
 
     static isSignedIn(): boolean {
-        return Cookies.token !== undefined
+        return !!Cookies.token
     }
 
     static logout() {

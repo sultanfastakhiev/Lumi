@@ -14,6 +14,7 @@ import { useMediaQuery } from "react-untitled-ui";
 import { useRouter } from "next/router";
 import { useQuery } from "@tanstack/react-query";
 import { fetchMe } from "@api/fetch-me";
+import { isServer } from "@core/utils";
 
 /**
  * React hook that load & changes is sidebar opened UI property
@@ -24,7 +25,7 @@ export function useSidebar() {
     const open = useAppSelector(selectIsSidebarOpen)
     const userData = useQuery(["me"], fetchMe)
     const router = useRouter()
-    
+
     const toggleSidebar = useCallback(() => {
         dispatch(toggle())
     }, [dispatch])
@@ -57,8 +58,11 @@ export function useSidebarItem(props: NavPage | ContainerNavPage, key: string) {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [open])
 
+
     const {getCollapseProps, getToggleProps, isExpanded} = useCollapse({
-        isExpanded: expanded,
+        isExpanded: isServer() && isContainerNavPage(props)
+            ? props.children.some(x => router.pathname.includes(x.url))
+            : expanded,
         onExpandStart: () => dispatch(openSidebar()),
     })
 
@@ -76,7 +80,7 @@ export function useSidebarItem(props: NavPage | ContainerNavPage, key: string) {
             ? props.children?.some(x => router.pathname.includes(x.url)) ?? false
             : router.pathname.includes(props.url),
         activeChildren: isContainerNavPage(props)
-            ? props.children.findIndex(x =>  router.pathname.includes(x.url))
+            ? props.children.findIndex(x => router.pathname.includes(x.url))
             : undefined,
         handleItemClick: () => {
             if (isMobile) dispatch(toggle());
