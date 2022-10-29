@@ -124,6 +124,11 @@ class UserCubit extends HydratedCubit<UserState> with BlocLoggy {
     return either.fold((failure) => failure, (_) => null);
   }
 
+  void logout() {
+    _hiveService.deleteAuthToken();
+    emit(NotAuthorizedState());
+  }
+
   @override
   UserState? fromJson(Map<String, dynamic> json) {
     if (json["type"] == "user/authorized") return AuthorizedState.fromJson(json);

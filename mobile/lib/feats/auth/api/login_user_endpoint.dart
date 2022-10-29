@@ -19,7 +19,7 @@ class LoginUserEndpoint with ApiLoggy {
       }).catchError((err) => err.response);
 
       if (response.statusCode != 200) return const Left(InvalidCredentials());
-      if (response.data["access_token"] == null) return const Left(CantAccessOurServices());
+      if (response.data["access_token"] == null) return const Left(InvalidCredentials());
 
       final token = response.data["access_token"];
 

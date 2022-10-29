@@ -37,25 +37,28 @@ class AccountScreen extends StatelessWidget {
                 const ContentDivider(
                   padding: EdgeInsets.only(right: 16, left: 16, bottom: 8),
                 ),
-                 MenuTile(
+                MenuTile(
                   icon: FeatherIcons.user,
                   text: "Профиль",
                   onTap: () => AutoRouter.of(context).push(const ProfileScreenRoute()),
                 ),
-                 MenuTile(
+                MenuTile(
                   icon: FeatherIcons.lock,
                   text: "Пароль",
                   onTap: () => AutoRouter.of(context).push(const PasswordScreenRoute()),
                 ),
-                 MenuTile(
+                MenuTile(
                   icon: FeatherIcons.info,
                   text: "О приложение",
                   onTap: () => AutoRouter.of(context).push(const AboutAppScreenRoute()),
                 ),
-                 MenuTile(
+                MenuTile(
                   icon: FeatherIcons.logOut,
                   text: "Выйти",
-                  onTap: () {},
+                  onTap: () {
+                    context.read<UserCubit>().logout();
+                    AutoRouter.of(context).pushAndPopUntil(const LoginScreenRoute(), predicate: (route) => false);
+                  },
                 )
               ],
             );
