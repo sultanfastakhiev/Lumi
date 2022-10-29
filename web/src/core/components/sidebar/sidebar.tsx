@@ -95,6 +95,7 @@ export const SidebarItem: React.FC<(NavPage | ContainerNavPage) & { itemKey: str
             // @ts-ignore
             type="link"
             href={ isNavPage(props) ? props.url : "#" }
+            onClick={  isNavPage(props)  ? handleItemClick : undefined }
             className={ styles.navItem }
             data-open={ open }
             data-active={ active }

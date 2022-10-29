@@ -93,7 +93,7 @@ export function useSidebarItem(props: NavPage | ContainerNavPage, key: string) {
             ? props.children.findIndex(x => router.pathname.includes(x.url))
             : undefined,
         handleItemClick: () => {
-            if (isMobile) dispatch(toggle());
+            if (isMobile) dispatch(toggleMobile());
         },
     }
 }
