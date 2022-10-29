@@ -2,17 +2,17 @@ import { createFormik } from "@core/utils/ui/create-formik";
 import * as yup from "yup";
 import { useMutation } from "@tanstack/react-query";
 import { createPatient } from "@api/create-patient";
-import { queryClient } from "index";
+import { queryClient } from "@core/utils/react-query";
 import LocalStorage from "@core/services/local-storage";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/router";
 
 export function useCreatePatient() {
-    const navigate = useNavigate();
+    const router = useRouter();
     
     const {mutate} = useMutation(createPatient, {
         onSettled: () => {
             queryClient.invalidateQueries(['patients']);
-            navigate("/apps/patients");
+            router.replace("/apps/patients");
         }
     });
     

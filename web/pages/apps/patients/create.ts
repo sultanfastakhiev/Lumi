@@ -1,0 +1,1 @@
+export { CreatePatient as default } from "@feats/patients/pages/create-patient";

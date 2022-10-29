@@ -7,7 +7,7 @@ import { useCreatePatient } from "@feats/patients/pages/create-patient/use-creat
 import { Form, Formik } from "formik";
 import { FormInput } from "@core/components/inputs/form/form-input";
 import { SubmitButton } from "@core/components/buttons/form/submit-button";
-import { Helmet } from "react-helmet";
+import Head from "next/head";
 
 export type CreatePatientProps = {}
 
@@ -15,9 +15,9 @@ export const CreatePatient: React.FC<CreatePatientProps> = () => {
     const {formik} = useCreatePatient()
 
     return <Layout className={ styles.page }>
-        <Helmet>
+        <Head>
             <title>Создать пациента | Lumi</title>
-        </Helmet>
+        </Head>
         <Formik { ...formik }>
             <Form>
                 <ContentWrapper>

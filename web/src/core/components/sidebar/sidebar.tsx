@@ -31,8 +31,6 @@ export const Sidebar: React.FC<SidebarConfig> = React.memo((props) => {
         return () => window.removeEventListener("resize", handleResize)
     }, [])
 
-    if (!user) return <React.Fragment/>
-
     return <div className={ styles.sidebar } data-open={ open }>
         <div className={ styles.container } data-open={ open } ref={ containerRef }>
             <div className={ styles.nav } data-open={ open }>
@@ -60,7 +58,9 @@ export const Sidebar: React.FC<SidebarConfig> = React.memo((props) => {
                         <div className={ styles.disposable } data-type="user">
                             <div className={ styles.userDetails }>
                                 <h5 className={ styles.userName }>{ fullName(user) }</h5>
-                                <span className={ styles.userEmail }>@{ user?.username ?? "" }</span>
+                                <span className={ styles.userEmail }>
+                                    { user?.username ? `@${ user?.username }` : "" }
+                                </span>
                             </div>
                             <div className={ styles.logoutButton }>
                                 <LogOut onClick={ handleLogout }/>
