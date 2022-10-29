@@ -27,3 +27,16 @@ services:
     depends_on:
       - db
     
+    
+  web:
+    build:
+      context: ./web
+    volumes:
+      - ./web:/usr/web
+    env_file:
+      - .env
+    expose:
+      - 3000
+    ports:
+      - "3000:3000"
+    restart: on-failure
