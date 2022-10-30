@@ -1,4 +1,4 @@
-package com.example.mobile
+package dev.zotov.lumi
 
 import io.flutter.embedding.android.FlutterActivity
 
