@@ -16,7 +16,7 @@ import 'package:mobile/feats/diagnosis/screens/kidney/kidney_diseases_results_sc
 import 'package:mobile/feats/diagnosis/screens/kidney/kidney_diseases_screen.dart';
 import 'package:mobile/feats/diagnosis/screens/skin/skin_cancer_results_screen.dart';
 import 'package:mobile/feats/diagnosis/screens/skin/skin_cancer_screen.dart';
-import 'package:mobile/feats/init/screen/init_screen.dart';
+import 'package:mobile/feats/init/screens/init_screen.dart';
 import 'package:mobile/feats/main/screens/create_patient_screen.dart';
 import 'package:mobile/feats/main/screens/main_screen.dart';
 import 'package:mobile/feats/main/screens/patient_detail_screen.dart';

@@ -39,7 +39,7 @@ import '../feats/diagnosis/screens/kidney/kidney_diseases_screen.dart' as _i8;
 import '../feats/diagnosis/screens/skin/skin_cancer_results_screen.dart'
     as _i14;
 import '../feats/diagnosis/screens/skin/skin_cancer_screen.dart' as _i10;
-import '../feats/init/screen/init_screen.dart' as _i1;
+import '../feats/init/screens/init_screen.dart' as _i1;
 import '../feats/main/screens/create_patient_screen.dart' as _i6;
 import '../feats/main/screens/main_screen.dart' as _i5;
 import '../feats/main/screens/patient_detail_screen.dart' as _i7;
