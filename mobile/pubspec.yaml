@@ -46,6 +46,7 @@ dependencies:
     curved_progress_bar: ^1.0.2
     flutter_feather_icons: ^2.0.0+1
     flutter_svg: ^1.1.6
+    flutter_native_splash: ^2.2.12
 
     flutter_localizations:
         sdk: flutter
@@ -70,6 +71,8 @@ flutter:
     assets:
         - assets/fonts/
         - assets/icons/
+        - assets/splash_logo.png
+        - assets/app_icon.png
     fonts:
         - family: Inter
           fonts:
@@ -91,3 +94,8 @@ flutter:
               weight: 800
             - asset: assets/fonts/Inter-ExtraBold.ttf
               weight: 900
+
+
+flutter_native_splash:
+    color: "#ffffff"
+    image: assets/splash_logo.png
