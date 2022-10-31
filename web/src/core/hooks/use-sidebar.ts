@@ -12,7 +12,7 @@ import { ContainerNavPage, isContainerNavPage, NavPage } from "@core/types/layou
 import useCollapse from "react-collapsed";
 import { useRouter } from "next/router";
 import { useQuery } from "@tanstack/react-query";
-import { fetchMe } from "@api/fetch-me";
+import { fetchMe } from "@api/fetch-me/fetch-me";
 import { isServer } from "@core/utils";
 import { useMediaQuery } from "react-responsive";
 

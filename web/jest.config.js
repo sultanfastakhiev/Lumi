@@ -6,6 +6,7 @@ module.exports = {
        "@core/(.*)": "<rootDir>/src/core/$1",
        "@mocks": "<rootDir>/src/mocks",
        "@api": "<rootDir>/src/api",
+       "@feats/(.*)": "<rootDir>/src/feats/$1",
     },
     testEnvironment: 'jsdom',
     preset: 'ts-jest',

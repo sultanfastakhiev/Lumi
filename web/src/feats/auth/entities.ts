@@ -3,24 +3,18 @@ export type User = {
     name: string;
     lastName: string;
     patronymic: string;
-    birthday: Date;
+    birthday: string;
     username: string;
 }
 
 export function parseUser(data: any): User {
-    let birthday: any = data.birthday.split(".")
-    let tmp = (birthday as string[])[0];
-    (birthday as string[])[0] = (birthday as string[])[1];
-    (birthday as string[])[1] = tmp;
-    
-    
     return {
         id: data.id,
         name: data.name,
         lastName: data.last_name,
         patronymic: data.patronymic,
         username: data.username,
-        birthday: birthday.join("."),
+        birthday: data.birthday,
     }
 } 
 

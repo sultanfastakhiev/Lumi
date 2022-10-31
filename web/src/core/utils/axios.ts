@@ -3,6 +3,7 @@ import Cookies from "@core/services/cookies";
 
 const client = axios.create({
     baseURL: process.env.NEXT_PUBLIC_SERVER_URL,
+    validateStatus: () => true,
 })
 
 client.interceptors.request.use((config) => {
