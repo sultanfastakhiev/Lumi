@@ -33,8 +33,13 @@ export function formatBirthdayWithAge(date: Date | string): string {
  * Function which formats input value 2005-11-21 as 21.11.2005
  * @param input value which should be formatted
  * @return formatted value
+ * 
+ * @example
+ * formatInputDate("2005-11-21") => "21.11.2005"
+ * formatInputDate("21.11.2005") => "21.11.2005"
  */
 export function formatInputDate(input: string): string {
     const parts = input.split("-");
+    if (parts.length !== 3) return input;
     return parts.reverse().join(".");
 }
