@@ -5,3 +5,4 @@ export * from "./create-user/create-user";
 export * from "./decipher-analyzes/decipher-analyzes";
 export * from "./fetch-me/fetch-me";
 export * from "./fetch-patients/fetch-patients";
+export * from "./get-patient/get-patient";

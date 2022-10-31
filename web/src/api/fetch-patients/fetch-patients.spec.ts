@@ -56,4 +56,10 @@ it('should fetch patients', function () {
             consultations: "consultations2",
         }
     ]);
+    
+    // expect axios to be called one time
+    expect(mockAxios.get).toHaveBeenCalledTimes(1);
+    
+    // expect axios to be called with correct url
+    expect(mockAxios.get).toHaveBeenCalledWith("/patients");
 })
