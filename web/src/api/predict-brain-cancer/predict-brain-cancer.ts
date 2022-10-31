@@ -1,5 +1,6 @@
 import { Prediction } from "@feats/diagnosis/entities";
 import client from "@core/utils/axios";
+import { sortPredictions } from "@core/utils";
 
 const translate = {
     "glioma": "Глиома",
@@ -8,6 +9,11 @@ const translate = {
     "p tumor": "Гипофизная опухоль",
 }
 
+/**
+ * Calling POST /brain endpoint to predict brain cancer by patient MRI
+ * @param file patient MRI (jpg, jpeg)
+ * @returns {Prediction[]} prediction
+ */
 export async function predictBrainCancer(file: File): Promise<Prediction[]> {
     const formData = new FormData();
     formData.append('file_mel', file);
@@ -20,7 +26,5 @@ export async function predictBrainCancer(file: File): Promise<Prediction[]> {
         }
     })
 
-    return predictions.sort(
-        (a, b) => b.probability - a.probability
-    );
+    return sortPredictions(predictions);
 }
