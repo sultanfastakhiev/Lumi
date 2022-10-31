@@ -6,6 +6,7 @@ module.exports = {
        "@core/(.*)": "<rootDir>/src/core/$1",
        "@mocks": "<rootDir>/src/mocks",
        "@api": "<rootDir>/src/api",
+       "@test-utils": "<rootDir>/src/test-utils",
        "@feats/(.*)": "<rootDir>/src/feats/$1",
     },
     testEnvironment: 'jsdom',

@@ -3,7 +3,7 @@ import { FormInput, Props as BaseProps } from "@core/components";
 import { Eye, EyeOff, Icon } from "react-feather";
 import { useBoolean } from "react-untitled-ui";
 import classNames from "classnames";
-import styles from "./form-input.module.scss"
+import styles from "./form-password-input.module.scss"
 
 type Props = BaseProps
 
@@ -31,6 +31,6 @@ export const EyeButton: Icon = React.memo((props) => {
     const className = classNames(props.className, styles.passwordEyeButton)
 
     return context!.show
-        ? <EyeOff size={ 15 } className={ className } onClick={ context!.toggle }/>
-        : <Eye size={ 15 } className={ className } onClick={ context!.toggle }/>
+        ? <EyeOff size={ 15 } className={ className } onClick={ context!.toggle } data-testid="icon-eye-off"/>
+        : <Eye size={ 15 } className={ className } onClick={ context!.toggle } data-testid="icon-eye"/>
 })

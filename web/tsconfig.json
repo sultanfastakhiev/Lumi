@@ -62,6 +62,9 @@
       ],
       "@mocks": [
         "mocks"
+      ],
+      "@test-utils": [
+        "test-utils"
       ]
     },
     "incremental": true
