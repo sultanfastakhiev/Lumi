@@ -5,6 +5,7 @@ module.exports = {
         '\\.(scss|sass|css)$': 'identity-obj-proxy',
        "@core/(.*)": "<rootDir>/src/core/$1",
        "@mocks": "<rootDir>/src/mocks",
+       "@api": "<rootDir>/src/api",
     },
     testEnvironment: 'jsdom',
     preset: 'ts-jest',
