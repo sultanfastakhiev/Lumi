@@ -84,7 +84,9 @@ export function useSidebarItem(props: NavPage | ContainerNavPage, key: string) {
         getToggleProps: () => getToggleProps({
             onClick: isContainerNavPage(props)
                 ? () => dispatch(toggleExpand(key))
-                : undefined
+                : () => {
+                    if (isMobile) dispatch(toggleMobile());
+                }
         }),
         active: isContainerNavPage(props)
             ? props.children?.some(x => router.pathname.includes(x.url)) ?? false
