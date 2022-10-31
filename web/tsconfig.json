@@ -56,6 +56,12 @@
       ],
       "@api/*": [
         "api/*"
+      ],
+      "@api": [
+        "api"
+      ],
+      "@mocks": [
+        "mocks"
       ]
     },
     "incremental": true

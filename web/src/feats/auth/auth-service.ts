@@ -1,7 +1,7 @@
 import { LoginArgs, SignupArgs } from "@feats/auth/redux/auth/auth-actions";
 import { AuthenticationStatus } from "@feats/auth/redux/auth/auth-state";
 import { fetchMe } from "@api/fetch-me";
-import { authorize } from "@api/authorize";
+import { authorize } from "@api";
 import { createUser } from "@api/create–user";
 import Cookies from "@core/services/cookies";
 
