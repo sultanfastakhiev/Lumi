@@ -1,3 +1,5 @@
+import { Prediction } from "@feats/diagnosis/entities";
+
 export const isServer = () => typeof window === "undefined"
 
 export const isClient = () => typeof window !== "undefined"
@@ -6,4 +8,13 @@ export const isClient = () => typeof window !== "undefined"
 export const flipDate = (date: string) => {
     const parts = date.split(".")
     return `${parts[1]}.${parts[0]}.${parts[2]}`
+}
+
+/**
+ * Function which takes array of predictions and returns array with sorted predictions
+ * @param {Prediction[]} predictions array of predictions
+ * @returns {Prediction[]} array of sorted predictions
+ */
+export function sortPredictions(predictions: Prediction[]) {
+    return predictions.sort((a, b) => b.probability - a.probability)
 }

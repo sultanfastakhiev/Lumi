@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Prediction } from "@feats/diagnosis/entities";
-import { decipherAnalyses } from "@api/decipher-analyses";
+import { decipherAnalyzes } from "@api";
 
 export function useAnalyzes() {
     const [file, setFile] = useState<File | null>(null)
@@ -21,7 +21,7 @@ export function useAnalyzes() {
         },
         handleButtonClick: async () => {
             setLoading(true)
-            setPredictions(await decipherAnalyses(file!));
+            setPredictions(await decipherAnalyzes(file!));
             setLoading(false);
         },
         clearFile: () => setFile(null),
