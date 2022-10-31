@@ -1,6 +1,6 @@
 import { createFormik } from "@core/utils/ui/create-formik";
 import * as yup from "yup";
-import { checkUsernameUniqueness } from "@api/check-username-uniqueness";
+import { checkUsernameUniqueness } from "@api";
 import { createUser } from "@feats/auth/redux/auth/auth-actions";
 import { selectAuthType } from "@feats/auth/redux/auth/auth-selectors";
 import { store } from "@redux/store";
