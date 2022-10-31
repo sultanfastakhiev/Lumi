@@ -1,5 +1,5 @@
 import React, { createContext, useContext } from "react";
-import { FormInput, Props as BaseProps } from "@core/components/inputs/form/form-input";
+import { FormInput, Props as BaseProps } from "@core/components";
 import { Eye, EyeOff, Icon } from "react-feather";
 import { useBoolean } from "react-untitled-ui";
 import classNames from "classnames";

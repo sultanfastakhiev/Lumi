@@ -5,8 +5,7 @@ import { ContentWrapper } from "@core/components/content-wrapper/content-wrapper
 import { Title } from "@core/components/typography/title/title";
 import { useCreatePatient } from "@feats/patients/pages/create-patient/use-create-patient";
 import { Form, Formik } from "formik";
-import { FormInput } from "@core/components/inputs/form/form-input";
-import { SubmitButton } from "@core/components";
+import { SubmitButton, FormInput } from "@core/components";
 import Head from "next/head";
 
 export type CreatePatientProps = {}

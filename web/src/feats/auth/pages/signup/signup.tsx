@@ -1,9 +1,8 @@
 import React from "react";
 import styles from "../auth.module.scss";
 import { Form, Formik } from "formik";
-import { FormInput } from "@core/components/inputs/form/form-input";
 import { FormPasswordInput } from "@core/components/inputs/form/form-password-input";
-import { SubmitButton } from "@core/components";
+import { SubmitButton, FormInput } from "@core/components";
 import Link  from "next/link";
 import { useSignup } from "@feats/auth/pages/signup/use-signup";
 import Head from "next/head";
