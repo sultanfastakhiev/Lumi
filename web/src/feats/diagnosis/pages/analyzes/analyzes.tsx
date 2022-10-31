@@ -11,7 +11,7 @@ import { Button, Divider, FileUpload } from "react-untitled-ui";
 import { PredictionResults } from "@feats/diagnosis/components/prediction-results/prediction-results";
 import { Layout } from "@core/components/layout/layout";
 import { useAnalyzes } from "@feats/diagnosis/pages/analyzes/use-analyzes";
-import { FilePreview } from "@core/components/file-preview/file-preview";
+import { FilePreview } from "@core/components";
 import Head from "next/head";
 
 export type AnalyzesProps = {}

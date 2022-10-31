@@ -9,9 +9,9 @@ export type FilePreviewProps = {
 }
 
 // function which takes file and return size of it as KB, MB etc.
-function getFileSize(file: File): string {
+export function getFileSize(file: File): string {
     let size = file.size;
-    const units = ["B", "KB", "MB", "GB", "TB"];
+    const units = ["B", "KB", "MB", "GB"];
     let i = 0;
     while (size > 1024) {
         size /= 1024;
