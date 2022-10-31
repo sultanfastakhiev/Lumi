@@ -1,5 +1,6 @@
 import { Prediction } from "@feats/diagnosis/entities";
 import client from "@core/utils/axios";
+import { sortPredictions } from "@core/utils";
 
 export async function predictKidneyDiseases(file: File): Promise<Prediction[]> {
     const formData = new FormData();
@@ -25,7 +26,5 @@ export async function predictKidneyDiseases(file: File): Promise<Prediction[]> {
         },
     ]
 
-    return predictions.sort(
-        (a, b) => b.probability - a.probability
-    );
+    return sortPredictions(predictions);
 }
