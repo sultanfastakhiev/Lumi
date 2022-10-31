@@ -8,3 +8,4 @@ export * from "./fetch-patients/fetch-patients";
 export * from "./get-patient/get-patient";
 export * from "./predict-brain-cancer/predict-brain-cancer";
 export * from "./predict-kidney-diseases/predict-kidney-diseases";
+export * from "./predict-skin-cancer/predict-skin-cancer";

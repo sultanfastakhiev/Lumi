@@ -1,4 +1,4 @@
-import { predictSkinCancer } from "@api/predict-skin-cancer";
+import { predictSkinCancer } from "@api";
 import { useImagePrediction } from "@feats/diagnosis/hooks/use-image-prediction";
 
 export function useSkinCancer() {

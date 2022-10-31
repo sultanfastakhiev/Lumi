@@ -2,6 +2,11 @@ import { Prediction } from "@feats/diagnosis/entities";
 import client from "@core/utils/axios";
 import { sortPredictions } from "@core/utils";
 
+/**
+ * Calling POST /file and passing file with user kidney CT as FormData in order to predict kidney diseases
+ * @param {File} file kidney CT (jpg or jpeg) 
+ * @returns {Prediction[]} array of predictions
+ */
 export async function predictKidneyDiseases(file: File): Promise<Prediction[]> {
     const formData = new FormData();
     formData.append('file', file);
