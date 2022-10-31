@@ -10,4 +10,7 @@ module.exports = {
     },
     testEnvironment: 'jsdom',
     preset: 'ts-jest',
+    transform: {
+        '^.+\\.tsx?$': 'babel-jest',
+    }
 };
