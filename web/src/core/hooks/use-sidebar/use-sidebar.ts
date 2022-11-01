@@ -6,7 +6,7 @@ import {
     selectIsSidebarItemExpanded,
     selectIsSidebarOpen,
     toggle, toggleExpand, selectIsSidebarMobileOpen, toggleMobile
-} from "@core/redux/sidebar-reducer";
+} from "@core/redux/sidebar-slice";
 import { logout } from "@feats/auth/redux/auth/auth-reducer";
 import { ContainerNavPage, isContainerNavPage, NavPage } from "@core/types/layout";
 import useCollapse from "react-collapsed";
