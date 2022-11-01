@@ -10,3 +10,4 @@ export * from "./layout/layout";
 export * from "./loading/loading-view/loading-view";
 export * from "./logo/logo";
 export * from "./navbar/navbar";
+export * from "./picked-image/picked-image";

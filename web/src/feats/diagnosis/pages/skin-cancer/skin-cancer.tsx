@@ -1,5 +1,5 @@
 import React from "react";
-import { ContentWrapper, Layout } from "@core/components";
+import { ContentWrapper, Layout, PickedImage } from "@core/components";
 import { Title } from "@core/components/typography/title/title";
 import { Subtitle } from "@core/components/typography/subtitle/subtitle";
 import {
@@ -10,7 +10,6 @@ import {
 import { PredictionResults } from "@feats/diagnosis/components/prediction-results/prediction-results";
 import { Button, Divider, FileUpload } from "react-untitled-ui";
 import { useSkinCancer } from "@feats/diagnosis/pages/skin-cancer/use-skin-cancer";
-import { PickedImage } from "@core/components/picked-image/picked-image";
 import Head from "next/head";
 
 export type SkinCancerProps = {}

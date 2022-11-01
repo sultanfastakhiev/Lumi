@@ -1,5 +1,5 @@
 import React from "react";
-import { ContentWrapper, Layout } from "@core/components";
+import { ContentWrapper, Layout, PickedImage } from "@core/components";
 import { Title } from "@core/components/typography/title/title";
 import { Subtitle } from "@core/components/typography/subtitle/subtitle";
 import {
@@ -7,7 +7,6 @@ import {
     LeftDiagnosisLayout,
     RightDiagnosisLayout
 } from "@feats/diagnosis/components/diagnosis-layout/diagnosis-layout";
-import { PickedImage } from "@core/components/picked-image/picked-image";
 import { Button, Divider, FileUpload } from "react-untitled-ui";
 import { PredictionResults } from "@feats/diagnosis/components/prediction-results/prediction-results";
 import { useBrainTumors } from "@feats/diagnosis/pages/brain-tumors/use-brain-tumors";
