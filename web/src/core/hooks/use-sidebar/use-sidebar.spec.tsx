@@ -1,6 +1,6 @@
 import { useSidebar, useSidebarItem } from "@core/hooks/use-sidebar/use-sidebar";
 import { useAppDispatch, useAppSelector } from "@redux/hooks";
-import { selectIsSidebarMobileOpen, selectIsSidebarOpen, toggle, toggleMobile } from "@core/redux/sidebar-slice";
+import { selectIsSidebarMobileOpen, selectIsSidebarOpen, toggle, toggleMobile } from "@core/redux";
 import { useMediaQuery } from "react-responsive";
 import { useQuery } from "@tanstack/react-query";
 import { fetchMe } from "@api";

@@ -5,3 +5,5 @@ const reducers = {
 }
 
 export default reducers
+
+export * from "./sidebar-slice"
