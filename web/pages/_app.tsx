@@ -21,7 +21,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ToastContainer } from "react-toastify";
 
 // Hooks
-import { useAuthRestrictedRoutes } from "@core/hooks/use-auth-restricted-routes";
+import { useAuthRestrictedRoutes } from "@core/hooks";
 
 function MyApp({Component, pageProps}: AppProps) {
     useAuthRestrictedRoutes()
