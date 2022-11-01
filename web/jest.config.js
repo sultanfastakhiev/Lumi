@@ -8,6 +8,8 @@ module.exports = {
        "@api": "<rootDir>/src/api",
        "@test-utils": "<rootDir>/src/test-utils",
        "@feats/(.*)": "<rootDir>/src/feats/$1",
+       "@redux/(.*)": "<rootDir>/src/redux/$1",
+       "@config/(.*)": "<rootDir>/src/config/$1",
     },
     testEnvironment: 'jsdom',
     preset: 'ts-jest',

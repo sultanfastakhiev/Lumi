@@ -10,7 +10,7 @@ import {
     SubNavPage
 } from "@core/types/layout";
 import { useSidebar, useSidebarItem } from "@core/hooks/use-sidebar";
-import { Logo } from "@core/components/logo/logo";
+import { Logo } from "@core/components";
 import { ChevronDown, LogOut } from "react-feather";
 import { Avatar, Badge } from "react-untitled-ui";
 import Link from "next/link";

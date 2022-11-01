@@ -3,15 +3,15 @@ import styles from "./layout.module.scss";
 import { Sidebar } from "@core/components/sidebar/sidebar";
 import { sidebarConfig as config } from "@config/sidebar";
 import classNames from "classnames";
-import { NavBar } from "@core/components/navbar/navbar";
+import { NavBar } from "@core/components";
 
-type Props = {
+type LayoutProps = {
     className?: string,
     children: React.ReactNode,
     variant?: "default" | "full-width",
 }
 
-export const Layout: React.FC<Props> = (props) => {
+export const Layout: React.FC<LayoutProps> = (props) => {
     return <div className={ styles.layout } data-variant={ props.variant ?? 'default' }>
         <Sidebar { ...config } key="core/sidebar"/>
         <div className={ styles.editView }>

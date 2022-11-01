@@ -1,11 +1,9 @@
 import React from "react";
 import styles from "./create-patient.module.scss";
-import { Layout } from "@core/components/layout/layout";
-import { ContentWrapper } from "@core/components/content-wrapper/content-wrapper";
 import { Title } from "@core/components/typography/title/title";
 import { useCreatePatient } from "@feats/patients/pages/create-patient/use-create-patient";
 import { Form, Formik } from "formik";
-import { SubmitButton, FormInput } from "@core/components";
+import { SubmitButton, FormInput, ContentWrapper, Layout } from "@core/components";
 import Head from "next/head";
 
 export type CreatePatientProps = {}

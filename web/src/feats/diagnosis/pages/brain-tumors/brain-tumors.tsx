@@ -1,6 +1,5 @@
 import React from "react";
-import { Layout } from "@core/components/layout/layout";
-import { ContentWrapper } from "@core/components/content-wrapper/content-wrapper";
+import { ContentWrapper, Layout } from "@core/components";
 import { Title } from "@core/components/typography/title/title";
 import { Subtitle } from "@core/components/typography/subtitle/subtitle";
 import {

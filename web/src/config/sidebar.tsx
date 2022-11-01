@@ -1,6 +1,6 @@
+import React from "react";
 import { SidebarConfig } from "@core/types/layout";
 import { FileText, Layers, Users } from "react-feather";
-import React from "react";
 import { v4 } from "uuid";
 
 export const sidebarConfig: SidebarConfig = {

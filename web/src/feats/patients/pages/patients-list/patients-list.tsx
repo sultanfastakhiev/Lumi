@@ -1,12 +1,10 @@
 import React from "react";
 import styles from "./patients-list.module.scss";
-import { Layout } from "@core/components/layout/layout";
-import { ContentWrapper } from "@core/components/content-wrapper/content-wrapper";
+import { ContentWrapper, Layout, LoadingView } from "@core/components";
 import { Title } from "@core/components/typography/title/title";
 import { Button } from "react-untitled-ui";
 import { Plus, Search } from "react-feather";
 import { usePatientsList } from "@feats/patients/pages/patients-list/use-patients-list";
-import { LoadingView } from "@core/components/loading/loading-view/loading-view";
 import { PatientCard } from "@feats/patients/components/patient-card/patient-card";
 import { useRouter } from "next/router";
 import Head from "next/head";
@@ -14,7 +12,7 @@ import Head from "next/head";
 export const PatientsListPage: React.FC = () => {
     const {data, isLoading} = usePatientsList();
     const router = useRouter()
-    
+
     return <Layout className={ styles.page }>
         <Head>
             <title>Мои пациенты | Lumi</title>

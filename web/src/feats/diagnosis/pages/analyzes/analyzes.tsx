@@ -1,5 +1,4 @@
 import React from "react";
-import { ContentWrapper } from "@core/components/content-wrapper/content-wrapper";
 import { Title } from "@core/components/typography/title/title";
 import { Subtitle } from "@core/components/typography/subtitle/subtitle";
 import {
@@ -9,9 +8,8 @@ import {
 } from "@feats/diagnosis/components/diagnosis-layout/diagnosis-layout";
 import { Button, Divider, FileUpload } from "react-untitled-ui";
 import { PredictionResults } from "@feats/diagnosis/components/prediction-results/prediction-results";
-import { Layout } from "@core/components/layout/layout";
 import { useAnalyzes } from "@feats/diagnosis/pages/analyzes/use-analyzes";
-import { FilePreview } from "@core/components";
+import { FilePreview, ContentWrapper, Layout } from "@core/components";
 import Head from "next/head";
 
 export type AnalyzesProps = {}
