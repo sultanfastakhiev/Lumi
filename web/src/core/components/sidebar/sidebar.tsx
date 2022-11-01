@@ -16,6 +16,7 @@ import { Avatar, Badge } from "react-untitled-ui";
 import Link from "next/link";
 import { fullName } from "@feats/auth/entities";
 
+// TODO: unit testing
 export const Sidebar: React.FC<SidebarConfig> = React.memo((props) => {
     const {isSidebarOpened: open, toggleSidebar: toggle, user, handleLogout, mobileOpen, toggleMainSidebar} = useSidebar()
     const containerRef = useRef<HTMLDivElement>(null)
@@ -118,9 +119,9 @@ export const SidebarItem: React.FC<(NavPage | ContainerNavPage) & { itemKey: str
                         key={ `${ props.itemKey }-${ i }` }
                         data-active={ i === activeChildren }
                         className={ styles.navChildrenItem }>
-                        <span>{ item.text }</span>
-                        { item.badge && <Badge color="blue-gray" className={ styles.badge }>{ item.badge }</Badge> }
-                        { item.online && <div className={ styles.onlineCircle }/> }
+                            <span>{ item.text }</span>
+                            { item.badge && <Badge color="blue-gray" className={ styles.badge }>{ item.badge }</Badge> }
+                            { item.online && <div className={ styles.onlineCircle }/> }
                     </Link>
                 })
             }

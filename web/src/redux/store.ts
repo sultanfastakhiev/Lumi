@@ -1,7 +1,7 @@
 import {Action, combineReducers, configureStore, ThunkAction} from "@reduxjs/toolkit";
 
 // Reducers
-import coreReducers from "core/redux"
+import coreReducers from "@core/redux"
 import authReducer from "@feats/auth/redux/auth/auth-reducer";
 
 const rootReducer = combineReducers({

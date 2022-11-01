@@ -1,9 +1,8 @@
 import React from "react";
-import styles from "./layout.module.scss";
-import { Sidebar } from "@core/components/sidebar/sidebar";
-import { sidebarConfig as config } from "@config/sidebar";
 import classNames from "classnames";
-import { NavBar } from "@core/components";
+import styles from "./layout.module.scss";
+import { sidebarConfig as config } from "@config/sidebar";
+import { NavBar, Sidebar } from "@core/components";
 
 type LayoutProps = {
     className?: string,

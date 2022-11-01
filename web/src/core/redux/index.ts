@@ -1,4 +1,4 @@
-import coreSidebar from "core/redux/sidebar-reducer"
+import coreSidebar from "@core/redux/sidebar-reducer"
 
 const reducers = {
     coreSidebar,

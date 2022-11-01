@@ -1,7 +1,5 @@
 import React from "react";
-import { ContentWrapper, Layout, PickedImage } from "@core/components";
-import { Title } from "@core/components/typography/title/title";
-import { Subtitle } from "@core/components/typography/subtitle/subtitle";
+import { ContentWrapper, Layout, PickedImage, Title, Subtitle } from "@core/components";
 import {
     DiagnosisLayout,
     LeftDiagnosisLayout,

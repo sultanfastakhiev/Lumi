@@ -11,3 +11,6 @@ export * from "./loading/loading-view/loading-view";
 export * from "./logo/logo";
 export * from "./navbar/navbar";
 export * from "./picked-image/picked-image";
+export * from "./sidebar/sidebar";
+export * from "./typography/title/title";
+export * from "./typography/subtitle/subtitle";
