@@ -1,6 +1,6 @@
 import { NavBar } from "@core/components";
 import { fireEvent, render } from "@testing-library/react";
-import { useSidebar } from "@core/hooks/use-sidebar";
+import { useSidebar } from "@core/hooks/use-sidebar/use-sidebar";
 
 jest.mock("@core/hooks/use-sidebar");
 jest.mock("@config/sidebar");
