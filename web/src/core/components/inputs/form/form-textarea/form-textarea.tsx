@@ -2,11 +2,11 @@ import React from "react";
 import { useField, useFormikContext } from "formik";
 import { Textarea, TextareaProps } from "react-untitled-ui";
 
-export type Props = {
+export type FormTextareaProps = {
     name: string,
 } & TextareaProps
 
-export const FormTextArea: React.FC<Props> = React.memo((props) => {
+export const FormTextArea: React.FC<FormTextareaProps> = React.memo((props) => {
     const [field, meta] = useField(props.name);
     const {isSubmitting} = useFormikContext()
 

@@ -3,11 +3,10 @@ import { Layout } from "@core/components/layout/layout";
 import styles from "./patient-detail.module.scss";
 import { ContentWrapper } from "@core/components/content-wrapper/content-wrapper";
 import { Title } from "@core/components/typography/title/title";
-import { SubmitButton, ResetButton, FormInput } from "@core/components";
+import { SubmitButton, ResetButton, FormInput, FormTextArea } from "@core/components";
 import { usePatientDetail } from "@feats/patients/pages/patient-detail/use-patient-detail";
 import { Form, Formik } from "formik";
 import { LoadingView } from "@core/components/loading/loading-view/loading-view";
-import { FormTextArea } from "@core/components/inputs/form/form-textarea";
 import { useRouter } from "next/router";
 import Head from "next/head";
 
