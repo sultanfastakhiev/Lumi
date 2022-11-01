@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@redux/hooks";
 import {
     shrinkItem,
@@ -18,7 +18,7 @@ import { useMediaQuery } from "react-responsive";
 
 /**
  * React hook that load & changes is sidebar opened UI property
- * @return {object} - object with isSidebarOpen property, toggleSidebar function, user property, logout function
+ * @return {object} object with isSidebarOpen property, toggleSidebar function, user property, logout function
  */
 export function useSidebar() {
     const dispatch = useAppDispatch()
@@ -29,30 +29,30 @@ export function useSidebar() {
 
     const isMobile = useMediaQuery({query: "(max-width: 767px)"})
     
-    const toggleSidebar = useCallback(() => {
+    const toggleSidebar = () => {
         if (isMobile) {
             dispatch(toggleMobile())
         } else {
             dispatch(toggle())
         }
-    }, [dispatch, isMobile])
+    }
 
     return {
         isSidebarOpened: open,
         mobileOpen,
         toggleSidebar,
         toggleMainSidebar: () => dispatch(toggle()),
-        handleLogout: useCallback(() => {
+        handleLogout: () => {
             dispatch(logout())
             return router.replace("/login")
-        }, [router, dispatch]),
+        },
         user: userData.data,
     }
 }
 
 /**
  * React hook that used to watch for sidebar open state changes
- * @return {object} - object with isSidebarOpen property
+ * @return {object} object with isSidebarOpen property
  */
 export function useSidebarItem(props: NavPage | ContainerNavPage, key: string) {
     const open = useAppSelector(selectIsSidebarOpen)
