@@ -1,13 +1,8 @@
+/// Next.js permanent redirect used inside serverside functions.
+
 export const loginRedirect = {
     redirect: {
         destination: "/login",
-        permanent: true,
-    },
-}
-
-export const homeRedirect = {
-    redirect: {
-        destination: "/",
         permanent: true,
     },
 }
