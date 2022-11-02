@@ -1,11 +1,10 @@
-import { createFormik } from "@core/utils/ui/create-formik";
+import { createFormik, useErrorToast } from "@core/utils";
 import * as yup from "yup"
 import { useAppDispatch } from "@redux/hooks";
 import { login } from "@feats/auth/redux/auth/auth-actions";
 import { selectAuthType } from "@feats/auth/redux/auth/auth-selectors";
 import { store } from "@redux/store";
 import { useRouter } from "next/router";
-import { useErrorToast } from "@core/utils/ui/use-toast";
 import { getHomeRoute } from "@router/get-home-route";
 
 export function useLogin() {

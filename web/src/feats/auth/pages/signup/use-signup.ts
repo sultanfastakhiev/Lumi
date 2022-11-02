@@ -1,4 +1,4 @@
-import { createFormik } from "@core/utils/ui/create-formik";
+import { createFormik, useErrorToast } from "@core/utils";
 import * as yup from "yup";
 import { checkUsernameUniqueness } from "@api";
 import { createUser } from "@feats/auth/redux/auth/auth-actions";
@@ -6,7 +6,6 @@ import { selectAuthType } from "@feats/auth/redux/auth/auth-selectors";
 import { store } from "@redux/store";
 import { getHomeRoute } from "@router/get-home-route";
 import { useAppDispatch } from "@redux/hooks";
-import { useErrorToast } from "@core/utils/ui/use-toast";
 import { useRouter } from "next/router";
 
 export function useSignup() {

@@ -1,4 +1,4 @@
-import { createFormik } from "@core/utils/ui/create-formik";
+import { createFormik } from "@core/utils";
 import * as yup from "yup";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { getPatient } from "@api/get-patient/get-patient";
