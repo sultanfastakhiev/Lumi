@@ -10,6 +10,7 @@ module.exports = {
        "@feats/(.*)": "<rootDir>/src/feats/$1",
        "@redux/(.*)": "<rootDir>/src/redux/$1",
        "@config/(.*)": "<rootDir>/src/config/$1",
+       "@router/(.*)": "<rootDir>/src/router/$1",
     },
     testEnvironment: 'jsdom',
     preset: 'ts-jest',

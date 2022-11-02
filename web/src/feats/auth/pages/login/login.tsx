@@ -1,13 +1,12 @@
-import React from "react";
-import styles from "../auth.module.scss"
-import { useLogin } from "@feats/auth/pages/login/use-login";
-import { Form, Formik } from "formik";
-import { SubmitButton, FormInput, FormPasswordInput } from "@core/components";
 import Head from "next/head";
 import Link from "next/link";
+import { NextPage } from "next";
+import { Form, Formik } from "formik";
+import styles from "../auth.module.scss"
+import { useLogin } from "@feats/auth/pages/login/use-login";
+import { SubmitButton, FormInput, FormPasswordInput } from "@core/components";
 
-
-export const LoginPage: React.FC = () => {
+export const LoginPage: NextPage = () => {
     const {formik} = useLogin()
 
     return <div className={ styles.page }>
@@ -32,7 +31,7 @@ export const LoginPage: React.FC = () => {
                         placeholder="••••••••"
                         fullWidth/>
                     <SubmitButton fullWidth>Войти</SubmitButton>
-                    <span className={styles.actions}>
+                    <span className={ styles.actions }>
                         Нет аккаунта? <Link href="/signup">Создать</Link>
                     </span>
                 </Form>

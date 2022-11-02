@@ -4,7 +4,6 @@ import LocalStorage from "@core/services/local-storage";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { User } from "@feats/auth/entities";
 import { RootState } from "@redux/store";
-import { wait } from "@core/utils/wait";
 import Cookies from "@core/services/cookies";
 
 export type LoginArgs = {
@@ -67,9 +66,6 @@ export const updateUser = createAsyncThunk(
     async (args: Partial<User>, {getState}): Promise<AuthState> => {
         const state = (getState() as RootState).auth
         if (!isAuthorizedAuthState(state)) return state
-        
-        // emulate loading
-        await wait(1000)
         
         // combine user with args
         const user = {
