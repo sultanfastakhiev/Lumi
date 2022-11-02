@@ -1,4 +1,4 @@
-import client from "@core/utils/axios";
+import { client } from "@core/utils";
 import { parsePatient, Patient } from "@feats/patients/entities";
 
 /**

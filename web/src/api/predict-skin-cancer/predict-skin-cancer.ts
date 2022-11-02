@@ -1,4 +1,4 @@
-import client from "@core/utils/axios";
+import { client } from "@core/utils";
 import { Prediction } from "@feats/diagnosis/entities";
 import { sortPredictions } from "@core/utils";
 

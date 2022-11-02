@@ -1,4 +1,4 @@
-import client from "@core/utils/axios";
+import { client } from "@core/utils";
 
 /**
  * Calling POST /check_username_uniqueness endpoint to check is received username unique or not

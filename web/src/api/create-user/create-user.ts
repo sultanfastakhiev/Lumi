@@ -1,6 +1,5 @@
-import client from "@core/utils/axios";
+import { client, formatInputDate } from "@core/utils";
 import { SignupArgs } from "@feats/auth/redux/auth/auth-actions";
-import { formatInputDate } from "@core/utils/formatters/date-formatter/date-formatter";
 
 /**
  * Calling POST /reg endpoint to create user (doctor)

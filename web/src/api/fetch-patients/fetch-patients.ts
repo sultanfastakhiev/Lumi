@@ -1,5 +1,5 @@
 import { parsePatient, Patient } from "@feats/patients/entities";
-import client from "@core/utils/axios";
+import { client } from "@core/utils";
 
 /**
  * Calling GET /patients endpoint to fetch doctor's patients list

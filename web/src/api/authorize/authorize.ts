@@ -1,4 +1,4 @@
-import client from "@core/utils/axios";
+import { client } from "@core/utils";
 
 /**
  * Calling POST / endpoint to authorize user using username and password and returns access_token
