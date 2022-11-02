@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./patient-card.module.scss";
 import { fullName, Patient } from "@feats/patients/entities";
-import { formatBirthdayWithAge } from "@core/utils/fomatters/date-formatter";
+import { formatBirthdayWithAge } from "@core/utils/formatters/date-formatter/date-formatter";
 import { useRouter } from "next/router";
 
 export type PatientCardProps = {

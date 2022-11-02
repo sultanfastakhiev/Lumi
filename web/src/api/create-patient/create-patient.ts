@@ -1,6 +1,6 @@
 import client from "@core/utils/axios";
 import { Patient } from "@feats/patients/entities";
-import { formatInputDate } from "@core/utils/fomatters/date-formatter";
+import { formatInputDate } from "@core/utils/formatters/date-formatter/date-formatter";
 
 /**
  * Type used to create patient endpoint
