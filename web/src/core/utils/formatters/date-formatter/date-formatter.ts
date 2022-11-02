@@ -1,4 +1,4 @@
-import { formatNumberWithWord } from "@core/utils/formatters/word-formatter";
+import { formatNumberWithWord } from "@core/utils";
 
 /**
  * Function which formats date as a string like 21 ноября 2005 г. (16 лет)
