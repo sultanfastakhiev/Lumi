@@ -1,8 +1,7 @@
-import { createFormik } from "@core/utils";
+import { createFormik, queryClient } from "@core/utils";
 import * as yup from "yup";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { getPatient } from "@api/get-patient/get-patient";
-import { queryClient } from "@core/utils/react-query";
 import { updatePatient } from "@api";
 import { useRouter } from "next/router";
 
